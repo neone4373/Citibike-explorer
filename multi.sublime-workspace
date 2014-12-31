@@ -1,0 +1,995 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tipPct",
+				"tipPctD"
+			],
+			[
+				"state",
+				"stateChoiceT"
+			],
+			[
+				"Bottom",
+				"bottomLegend"
+			],
+			[
+				"bottom",
+				"bottomLegend"
+			],
+			[
+				"colo",
+				"prioritiesColors"
+			],
+			[
+				"svgL",
+				"svgLegend"
+			],
+			[
+				"K",
+				"Kansas"
+			],
+			[
+				"Op",
+				"Option2"
+			],
+			[
+				"pref",
+				"prefData"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"total",
+				"totalwidth"
+			],
+			[
+				"legend",
+				"legendW"
+			],
+			[
+				"border",
+				"border-right"
+			],
+			[
+				"barRes",
+				"barResultsT3"
+			],
+			[
+				"nest",
+				"nestedByState"
+			],
+			[
+				"data",
+				"dataCSVf"
+			],
+			[
+				"k",
+				"key"
+			],
+			[
+				"dataCSV",
+				"dataCSVf"
+			],
+			[
+				"rate",
+				"rateById"
+			],
+			[
+				"star",
+				"starR"
+			],
+			[
+				"tipB",
+				"tip2BottomM"
+			],
+			[
+				"cir",
+				"circleEnter"
+			],
+			[
+				"a",
+				"a"
+			],
+			[
+				"Poll",
+				"Poll1Names"
+			],
+			[
+				"sele",
+				"select"
+			],
+			[
+				"tex",
+				"text"
+			],
+			[
+				"turn",
+				"turnoutCircles14R"
+			],
+			[
+				"svgK",
+				"svgKey1select"
+			],
+			[
+				"keyD",
+				"keyDataset"
+			],
+			[
+				"key1",
+				"key1a"
+			],
+			[
+				"stroke-",
+				"stroke-width"
+			],
+			[
+				"svg",
+				"svgKey1"
+			],
+			[
+				"key",
+				"key2boxr"
+			],
+			[
+				"keybox",
+				"key1boxr"
+			],
+			[
+				"turnout",
+				"turnoutText"
+			],
+			[
+				"turnoutb",
+				"turnoutboxl"
+			],
+			[
+				"circle",
+				"circleEnter"
+			],
+			[
+				"off",
+				"offsetCircle2014"
+			],
+			[
+				"c",
+				"c"
+			],
+			[
+				"turnoutCir",
+				"turnoutCircles10"
+			],
+			[
+				"wi",
+				"winningParty"
+			],
+			[
+				"bars",
+				"barsdata"
+			],
+			[
+				"barsdata",
+				"barsdataz"
+			],
+			[
+				"winn",
+				"winningParty"
+			],
+			[
+				"barResults",
+				"barResultsT3"
+			],
+			[
+				"dM",
+				"dMin"
+			],
+			[
+				"losing",
+				"losingPercent"
+			],
+			[
+				"resu",
+				"resultsDV"
+			],
+			[
+				"results",
+				"resultsRV"
+			],
+			[
+				"win",
+				"winningPercent"
+			],
+			[
+				"table",
+				"table-cell"
+			],
+			[
+				"st",
+				"stateChoice"
+			],
+			[
+				"winning",
+				"winningParty"
+			],
+			[
+				"sen",
+				"senR"
+			],
+			[
+				"s",
+				"sWins"
+			],
+			[
+				"main",
+				"mainlefthead"
+			],
+			[
+				"mainleft",
+				"mainleftcanvas"
+			],
+			[
+				"resul",
+				"resultsCSV"
+			],
+			[
+				"sta",
+				"stateChoice"
+			],
+			[
+				"sD",
+				"sDCans"
+			],
+			[
+				"feature",
+				"featurePath"
+			],
+			[
+				"file",
+				"filePath"
+			],
+			[
+				"window",
+				"windowwidth"
+			],
+			[
+				"ax",
+				"axisTextAdjust"
+			],
+			[
+				"text",
+				"textAdjust"
+			],
+			[
+				"mar",
+				"marginleft"
+			],
+			[
+				"upd",
+				"updateType"
+			],
+			[
+				"ma",
+				"marginleft"
+			],
+			[
+				"year",
+				"yearAdjust"
+			],
+			[
+				"x",
+				"xAdjust"
+			],
+			[
+				"update",
+				"updateLabel"
+			],
+			[
+				"transit",
+				"transitionCheck"
+			],
+			[
+				"transi",
+				"transitionCheck"
+			],
+			[
+				"xA",
+				"xAdjust"
+			],
+			[
+				"width",
+				"widthScale"
+			],
+			[
+				"bar",
+				"barwidth"
+			],
+			[
+				"axis",
+				"axisHeight"
+			],
+			[
+				"opa",
+				"opacityTest"
+			],
+			[
+				"select",
+				"selectAll"
+			],
+			[
+				"X",
+				"xAxis"
+			],
+			[
+				"d3",
+				"d3Axis"
+			],
+			[
+				"del",
+				"delayTimer"
+			],
+			[
+				"delay",
+				"delayTimer"
+			],
+			[
+				"dataset_",
+				"dataset_raw"
+			],
+			[
+				"dataset_raw",
+				"dataset_raw_nested"
+			],
+			[
+				"interact",
+				"interactive_bars"
+			],
+			[
+				"in",
+				"interactive_bars"
+			],
+			[
+				"parse",
+				"parseDate"
+			],
+			[
+				"backgrou",
+				"background-color"
+			],
+			[
+				"My",
+				"Myanmar"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"Art",
+				"articleData"
+			],
+			[
+				"ar",
+				"articleData"
+			],
+			[
+				"article",
+				"articledata"
+			],
+			[
+				"landing",
+				"landingButtons"
+			],
+			[
+				"do",
+				"doFirst"
+			],
+			[
+				"progr",
+				"progressBar"
+			],
+			[
+				"moz",
+				"moz-box"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"padding",
+				"padding-top"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/SamPetulla/Dropbox/Dropbox/Github/multimonthd3map/index.html",
+			"settings":
+			{
+				"buffer_size": 685,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/SamPetulla/Dropbox/Dropbox/Github/multimonthd3map/index2.html",
+			"settings":
+			{
+				"buffer_size": 197,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 287.0,
+		"selected_items":
+		[
+			[
+				"color",
+				"Color Picker"
+			],
+			[
+				"gutter",
+				"Preferences: GutterColor Settings – User"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"packa",
+				"Preferences: Browse Packages"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			],
+			[
+				"colo",
+				"Color Picker"
+			],
+			[
+				"clor",
+				"Color Picker"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			],
+			[
+				"coor",
+				"Color picker"
+			],
+			[
+				"pick",
+				"Color picker"
+			],
+			[
+				"picker",
+				"Color picker"
+			],
+			[
+				"color pi",
+				"Color picker"
+			],
+			[
+				"browse",
+				"Preferences: Browse Packages"
+			],
+			[
+				"col",
+				"Package Control: List Packages"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"disabl",
+				"Package Control: Disable Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"lint",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"Install 	",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"Better CoffeeScript",
+			"Install Package",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())",
+			"Install Package",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/SamPetulla/Dropbox/Dropbox/Github/multimonthd3map",
+		"/Users/SamPetulla/Dropbox/Dropbox/Github/multimonthd3map/data",
+		"/Users/SamPetulla/Dropbox/Dropbox/Github/multimonthd3map/scripts",
+		"/Users/SamPetulla/Dropbox/Dropbox/Github/multimonthd3map/style"
+	],
+	"file_history":
+	[
+		"/Users/SamPetulla/Dropbox/Dropbox/Github/multimonthd3map/test.csv",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/ACAAnniversary/scripts/enrollment.js",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/ACAAnniversary/scripts/statescript.js",
+		"/Users/SamPetulla/Dropbox/Dropbox/Github/ssmmapMSNBC/data/states-unfiltered topo.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sandbox/Chartbuilder/css/gneisschart.css",
+		"/Users/SamPetulla/Downloads/ICPSR_06068/DS0001/06068-0001-Setup.sps",
+		"/Users/SamPetulla/Downloads/ICPSR_06068/DS0001/06068-0001-Data.txt",
+		"/Users/SamPetulla/Library/Application Support/Sublime Text 3/Packages/User/GutterColor.sublime-settings",
+		"/Applications/Sublime",
+		"/Users/SamPetulla/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/SamPetulla/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/SamPetulla/Text.app/Contents/MacOS/Packages/Default.sublime-package",
+		"/Users/SamPetulla/Library/Application Support/Sublime Text 3/Packages/User/Package Control.last-run",
+		"/Users/SamPetulla/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Users/SamPetulla/Library/Application Support/Sublime Text 3/Packages/User/Package Control.system-ca-bundle",
+		"/Users/SamPetulla/Library/Application Support/Sublime Text 3/Packages/User/base16-eighties.dark (SL).tmTheme",
+		"/Users/SamPetulla/Library/Application Support/Sublime Text 3/Packages/User/base16-eighties.dark (SL) (SL).tmTheme",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/olivelabs/style/style.css",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/scripts/box.js",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/ACAAnniversary/idea.txt",
+		"/Users/SamPetulla/.bash_profile",
+		"/Users/SamPetulla/Downloads/2014-and-2013-Modeled-Uninsured-Rate-by-County.csv",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/data/senatey.csv",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/style/style.css",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/swingbox.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/data/senatew.csv",
+		"/Users/SamPetulla/Library/Application Support/Sublime Text 3/Packages/User/base16-ocean.dark (SL).tmTheme",
+		"/Users/SamPetulla/Downloads/poll.txt",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/data/turnout.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/data/preferences.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/data/pcttotal.txt",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/data/bars.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/data/results.txt",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/data/keypoints.csv",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/data/senatex.csv",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/data/senatez.csv",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/untitled folder/savedbarupdate.js",
+		"/Users/SamPetulla/Dropbox/Dropbox/Data and Maps/Maps/Counties/tl_2014_us_county/counties.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/data/kentucky_topo.json",
+		"/Users/SamPetulla/.Trash/kentucky_topo.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/MSNBC/Election/election",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/data/quarterfunds.csv",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/mappractice/ACS_12_5YR_B01003_with_ann.csv",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/datadriven.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/datadriven_d35.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/scripts/pipeline.js",
+		"/Users/SamPetulla/Google Drive/Employment/Jobs/Past part-time and freelance/GA/data/readme.md",
+		"/Users/SamPetulla/Google Drive/Employment/Jobs/Past part-time and freelance/GA/data/ga.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/app.js",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/style/style.css",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/codeportfolio.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/canvasd3_5.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/datadriven_d32.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/style/style_pipeline.css",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/style/stylecanvas.css",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/index.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/style/styled3.css",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/datadriven_d30.html",
+		"/Users/SamPetulla/Library/Application Support/Sublime Text 3/Packages/User/base16-ocean.light (SL).tmTheme",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/data/crunchbase.json",
+		"/Users/SamPetulla/Google Drive/Employment/Jobs/Past part-time and freelance/Contently.org/ironpipeline/scripts/pipeline2.js",
+		"/Users/SamPetulla/Google Drive/Employment/Jobs/Past part-time and freelance/Contently.org/ironpipeline/style/style.css",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/mappractice2/makefile",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/aboutlong.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/mappractice2/us-atlas/node_modules/d3/src/geo/orthographic.js",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/wnyc/tags.html",
+		"/Users/SamPetulla/Desktop/wnyc.js",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/wnyc/wnyc.js",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/wnyc/index.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/ipy02_text.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/wnyc",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/canvasd3_3.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/header.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/repos/angular-projects-portfolio/readme.md",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/data/articles.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/ipy03_text.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/mappractice2/index.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/home.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/aboutmini.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/mappractice/index.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/mappractice2/makefile2",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/mappractice/makefile",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/iPython, d3/newfile.txt",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/data/statesinvestments_dataframe.csv",
+		"/Users/SamPetulla/Downloads/us-1.geojson",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/data/censusdata.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/tilemill_test.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/nav.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/data/longlat_temp.csv",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/canvasd3_4.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/datadriven_d33.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/canvasd3_text.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/mappractice/package.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/mappractice/.gitignore",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/canvasd3_radial.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/datadrivensaved.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/crunchbaseapp.js",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/ipy01_text.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/style/type.css",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/repos/angular-projects-portfolio/style/style.css",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/articles.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/data/crunchbase2.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/iPython, d3/datacrunchad.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/iPython, d3/datacrunchbio.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/iPython, d3/datacrunchclean.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/iPython, d3/datacrunchsoftware.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/canvas.js",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/data/yearlyworksheet.csv",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/datadriven_d34.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/repos/angular-projects-portfolio/data/articles.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/data/cleantech_items.csv",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/data/yearlyfundingvc.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/test.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/repos/angular-projects-portfolio/views/nav.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/repos/angular-projects-portfolio/views/item1.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/repos/angular-projects-portfolio/views/header.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/repos/angular-projects-portfolio/style/stylecanvas.css",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/repos/angular-projects-portfolio/app.js",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/repos/angular-projects-portfolio/index.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/repos/angular-projects-portfolio/views/canvasview.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/repos/angular-projects-portfolio/canvas.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/data/2013.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/datadriven_d31.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/views/canvasd3.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/datadriven_ipy2.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/datadriven_ipy1.html",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/data/code.json",
+		"/Users/SamPetulla/Dropbox/Dropbox/Sites/Sampetulla.com/new/spcom/data/data.json"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"path",
+			"svg",
+			"boxmap",
+			"data3",
+			"mapSvg",
+			"mysvg",
+			"mapsvg",
+			"drawmap",
+			"data3",
+			"svg",
+			"g.padding().",
+			"g.padding",
+			"padding",
+			"config",
+			"config.padding",
+			"xaxis",
+			"g.defaultPadding()",
+			"g.padding().left",
+			"g.padding()",
+			"Padding",
+			"g.defaultPadding().left",
+			"g.padding()",
+			"xaxis",
+			"Something like",
+			"tab",
+			"window",
+			"tipM",
+			"tip",
+			"button",
+			"tip",
+			"updateState",
+			"mouseover",
+			"nested",
+			"ratebyID",
+			".map()",
+			"nestedby",
+			"quantize",
+			"map",
+			"nestedbystate",
+			"map",
+			"document",
+			"Georgia",
+			"tipnamespan",
+			"tipname",
+			"{\n",
+			"tipnamespan",
+			"kansas",
+			"Conlin",
+			"Grassley",
+			"Slattery",
+			"Dole",
+			"Hagan",
+			"Paul",
+			"Conway",
+			"senRLast",
+			"senDLast",
+			"pollyear",
+			"pollYear",
+			"pollyear",
+			"2008",
+			"2010",
+			"2008",
+			"featurepath",
+			"int",
+			"r +",
+			"09",
+			"senate",
+			"tk",
+			"around",
+			"key1legend",
+			"key1head",
+			"stateChoice",
+			"#5e5989",
+			"text explan",
+			"0%",
+			"100%",
+			"tip",
+			"tipCanNameR",
+			"004d99",
+			"winningparty",
+			"r +",
+			"poll1nam",
+			"green",
+			"barsSGroup",
+			"barStack",
+			"text",
+			"barsEnter",
+			"barsSGroup",
+			"keyw",
+			"pollticks",
+			"ae1e37",
+			"ee9200",
+			"ae1e37",
+			"f0ac00",
+			"ae1e37",
+			"f4bc33",
+			"ae1e37",
+			"f7cd66",
+			"ae1e37",
+			"fdde92",
+			"004d99",
+			"ae1e37",
+			"004d99",
+			"ce1140",
+			"004d99",
+			"d74167",
+			"004d99",
+			"e16f8d",
+			"004d99",
+			"ec9fb5",
+			"acceea",
+			"004d99",
+			"acceea",
+			"0066cc",
+			"acceea",
+			"3385d5",
+			"acceea",
+			"66a2df",
+			"004d99",
+			"acceea",
+			"ae1e37",
+			"004d99",
+			"d0",
+			"ae1e37",
+			"ec9fb5",
+			"333333",
+			"ec9fb5",
+			"e16f8d"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"\"(0,1,2.99e+06]\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/SamPetulla/Dropbox/Dropbox/Github/multimonthd3map/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 685,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								432,
+								432
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/SamPetulla/Dropbox/Dropbox/Github/multimonthd3map/index2.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 197,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								197,
+								197
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "multi.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"~/Dropbox/Dropbox/Languages/HTML5/YouTube 6 hr/new.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 190.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
