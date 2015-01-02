@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" type="text/css" href="./style/style.css">
@@ -11,15 +12,24 @@
 
 </head>
 <body>
-  <div id="tk">
+  <div id="topTitle">
   </div>
+  <div id="interactive">
+  	<div id="map"></div>
+  	<div id="rightInfo"></div>
+  	<div id="options"></div>
+  </div>
+	
+<script src="./scripts/dom.js"></script>
+<script src="./scripts/scripts.js"></script>
   <script>
 $(document).ready(function(){
-  $.getScript('./scripts/dom.js');
-  $.getScript('./scripts/scripts.js');
+
+	interactiveBuilder.start();
+  /*$.getScript('./scripts/dom.js');
+  $.getScript('./scripts/scripts.js');*/
 });
 </script><!--
-  <script src="./scripts/dom.js"></script>
-  <script src="./scripts/scripts.js"></script>-->
+  -->
 </body>
 </html>
