@@ -2,22 +2,27 @@ svg {
   font: 10px sans-serif;
 }
 
-.area {
-  fill: steelblue;
-  clip-path: url(#clip);
+.background.bar {
+  fill: #ccc;
 }
-
-.axis path,
-.axis line {
+.foreground.bar {
+  fill: #1529a3;
+}
+.axis path, .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
-
-.brush .extent {
-  stroke: #fff;
+.axis text {
+  font: 10px sans-serif;
+}
+.brush rect.extent {
+  fill: steelblue;
   fill-opacity: .125;
-  shape-rendering: crispEdges;
+}
+.brush .resize path {
+  fill: #eee;
+  stroke: #666;
 }
 
 #hour-chart{
