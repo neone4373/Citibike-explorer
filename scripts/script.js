@@ -1,3 +1,7 @@
+//understand method
+//review all code
+//see how the filter works. like, how does that work?
+
 //slider for one day, with station vectors changing by hour
 // brushes + stacked area for age by five year intervals
 //gender count line chart
@@ -66,11 +70,11 @@
 	      /*startTime = rides.dimension(function(d) { return d.starttime; }),
 	      startTimes = startTime.group(d3.time.day),*/
 	      hour = rides.dimension(function(d) { 
-	      	return (d.starttime.getHours() * 60) + d.starttime.getMinutes(); 
+	      	return (d.starttime.getHours() * 60) + (d.starttime.getMinutes()); 
 	      }),
 	      hours = hour.group(Math.floor);
-	      duration =
-	      durations = 
+	      gender = rides.dimension(function(d) { return d.gender; }),
+	      genders = gender.group(Math.floor);
 	      /*delay = flight.dimension(function(d) { return Math.max(-60, Math.min(149, d.delay)); }),
 	      delays = delay.group(function(d) { return Math.floor(d / 10) * 10; }),*/
 	      duration = rides.dimension(function(d) { return d.tripduration; }),
@@ -90,13 +94,21 @@
 		      .group(durations)
 		    	.x(d3.scale.linear()
 		    	//.domain(d3.extent(hours.all()[0]))
-		      .domain([0,5000])
+		      .domain([0,2500])
 		      .rangeRound([0, 800])),
+
+		      barChart()
+		      .dimension(gender)
+		      .group(genders)
+		    	.x(d3.scale.linear()
+		    	//.domain(d3.extent(hours.all()[0]))
+		      .domain([0,2.1])
+		      .rangeRound([0, 200])),
 		  ]
 
-		  var chart = d3.selectAll(".chart")
+		  var chartz = d3.selectAll(".chart")
 	      .data(charts)
-	      .each(function(chart) { chart.on("brush", renderAll).on("brushend", renderAll); });
+	      .each(function(chartz) { chartz.on("brush", renderAll).on("brushend", renderAll); });
 		  
 		  // Render the total.
 		  d3.selectAll("#total")
@@ -105,11 +117,13 @@
 		  renderAll();
 		  // Renders the specified chart or list.
 		  function render(method) {
+		  	
 		    d3.select(this).call(method);
 		  }
 		  // Whenever the brush moves, re-rendering everything.
 		  function renderAll() {
-		    chart.each(render);
+		  	
+		    chartz.each(render);
 		    //list.each(render);
 		    d3.select("#active").text(formatNumber(all.value()));
 		  }
