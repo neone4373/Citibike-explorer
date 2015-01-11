@@ -1,12 +1,87 @@
+#topTitle{
+	height:200px;
+	width:1150px;
+	text-align:center;
+}
+#map{
+	width:900px;
+	height:450px;
+	display:inline-block;
+	border: 1px solid black;
+}
+#rightInfo{
+	padding:8px;
+	width:250px;
+	height:434px;
+	display:inline-block;
+	vertical-align:top;
+	border:1px solid black;
+	font-size:16px;
+}
+#active{
+	width:40px;
+	text-align:right;
+}
+#active,#total{
+	display:inline-block;
+}
+#mins{
+	margin-top:30px;
+	display:inline-block;
+}
+#minsSpent{
+	display:inline-block;
+}
+#years{
+	margin-top:30px;
+	display:inline-block;
+}
+#yearsOld{
+	display: inline-block;
+}
+#boroughRatio{
+	margin-top:30px;
+	display:block;
+}
+#manTo,#brookTo{
+	display:inline-block;
+}
+#genderRatio{
+	margin-top:30px;
+	display:block;
+}
+
+#menTo,#womenTo{
+	display:inline-block;
+}
+
+#checkFilters{
+	display: inline-block;
+	vertical-align:top;
+}
+
+
+#interactiveBottom{
+	border:1px solid;
+}
+#hour-chart{
+	display:inline-block;
+}
+
+
 svg {
   font: 10px sans-serif;
 }
+
 
 .background.bar {
   fill: #ccc;
 }
 .foreground.bar {
   fill: #1529a3;
+}
+.foreground.bar.z2 {
+  fill: #a33239;
 }
 .axis path, .axis line {
   fill: none;
@@ -25,17 +100,12 @@ svg {
   stroke: #666;
 }
 
-#hour-chart{
-	width:300px;
-	height:150px;
-}
-
 
 #charts {
   padding: 10px 0;
 }
 .chart {
   display: inline-block;
-  height: 151px;
+  height: 170px;
   margin-bottom: 20px;
 }

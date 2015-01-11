@@ -1,41 +1,17 @@
 //understand method
 //review all code
-//see how the filter works. like, how does that work?
 
 //slider for one day, with station vectors changing by hour
 // brushes + stacked area for age by five year intervals
-//gender count line chart
-//cumulative/density total rides chart
-//type of rider
 
 //http://zevross.com/blog/2014/09/30/use-the-amazing-d3-library-to-animate-a-path-on-a-leaflet-map/
 
-//create graph for, say, date
-//add brush
 
 (function z(){
 	interactiveBuilder = {
 			data:'',
-		dataCF:'',
-		dataHours:'',
-
-		test:{success:true,language:'en'},
-		filterData: function(){
-
-			var typeDimension = this.data.dimension(function(d) { return d.gender; });
-			typeDimension.filter(1)
-
-		},
-		buildBrush: function(z){
-
-
-		},
-		brushMove: function(){
-			interactiveBuilder.buildBrush("#rightInfo")
-
-		},
-		init: function(){
-			//build brush
+		formatDuration: function(d) {
+				return (d / 60) + " mins";
 		},
 		ready: function (error, data){
 
@@ -52,17 +28,37 @@
 			  d.starttime = dateFormat.parse(d.starttime);
 			  d.stoptime = dateFormat.parse(d.stoptime);
 			  d['start station id'] = +d['start station id'];
-			  d['stop station id'] = +d['stop station id'];
-			  d['start station latitude'] = +['start station latitude'];
-			  d['end station latitude'] = +['end station latitude'];
-			  d['start station longitude'] = +['start station longitude'];
-			  d['end station longitude'] = +['end station longitude'];
+			  d['end station id'] = +d['end station id'];
+			  d['start station latitude'] = +d['start station latitude'];
+			  d['end station latitude'] = +d['end station latitude'];
+			  d['start station longitude'] = +d['start station longitude'];
+			  d['end station longitude'] = +d['end station longitude'];
 			  d.gender = +d.gender;
 			  d.age = +d.age;
 			});
 
-			function parseDate() {
-				//tk;
+			function formatTimeofDay(d) {
+				var m;
+		
+				if (d === 1440){
+					m = 120;
+				} 
+				else {
+					m = 60;
+				}
+
+			  if (d > 0 && d < 720 || d === 1440) {
+			  	return d/m + " a.m.";
+			  }
+			  else if (d === 0) {
+			  	return d + 12 + " a.m."
+			  }
+			  else if (d === 720) {
+			  	return d/m + " p.m.";
+			  }
+				else {
+			  	return (d - 720)/m + " p.m.";
+			  }
 			}
 
 			var rides = crossfilter(data),
@@ -72,38 +68,57 @@
 	      hour = rides.dimension(function(d) { 
 	      	return (d.starttime.getHours() * 60) + (d.starttime.getMinutes()); 
 	      }),
-	      hours = hour.group(Math.floor);
+	      hours = hour.group(function(d) { return Math.floor(d / 3)*3; });
 	      gender = rides.dimension(function(d) { return d.gender; }),
-	      genders = gender.group(Math.floor);
+	      genders = gender.group(),
 	      /*delay = flight.dimension(function(d) { return Math.max(-60, Math.min(149, d.delay)); }),
 	      delays = delay.group(function(d) { return Math.floor(d / 10) * 10; }),*/
+	      startstation = rides.dimension(function(d){return d['start station id']; }),
+	      startstationVals = startstation.group().reduceSum( function ( d ) {
+				   return d3.format( '.2f' )( d['end station latitude'] );
+				} ),
+				startstations = startstation.group().reduceSum(function(d,i) { 
+					//console.log(1); 
+					return 1; }),
 	      duration = rides.dimension(function(d) { return d.tripduration; }),
-	      durations = duration.group(Math.floor);
+	      durations = duration.group(function(d) { return Math.floor(d / 10) * 10; }),
+	      age = rides.dimension(function(d) { return d.age; }),
+	      ages = age.group(function(d) { return Math.floor(d / 10) * 10; });
 	     var charts = [
 
 		    barChart()
 		      .dimension(hour)
 		      .group(hours)
+		      .tickFormat(formatTimeofDay)
+		      .barwidth(1.5)
+		      .tickF([0,360,540,720,900,1080,1260,1440]
+    			)
+    			.y(d3.scale.linear().range([140, 0]))
 		    	.x(d3.scale.linear()
-		    	//.domain(d3.extent(hours.all()[0]))
 		      .domain([0,1440])
-		      .rangeRound([0, 1000])),
+		      .rangeRound([0, (1440*2)/3])),
 
 		    barChart()
 		      .dimension(duration)
 		      .group(durations)
+		      .tickFormat(interactiveBuilder.formatDuration)
+		      .barwidth(1.5)
+		      .tickF([60,360,900,1800,2700,3600]
+    			)
+    			.y(d3.scale.linear().range([80, 0]))
 		    	.x(d3.scale.linear()
-		    	//.domain(d3.extent(hours.all()[0]))
-		      .domain([0,2500])
-		      .rangeRound([0, 800])),
+		      .domain([60,3600])
+		      .rangeRound([0, (3540*2)/10])),
 
 		      barChart()
-		      .dimension(gender)
-		      .group(genders)
+		      .dimension(age)
+		      .group(ages)
+		      .barwidth(14)
+		      .tickF([0,10,30,50,70,80])
+		    	.y(d3.scale.linear().range([80, 0]))
 		    	.x(d3.scale.linear()
-		    	//.domain(d3.extent(hours.all()[0]))
-		      .domain([0,2.1])
-		      .rangeRound([0, 200])),
+		      .domain([0,80])
+		      .rangeRound([0, (80*15)/10])),
 		  ]
 
 		  var chartz = d3.selectAll(".chart")
@@ -120,12 +135,30 @@
 		  	
 		    d3.select(this).call(method);
 		  }
-		  // Whenever the brush moves, re-rendering everything.
+
+		  var wx,
+		  	testZ,
+		  	testT;
+		  function test(z, i) {
+
+		  	var val = z.value / testT[i].value;
+
+		  	wx.push(val);
+		  }
 		  function renderAll() {
+		  	wx = [];
 		  	
 		    chartz.each(render);
 		    //list.each(render);
 		    d3.select("#active").text(formatNumber(all.value()));
+		    testT = startstations.top(Infinity);
+		    testZ = startstationVals.top(Infinity);
+		    //console.log(startstations);
+		    //var testTL = gender.top(Infinity).length;
+		    testZ.forEach(function (v, i) {
+        	test(v,i);
+    		});
+    		//console.log(wx);
 		  }
 			window.filter = function(filters) {
 		    filters.forEach(function(d, i) { charts[i].filter(d); });
@@ -138,30 +171,23 @@
 
 		  function barChart() {
 		    if (!barChart.id) barChart.id = 0;
-		    var margin = {top: 10, right: 10, bottom: 20, left: 10},
+		    var margin = {top: 10, right: 20, bottom: 20, left: 15},
 		      x,
-		      y = d3.scale.linear().range([150, 0]),
+		      y,
+		      test,
 		      id = barChart.id++,
 		      axis = d3.svg.axis().orient("bottom"),
 		      brush = d3.svg.brush(),
 		      brushDirty,
 		      dimension,
 		      group,
-		      round;
+		      round,
+		      barW;
 
 		    function chart(div) {
 		      var width = x.range()[1],
 		        height = y.range()[0];
 		      y.domain([0, group.top(1)[0].value]);
-
-		      axis
-    			.tickFormat(formatCurrency).tickValues([0,360,720,1080,1440])
-					 function formatCurrency(d) {
-					  
-					  return d/60
-					    
-					}
-		      //console.log(group);
 
 		      div.each(function() {
 		        var div = d3.select(this),
@@ -186,13 +212,13 @@
 		          g.selectAll(".bar")
 		              .data(["background", "foreground"])
 		            .enter().append("path")
-		              .attr("class", function(d) { return d + " bar"; })
+		              .attr("class", function(d) { return d + " bar " + "z" + id; })
 		              .datum(group.all());
 		          g.selectAll(".foreground.bar")
 		              .attr("clip-path", "url(#clip-" + id + ")");
 		          g.append("g")
 		              .attr("class", "axis")
-		              .attr("transform", "translate(0," + height + ")")
+		              .attr("transform", "translate(" + (margin.left - 15) + "," + height  + ")")
 		              .call(axis);
 		          // Initialize the brush component with pretty resize handles.
 		          var gBrush = g.append("g").attr("class", "brush").call(brush);
@@ -222,9 +248,10 @@
 		            i = -1,
 		            n = groups.length,
 		            d;
+		       	
 		        while (++i < n) {
 		          d = groups[i];
-		          path.push("M", x(d.key), ",", height, "V", y(d.value), "h.6V", height);
+		          path.push("M", x(d.key), ",", height, "V", y(d.value), "h" + test + "V", height);
 		        }
 		        return path.join("");
 		      }
@@ -279,9 +306,18 @@
 		      brush.x(x);
 		      return chart;
 		    };
+		    chart.tickF = function(_) {
+		    	if (!arguments.length) return tickF;
+		    	tickF = _;
+		    	axis.tickValues(tickF);
+		    	//brush.tickF(tickF);
+		    	return chart;
+		    };
 		    chart.y = function(_) {
 		      if (!arguments.length) return y;
 		      y = _;
+		      axis.scale(y);
+		      //brush.y(y);
 		      return chart;
 		    };
 		    chart.dimension = function(_) {
@@ -289,6 +325,12 @@
 		      dimension = _;
 		      return chart;
 		    };
+		    chart.tickFormat = function(_){
+		    	if(!arguments.length) return tickFormat;
+		    	tickFormat = _;
+		    	axis.tickFormat(tickFormat);
+		    	return chart;
+		    }
 		    chart.filter = function(_) {
 		      if (_) {
 		        brush.extent(_);
@@ -305,6 +347,11 @@
 		      group = _;
 		      return chart;
 		    };
+		    chart.barwidth = function(_) {
+		    	if (!arguments.length) return test;
+		    	test = _;
+		    	return chart;
+		    }
 		    chart.round = function(_) {
 		      if (!arguments.length) return round;
 		      round = _;
@@ -313,8 +360,6 @@
 		    return d3.rebind(chart, brush, "on");
 		  }
 
-			interactiveBuilder.data = data;
-			interactiveBuilder.dataCF = rides;
 
 			//return ;
 			return ;
@@ -327,6 +372,4 @@
 
 		}
 	}
-
 })()
-

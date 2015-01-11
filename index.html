@@ -14,37 +14,64 @@
 </head>
 <body>
   <div id="topTitle">
+  	Citibike Dashboard<br>Subheadline
   </div>
   <div id="interactive">
-  	<div id="map">
-  		
-  	</div>
-  	<div id="rightInfo">
-  	<div id="active">
-  			</div>
-  		<div id="total">
-  			
-  		</div>
-  		
-  	</div>
-  	<div id="options">
-  		<div id="firstBrush">
-	  		<div id="charts">
-				  <div id="hour-chart" class="chart">
-				    <div class="title">Time of Day </div>
+  	<div id="interactiveTop">
+	  	<div id="map">
+	  		
+	  	</div>
+	  	<div id="rightInfo">
+		  	<div id="active">
+		  	</div>&nbsp rides selected of 
+		  	<div id="total">
+		  	</div>
+	  		<div id="mins">Avg
+	  			<div id="minsSpent"></div>
+	  		mins spent on bike
+	  		</div>
+		  	<div id="years">Avg
+		  			<div id="yearsOld"></div>
+		  		year-old bike rider
+		  	</div>
+			  	<div id="boroughRatio">
+			  			<div id="manTo">0</div> : 
+							<div id="brookTo">0</div>
+							Manhattan to Brooklyn ratio
+			  	</div>
+			  	<div id="genderRatio">
+			  			<div id="menTo">0</div> : 
+							<div id="womenTo">0</div>
+							Men to women ratio
+			  	</div>
+	  	</div>
+	  </div>
+  	<div id="interactiveBottom">
+			<div id="firstBrush">
+				<div id="topCharts">
+					<div id="hour-chart" class="chart">
+					  <div class="title">Time when started riding </div>
+					</div>
+					<div id="checkFilters">
+					  <div class="title">Filter riders </div>
+					  	<br>
+				  		<input type="checkbox" name="menSelect" value="men">Women<br>
+				  		<input type="checkbox" name="womenSelect" value="women">Men<br>
+							<br>
+				  		<input type="checkbox" name="boroughSelect" value="manhattan">Manhattan<br>
+				  		<input type="checkbox" name="boroughSelect" value="brooklyn">Brooklyn<br>
 				  </div>
+			  </div>
+				<div id="duration-chart" class="chart">
+				  <div class="title">Time spent riding </div>
 				</div>
-				<div id="charts">
-				   <div id="duration-chart" class="chart">
-				    <div class="title">Time spent riding </div>
-				  </div>
+				<div id="age-chart" class="chart">
+					<div class="title">Rider age </div>
 				</div>
-				<div id="charts">
-				   <div id="gender-chart" class="chart">
-				    <div class="title">Gender </div>
-				  </div>
+				<div id="direction-chart" class="chart">
+					<div class="title">Direction of ride </div>
 				</div>
-  		</div>
+			</div>
   	</div>
   </div>
 	
