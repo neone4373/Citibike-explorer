@@ -1,21 +1,47 @@
-//understand method
-//review all code
-
-//slider for one day, with station vectors changing by hour
-// brushes + stacked area for age by five year intervals
-
 //http://zevross.com/blog/2014/09/30/use-the-amazing-d3-library-to-animate-a-path-on-a-leaflet-map/
+
+//data processing: one of stations is missing; duration/age limits
+
+//1. ratios with donut charts
+//2. radial chart
+//3. project the lines on the map
+//4. design + style + headline
 
 
 (function z(){
 	interactiveBuilder = {
-			data:'',
+		data:'',
+		domHandlers: function() {
+
+	    
+
+		},
 		formatDuration: function(d) {
 				return (d / 60) + " mins";
 		},
 		ready: function (error, data){
 
-			////2014-07-17 00:00:10
+
+			var drawPie = (function () {
+
+				var width = 150,
+				    height = 150;
+
+				var svg = d3.select("#genderPie").append("svg")
+				    .attr("width", width)
+				    .attr("height", height)
+				  .append("g")
+				    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+				function svgR() {	
+					return svg;
+				}
+
+		    return {
+		    	svgV:svgR
+		    };
+
+		  })();
 
 			var formatNumber = d3.format(",d"),
       formatChange = d3.format("+,d");
@@ -61,6 +87,7 @@
 			  }
 			}
 
+
 			var rides = crossfilter(data),
 	      all = rides.groupAll(),
 	      /*startTime = rides.dimension(function(d) { return d.starttime; }),
@@ -71,19 +98,29 @@
 	      hours = hour.group(function(d) { return Math.floor(d / 3)*3; });
 	      gender = rides.dimension(function(d) { return d.gender; }),
 	      genders = gender.group(),
-	      /*delay = flight.dimension(function(d) { return Math.max(-60, Math.min(149, d.delay)); }),
-	      delays = delay.group(function(d) { return Math.floor(d / 10) * 10; }),*/
+				gendersAvg = gender.group().reduce(reduceAddGender, reduceRemoveGender, reduceInitialGender).all(),
+
+				endstationPathLong = rides.dimension(function(d) { return d['end station longitude']; }),
+				endstationPathLat = rides.dimension(function(d) { return d['end station latitude']; }),
+				endstationPathLongAvg = endstationPathLong.group().reduce(reduceAddLong, reduceRemoveLong, reduceInitialLong).all(),
+				endstationPathLatAvg = endstationPathLat.group().reduce(reduceAddLat, reduceRemoveLat, reduceInitialLat).all(),
+
+	      borough = rides.dimension(function(d) { return d.borough; }),
+	      boroughs = borough.group(),
+				boroughsAvg = borough.group().reduce(reduceAddBorough, reduceRemoveBorough, reduceInitialBorough).all(),
+
 	      startstation = rides.dimension(function(d){return d['start station id']; }),
-	      startstationVals = startstation.group().reduceSum( function ( d ) {
-				   return d3.format( '.2f' )( d['end station latitude'] );
-				} ),
-				startstations = startstation.group().reduceSum(function(d,i) { 
-					//console.log(1); 
-					return 1; }),
+				startstationsAvg = startstation.group().reduce(reduceAdd, reduceRemove, reduceInitial).all(),
+
 	      duration = rides.dimension(function(d) { return d.tripduration; }),
 	      durations = duration.group(function(d) { return Math.floor(d / 10) * 10; }),
+	      durationsAvg = duration.groupAll().reduce(reduceAddDuration, reduceRemoveDuration, reduceInitialDuration).value(),
+	      
 	      age = rides.dimension(function(d) { return d.age; }),
-	      ages = age.group(function(d) { return Math.floor(d / 10) * 10; });
+	      ages = age.group(function(d) { return Math.floor(d / 10) * 10; }),
+	      ages2 = duration.group(),
+	      agesAvg = age.groupAll().reduce(reduceAddAge, reduceRemoveAge, reduceInitialAge).value();
+
 	     var charts = [
 
 		    barChart()
@@ -91,9 +128,9 @@
 		      .group(hours)
 		      .tickFormat(formatTimeofDay)
 		      .barwidth(1.5)
-		      .tickF([0,360,540,720,900,1080,1260,1440]
+		      .tickF([0,120,240,360,480,600,720,840,960,1080,1200,1320,1440,1560]
     			)
-    			.y(d3.scale.linear().range([140, 0]))
+    			.y(d3.scale.linear().range([120, 0]))
 		    	.x(d3.scale.linear()
 		      .domain([0,1440])
 		      .rangeRound([0, (1440*2)/3])),
@@ -121,13 +158,129 @@
 		      .rangeRound([0, (80*15)/10])),
 		  ]
 
+
+	cCharts = [
+		circleChart()
+			.dimension(age)
+			.group(ages2)
+			.label(['10', '28','60', '80'])
+	]
+
 		  var chartz = d3.selectAll(".chart")
 	      .data(charts)
 	      .each(function(chartz) { chartz.on("brush", renderAll).on("brushend", renderAll); });
+
+			var cChart = d3.selectAll(".cChart")
+					.data(cCharts)
+					.each(function(chart){ chart.on("brush", renderAll).on("brushend", renderAll) });
 		  
 		  // Render the total.
 		  d3.selectAll("#total")
 		    .text(formatNumber(rides.size()));
+
+		  function menRatio(avgs) {
+		  	if (typeof avgs === undefined) {
+		  		return "z"
+		  	}
+		  	var avg = avgs[1]['value']['count'] / avgs[2]['value']['count'];
+		  	if (isFinite(avg)) {
+		  		return d3.round(avg,2);
+		  	} 
+		  	else {
+		  		return 0;
+		  	}
+		  }
+
+		  function boroughRatio(avgs) {
+		  	if (typeof avgs === undefined) {
+		  		return "z"
+		  	}
+		  	var avg = avgs[1]['value']['count'] / avgs[0]['value']['count'];
+		  	if (isFinite(avg)) {
+		  		return d3.round(avg,2);
+		  	} 
+		  	else {
+		  		return 0;
+		  	}
+		  }
+
+		  function durationAv(avgs){
+		  	var avg = avgs['average'] / 60;
+		  	if (isNaN(avg)) {
+		  		return "0"
+		  	} 
+		  	else {
+		  		return d3.round(avg,1)
+		  	}
+		  }
+
+		  function ageAv(avgs){
+		  	var avg = avgs['average'];
+		  	if (isNaN(avg)) {
+		  		return "0"
+		  	} 
+		  	else {
+		  		return d3.round(avg,1)
+		  	}
+		  }
+
+		  var circleGender = (function() {
+		  	//thank you Bostock http://bl.ocks.org/mbostock/1346410
+				var radius = Math.min(120, 120) / 2;
+
+				var color = d3.scale.category20();
+
+				var pie = d3.layout.pie().value(function(d){ return d; }).sort(null);
+				var arc = d3.svg.arc()
+				    .innerRadius(radius - 30)
+				    .outerRadius(radius - 20);
+				var dataPie = [gendersAvg[1]['value']['count'],gendersAvg[2]['value']['count']];
+		  	var gX = drawPie.svgV().append('g');
+		  	var gX = drawPie.svgV().append('g');
+		  	var path = gX.datum(dataPie).selectAll("path").data(pie).enter()
+			   .append("path").attr("class",'piechart')
+			      .attr("fill", function(d, i) { return color(i); })
+			      .attr("d", arc)
+			      .each(function(d) { this._current = d; }); // store the initial angles
+
+		    function arcTween(a) {
+				  var i = d3.interpolate(this._current, a);
+				  this._current = i(0);
+				  return function(t) {
+				    return arc(i(t));
+				  };
+				}
+
+			  function change() {
+			  	var men = gendersAvg[1]['value']['count'];
+			  	var women = gendersAvg[2]['value']['count'];
+					var dataPie = [men,women];
+					if (men === 0 || women === 0){
+						dataPie = [1,0];
+					}
+  				gX.datum(dataPie).selectAll("path").data(pie).transition().duration(250).attrTween("d", arcTween)
+					
+					gX.datum(dataPie).selectAll("path")
+					    .data(pie)
+					  .enter().append("path")
+					    .attr("class","piechart")
+					    .attr("fill", function(d,i){ return color(i); })
+					    .attr("d", arc)
+					    .each(function(d){ this._current = d; })
+
+				  gX.datum(dataPie).selectAll("path")
+				    .data(pie).exit().remove();
+					
+			  }
+			  return {
+			  	change:change
+			  }
+			})()
+				// Store the displayed angles in _current.
+				// Then, interpolate from _current to the new angles.
+				// During the transition, _current is updated in-place by d3.interpolate.
+				
+
 
 		  renderAll();
 		  // Renders the specified chart or list.
@@ -136,230 +289,80 @@
 		    d3.select(this).call(method);
 		  }
 
-		  var wx,
-		  	testZ,
-		  	testT;
-		  function test(z, i) {
-
-		  	var val = z.value / testT[i].value;
-
-		  	wx.push(val);
-		  }
 		  function renderAll() {
-		  	wx = [];
-		  	
+		  
 		    chartz.each(render);
-		    //list.each(render);
+
+				cChart.each(render);
 		    d3.select("#active").text(formatNumber(all.value()));
-		    testT = startstations.top(Infinity);
-		    testZ = startstationVals.top(Infinity);
-		    //console.log(startstations);
-		    //var testTL = gender.top(Infinity).length;
-		    testZ.forEach(function (v, i) {
-        	test(v,i);
-    		});
-    		//console.log(wx);
+		    d3.select("#menTo").text(menRatio(gendersAvg));
+		    d3.select("#minsSpent").text(durationAv(durationsAvg));
+		    d3.select("#yearsOld").text(ageAv(agesAvg));
+		    d3.select("#manTo").text(boroughRatio(boroughsAvg))
+
+		    circleGender.change();
 		  }
+		  
 			window.filter = function(filters) {
 		    filters.forEach(function(d, i) { charts[i].filter(d); });
 		    renderAll();
-		  };
+		  };/*
 		  window.reset = function(i) {
 		    charts[i].filter(null);
 		    renderAll();
-		  };
+		  };*/
 
-		  function barChart() {
-		    if (!barChart.id) barChart.id = 0;
-		    var margin = {top: 10, right: 20, bottom: 20, left: 15},
-		      x,
-		      y,
-		      test,
-		      id = barChart.id++,
-		      axis = d3.svg.axis().orient("bottom"),
-		      brush = d3.svg.brush(),
-		      brushDirty,
-		      dimension,
-		      group,
-		      round,
-		      barW;
+		  window.breset = function(i){
+				charts[i].filter(null);
+				zoomRender = true;
+				renderAll();
+			}
+			window.creset = function(i){
+				cCharts[i].filter(null);
+				zoomRender = true;
+				renderAll();
+			}
 
-		    function chart(div) {
-		      var width = x.range()[1],
-		        height = y.range()[0];
-		      y.domain([0, group.top(1)[0].value]);
-
-		      div.each(function() {
-		        var div = d3.select(this),
-		            g = div.select("g");
-		        // Create the skeletal chart.
-		        if (g.empty()) {
-		          div.select(".title").append("a")
-		              .attr("href", "javascript:reset(" + id + ")")
-		              .attr("class", "reset")
-		              .text("reset")
-		              .style("display", "none");
-		          g = div.append("svg")
-		              .attr("width", width + margin.left + margin.right)
-		              .attr("height", height + margin.top + margin.bottom)
-		            .append("g")
-		              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-		          g.append("clipPath")
-		              .attr("id", "clip-" + id)
-		            .append("rect")
-		              .attr("width", width)
-		              .attr("height", height);
-		          g.selectAll(".bar")
-		              .data(["background", "foreground"])
-		            .enter().append("path")
-		              .attr("class", function(d) { return d + " bar " + "z" + id; })
-		              .datum(group.all());
-		          g.selectAll(".foreground.bar")
-		              .attr("clip-path", "url(#clip-" + id + ")");
-		          g.append("g")
-		              .attr("class", "axis")
-		              .attr("transform", "translate(" + (margin.left - 15) + "," + height  + ")")
-		              .call(axis);
-		          // Initialize the brush component with pretty resize handles.
-		          var gBrush = g.append("g").attr("class", "brush").call(brush);
-		          gBrush.selectAll("rect").attr("height", height);
-		          gBrush.selectAll(".resize").append("path").attr("d", resizePath);
-		        }
-		        // Only redraw the brush if set externally.
-		        if (brushDirty) {
-		          brushDirty = false;
-		          g.selectAll(".brush").call(brush);
-		          div.select(".title a").style("display", brush.empty() ? "none" : null);
-		          if (brush.empty()) {
-		            g.selectAll("#clip-" + id + " rect")
-		                .attr("x", 0)
-		                .attr("width", width);
-		          } else {
-		            var extent = brush.extent();
-		            g.selectAll("#clip-" + id + " rect")
-		                .attr("x", x(extent[0]))
-		                .attr("width", x(extent[1]) - x(extent[0]));
-		          }
-		        }
-		        g.selectAll(".bar").attr("d", barPath);
-		      });
-		      function barPath(groups) {
-		        var path = [],
-		            i = -1,
-		            n = groups.length,
-		            d;
-		       	
-		        while (++i < n) {
-		          d = groups[i];
-		          path.push("M", x(d.key), ",", height, "V", y(d.value), "h" + test + "V", height);
-		        }
-		        return path.join("");
-		      }
-		      function resizePath(d) {
-		        var e = +(d == "e"),
-		            x = e ? 1 : -1,
-		            y = height / 3;
-		        return "M" + (.5 * x) + "," + y
-		            + "A6,6 0 0 " + e + " " + (6.5 * x) + "," + (y + 6)
-		            + "V" + (2 * y - 6)
-		            + "A6,6 0 0 " + e + " " + (.5 * x) + "," + (2 * y)
-		            + "Z"
-		            + "M" + (2.5 * x) + "," + (y + 8)
-		            + "V" + (2 * y - 8)
-		            + "M" + (4.5 * x) + "," + (y + 8)
-		            + "V" + (2 * y - 8);
-		      }
-		    }
-		    brush.on("brushstart.chart", function() {
-		      var div = d3.select(this.parentNode.parentNode.parentNode);
-		      div.select(".title a").style("display", null);
-		    });
-		    brush.on("brush.chart", function() {
-		      var g = d3.select(this.parentNode),
-		          extent = brush.extent();
-		      if (round) g.select(".brush")
-		          .call(brush.extent(extent = extent.map(round)))
-		        .selectAll(".resize")
-		          .style("display", null);
-		      g.select("#clip-" + id + " rect")
-		          .attr("x", x(extent[0]))
-		          .attr("width", x(extent[1]) - x(extent[0]));
-		      dimension.filterRange(extent);
-		    });
-		    brush.on("brushend.chart", function() {
-		      if (brush.empty()) {
-		        var div = d3.select(this.parentNode.parentNode.parentNode);
-		        div.select(".title a").style("display", "none");
-		        div.select("#clip-" + id + " rect").attr("x", null).attr("width", "100%");
-		        dimension.filterAll();
-		      }
-		    });
-		    chart.margin = function(_) {
-		      if (!arguments.length) return margin;
-		      margin = _;
-		      return chart;
-		    };
-		    chart.x = function(_) {
-		      if (!arguments.length) return x;
-		      x = _;
-		      axis.scale(x);
-		      brush.x(x);
-		      return chart;
-		    };
-		    chart.tickF = function(_) {
-		    	if (!arguments.length) return tickF;
-		    	tickF = _;
-		    	axis.tickValues(tickF);
-		    	//brush.tickF(tickF);
-		    	return chart;
-		    };
-		    chart.y = function(_) {
-		      if (!arguments.length) return y;
-		      y = _;
-		      axis.scale(y);
-		      //brush.y(y);
-		      return chart;
-		    };
-		    chart.dimension = function(_) {
-		      if (!arguments.length) return dimension;
-		      dimension = _;
-		      return chart;
-		    };
-		    chart.tickFormat = function(_){
-		    	if(!arguments.length) return tickFormat;
-		    	tickFormat = _;
-		    	axis.tickFormat(tickFormat);
-		    	return chart;
-		    }
-		    chart.filter = function(_) {
-		      if (_) {
-		        brush.extent(_);
-		        dimension.filterRange(_);
-		      } else {
-		        brush.clear();
-		        dimension.filterAll();
-		      }
-		      brushDirty = true;
-		      return chart;
-		    };
-		    chart.group = function(_) {
-		      if (!arguments.length) return group;
-		      group = _;
-		      return chart;
-		    };
-		    chart.barwidth = function(_) {
-		    	if (!arguments.length) return test;
-		    	test = _;
-		    	return chart;
-		    }
-		    chart.round = function(_) {
-		      if (!arguments.length) return round;
-		      round = _;
-		      return chart;
-		    };
-		    return d3.rebind(chart, brush, "on");
+		  function updateFilters(z,o) {
+		  	gender.filterFunction(function(d){ return d === parseInt(z[1]) || d === parseInt(z[0]) });
+		  	test = gendersAvg.filter(function(d){ console.log(d); return d === parseInt(z[1]) || d === parseInt(z[0]) });
+		  	console.log(test);
+		  	borough.filterFunction(function(d){ return d === z[2] || d === z[3] });
+		  	renderAll();
+		  	if( z[1] === null || z[0] === null ) {
+		    	d3.select("#menTo").html("&#8734");
+		  	}
+		  	if( z[2] === null || z[3] === null ) {
+		    	d3.select("#manTo").html("&#8734");
+		  	}
 		  }
 
+		  function checkFilters(z) {
+		  	var checksVals = [null,null,null,null]
+		  	var checks = ["#womenSelect","#menSelect","#manSelect","#brookSelect"];
+		  	
+		  	for (i=0;i<checksVals.length;i++){
+		  		var k = $(checks[i]).attr('data-val');
+		  		if (k & 1) {
+			  		var j = $(checks[i]).attr('name');
+						checksVals[i] = j;
+			  	}
+			  }
+
+		  	updateFilters(checksVals,z)
+		  }
+
+		  (function domHandlers() {
+				$('#checkFilters :checkbox').change(function(e) {
+	    		var id = '#' + e['currentTarget']['id'];
+	    		checkedId = $(id);
+   				var i = parseInt(checkedId.attr('data-val'));
+	        checkedId.attr('data-val', i + 1);
+	        var j = parseInt(checkedId.attr('data-val'));
+	        var z = checkedId.attr('cat');
+	        return checkFilters(z);
+	    	});
+			})()
 
 			//return ;
 			return ;

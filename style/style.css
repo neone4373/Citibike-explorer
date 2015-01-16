@@ -19,7 +19,7 @@
 	font-size:16px;
 }
 #active{
-	width:40px;
+	width:45px;
 	text-align:right;
 }
 #active,#total{
@@ -63,6 +63,8 @@
 
 #interactiveBottom{
 	border:1px solid;
+	padding:8px;
+	width:1156px;
 }
 #hour-chart{
 	display:inline-block;
@@ -100,12 +102,23 @@ svg {
   stroke: #666;
 }
 
+.active {
+  fill: lightgrey;
+}
+
+.brush .extent {
+  fill: steelblue;
+  fill-opacity: .125;
+}
+
 
 #charts {
   padding: 10px 0;
 }
 .chart {
   display: inline-block;
-  height: 170px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+}
+.cChart{
+	display:inline-block;
 }
