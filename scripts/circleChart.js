@@ -3,6 +3,7 @@ function p(name){
 }
 function toPositiveRadian(r){ return r > 0 ? r : r + Math.PI*2; };
 function toDegree(r){ return r*180/Math.PI; };
+zoomRender = false;
 function circleChart() {
   if (!circleChart.id) circleChart.id = 0;
 
