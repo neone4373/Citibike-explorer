@@ -118,7 +118,7 @@
 	      
 	      age = rides.dimension(function(d) { return d.age; }),
 	      ages = age.group(function(d) { return Math.floor(d / 10) * 10; }),
-	      ages2 = duration.group(),
+	      ages2 = duration.group(function(d) { return Math.floor(d / 10)*10; }),
 	      agesAvg = age.groupAll().reduce(reduceAddAge, reduceRemoveAge, reduceInitialAge).value();
 
 	     var charts = [
@@ -163,7 +163,7 @@
 		circleChart()
 			.dimension(age)
 			.group(ages2)
-			.label(['10', '28','60', '80'])
+			.label(['0', '28','60', '80'])
 	]
 
 		  var chartz = d3.selectAll(".chart")
