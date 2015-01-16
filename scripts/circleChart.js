@@ -1,6 +1,8 @@
+function p(name){
+  return function(d){ return d[name]; }
+}
 function toPositiveRadian(r){ return r > 0 ? r : r + Math.PI*2; };
 function toDegree(r){ return r*180/Math.PI; };
-
 function circleChart() {
   if (!circleChart.id) circleChart.id = 0;
 
@@ -23,7 +25,7 @@ function circleChart() {
     .outerRadius( function(d, i){
       if(isNaN(heightScale(d.value))){ debugger}
       return heightScale(d.value); })
-    .startAngle(  function(d, i){ return Math.PI*2/numGroups*(i -1); })
+    .startAngle(  function(d, i){ return Math.PI*2/numGroups*(i - 1); })
     .endAngle(    function(d, i){ return Math.PI*2/numGroups*i; });
 
   function chart(div) {
@@ -74,7 +76,7 @@ function circleChart() {
 
 
      div.select("svg").selectAll(".bar")
-      .transition().duration(0)
+      .transition().duration(zoomRender ? 500 : 0)
         .attr("d", arcGen);
 
       div.select(".title a").style("display", brush.empty() ? "none" : null);
@@ -113,12 +115,10 @@ function circleChart() {
     
     function isBetween(i){ 
       var θ = 360*(i/numGroups - .5/numGroups); 
-      //console.log(numGroups)
       if (extentD[0] < extentD[1]){ return extentD[0] <= θ && θ <= extentD[1]; }
       return extentD[0] < θ || θ < extentD[1]; 
     }
     var extentD = extent.map(toPositiveRadian).map(toDegree);
-    //console.log(extentD);
 
     g.selectAll(".bar").style('fill', function(d, i){ return isBetween(i) ? 'steelblue' : '#ccc'; });
     dimension.filterFunction(isBetween)
