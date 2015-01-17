@@ -14,11 +14,13 @@ function circleChart() {
       brushDirty,
       dimension,
       group,
+      chartName,
       label = [],
       round,
       barWidth,
       size = 200,
       heightScale = d3.scale.linear().range([30, 100]),
+      height = 50,
       numGroups;
 
   var arcGen = d3.svg.arc()
@@ -45,7 +47,7 @@ function circleChart() {
         div.select(".title").append("a")
             .attr("href", "javascript:creset(" + id + ")")
             .attr("class", "reset")
-            .text("reset")
+            .html("<div class=\"reset\">Reset</div>")
             .style("display", "none");
 
         var g = div.append("svg")
@@ -58,7 +60,7 @@ function circleChart() {
         g.selectAll(".bar")
             .data(group.all()).enter()
           .append("path")
-            .attr("class", "foreground bar");
+            .attr("class", "foreground bar " + chartName + "");
 
         var gBrush = g.append("g").attr("class", "brush").call(brush);
         gBrush.selectAll(".resize")
@@ -77,7 +79,7 @@ function circleChart() {
 
 
      div.select("svg").selectAll(".bar")
-      .transition().duration(zoomRender ? 500 : 0)
+      .transition().duration(zoomRender ? 100 : 0)
         .attr("d", arcGen);
 
       div.select(".title a").style("display", brush.empty() ? "none" : null);
@@ -158,6 +160,11 @@ function circleChart() {
   chart.round = function(_) {
     if (!arguments.length) return round;
     round = _;
+    return chart;
+  };
+  chart.chartName = function(_) {
+    if (!arguments.length) return chartName;
+    chartName = _;
     return chart;
   };
 

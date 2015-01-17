@@ -1,7 +1,7 @@
 
 		  function barChart() {
 		    if (!barChart.id) barChart.id = 0;
-		    var margin = {top: 5, right: 20, bottom: 20, left: 15},
+		    var margin = {top: 5, right: 20, bottom: 20, left: 18},
 		      x,
 		      y,
 		      test,
@@ -27,7 +27,7 @@
 		          div.select(".title").append("a")
 		              .attr("href", "javascript:breset(" + id + ")")
 		              .attr("class", "reset")
-		              .text("reset")
+		              .html("<div class=\"reset\">Reset</div>")
 		              .style("display", "none");
 		          g = div.append("svg")
 		              .attr("width", width + margin.left + margin.right)
@@ -48,7 +48,7 @@
 		              .attr("clip-path", "url(#clip-" + id + ")");
 		          g.append("g")
 		              .attr("class", "axis")
-		              .attr("transform", "translate(" + (margin.left - 15) + "," + height  + ")")
+		              .attr("transform", "translate(" + (18 - 18) + "," + height  + ")")
 		              .call(axis);
 		          // Initialize the brush component with pretty resize handles.
 		          var gBrush = g.append("g").attr("class", "brush").call(brush);
@@ -71,6 +71,7 @@
 		                .attr("width", x(extent[1]) - x(extent[0]));
 		          }
 		        }
+
 		        g.selectAll(".bar").attr("d", barPath);
 		      });
 		      function barPath(groups) {

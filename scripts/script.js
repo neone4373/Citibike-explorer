@@ -1,12 +1,10 @@
 //http://zevross.com/blog/2014/09/30/use-the-amazing-d3-library-to-animate-a-path-on-a-leaflet-map/
 
-//data processing: one of stations is missing; duration/age limits
+//data processing: one of stations is missing?; duration/age limits; filter out gender;
 
-//1. ratios with donut charts
-//2. radial chart
-//3. project the lines on the map
-//4. design + style + headline
-
+//1. clean the dataset
+//2. project the lines on the map
+//3. finalize design/write intro (with screenshot)
 
 (function z(){
 	interactiveBuilder = {
@@ -22,12 +20,48 @@
 		ready: function (error, data){
 
 
-			var drawPie = (function () {
+data = data.filter(function(d){ return d.tripduration < 3600; });
+data = data.filter(function(d){ return d.age < 81; });
 
-				var width = 150,
-				    height = 150;
+data.forEach(function(t, i){
+	//t['tripduration'] = +t['tripduration'];
+	t['timeonbike'] = +t['tripduration'] - 60;
+	t['ageonbike'] = +t['age'] - 15;
+});
+
+
+	data = data.filter(function(d){ return d.timeonbike != 180; });
+	data = data.filter(function(d){ return d.ageonbike != 180; });
+
+
+			var drawGPie = (function () {
+
+				var width = 100,
+				    height = 100;
 
 				var svg = d3.select("#genderPie").append("svg")
+				    .attr("width", width)
+				    .attr("height", height)
+				  .append("g")
+				    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+				function svgR() {	
+					return svg;
+				}
+
+		    return {
+		    	svgV:svgR
+		    };
+
+		  })();
+
+
+			var drawBPie = (function () {
+
+				var width = 100,
+				    height = 100;
+
+				var svg = d3.select("#boroughPie").append("svg")
 				    .attr("width", width)
 				    .attr("height", height)
 				  .append("g")
@@ -97,6 +131,7 @@
 	      }),
 	      hours = hour.group(function(d) { return Math.floor(d / 3)*3; });
 	      gender = rides.dimension(function(d) { return d.gender; }),
+	      genderCheck = rides.dimension(function(d) { return d.gender; }),
 	      genders = gender.group(),
 				gendersAvg = gender.group().reduce(reduceAddGender, reduceRemoveGender, reduceInitialGender).all(),
 
@@ -106,20 +141,25 @@
 				endstationPathLatAvg = endstationPathLat.group().reduce(reduceAddLat, reduceRemoveLat, reduceInitialLat).all(),
 
 	      borough = rides.dimension(function(d) { return d.borough; }),
+	      boroughCheck = rides.dimension(function(d) { return d.borough; }),
 	      boroughs = borough.group(),
 				boroughsAvg = borough.group().reduce(reduceAddBorough, reduceRemoveBorough, reduceInitialBorough).all(),
 
 	      startstation = rides.dimension(function(d){return d['start station id']; }),
 				startstationsAvg = startstation.group().reduce(reduceAdd, reduceRemove, reduceInitial).all(),
 
-	      duration = rides.dimension(function(d) { return d.tripduration; }),
-	      durations = duration.group(function(d) { return Math.floor(d / 10) * 10; }),
+	      duration = rides.dimension(function(d) { return d.timeonbike; }),
+	      durations = duration.group(),
 	      durationsAvg = duration.groupAll().reduce(reduceAddDuration, reduceRemoveDuration, reduceInitialDuration).value(),
 	      
-	      age = rides.dimension(function(d) { return d.age; }),
-	      ages = age.group(function(d) { return Math.floor(d / 10) * 10; }),
+	      age = rides.dimension(function(d) { return d.ageonbike; }),
+	      ages = age.group(),
 	      ages2 = duration.group(function(d) { return Math.floor(d / 10)*10; }),
 	      agesAvg = age.groupAll().reduce(reduceAddAge, reduceRemoveAge, reduceInitialAge).value();
+
+	      var format = d3.format(",.4f");
+	      /*var duration = rides.dimension(function(d){ return d.timeonbike; }),
+				durations = hour2.group();*/
 
 	     var charts = [
 
@@ -130,40 +170,25 @@
 		      .barwidth(1.5)
 		      .tickF([0,120,240,360,480,600,720,840,960,1080,1200,1320,1440,1560]
     			)
-    			.y(d3.scale.linear().range([120, 0]))
+    			.y(d3.scale.linear().range([70, 0]))
 		    	.x(d3.scale.linear()
 		      .domain([0,1440])
-		      .rangeRound([0, (1440*2)/3])),
-
-		    barChart()
-		      .dimension(duration)
-		      .group(durations)
-		      .tickFormat(interactiveBuilder.formatDuration)
-		      .barwidth(1.5)
-		      .tickF([60,360,900,1800,2700,3600]
-    			)
-    			.y(d3.scale.linear().range([80, 0]))
-		    	.x(d3.scale.linear()
-		      .domain([60,3600])
-		      .rangeRound([0, (3540*2)/10])),
-
-		      barChart()
-		      .dimension(age)
-		      .group(ages)
-		      .barwidth(14)
-		      .tickF([0,10,30,50,70,80])
-		    	.y(d3.scale.linear().range([80, 0]))
-		    	.x(d3.scale.linear()
-		      .domain([0,80])
-		      .rangeRound([0, (80*15)/10])),
+		      .rangeRound([0, (1440*2)/3]))
 		  ]
 
 
 	cCharts = [
 		circleChart()
+			.dimension(duration)
+			.group(durations)
+			.chartName('duration')
+			.label(['tk']),
+
+		circleChart()
 			.dimension(age)
-			.group(ages2)
-			.label(['0', '28','60', '80'])
+			.group(ages)
+			.chartName('age')
+			.label(['16', '32','48', '64'])
 	]
 
 		  var chartz = d3.selectAll(".chart")
@@ -184,10 +209,10 @@
 		  	}
 		  	var avg = avgs[1]['value']['count'] / avgs[2]['value']['count'];
 		  	if (isFinite(avg)) {
-		  		return d3.round(avg,2);
+		  		return Number(avg).toFixed(2);
 		  	} 
 		  	else {
-		  		return 0;
+		  		return 0.0;
 		  	}
 		  }
 
@@ -197,7 +222,7 @@
 		  	}
 		  	var avg = avgs[1]['value']['count'] / avgs[0]['value']['count'];
 		  	if (isFinite(avg)) {
-		  		return d3.round(avg,2);
+		  		return Number(avg).toFixed(2);
 		  	} 
 		  	else {
 		  		return 0;
@@ -210,7 +235,7 @@
 		  		return "0"
 		  	} 
 		  	else {
-		  		return d3.round(avg,1)
+		  		return Number(avg).toFixed(1);
 		  	}
 		  }
 
@@ -220,7 +245,7 @@
 		  		return "0"
 		  	} 
 		  	else {
-		  		return d3.round(avg,1)
+		  		return Number(avg).toFixed(1);
 		  	}
 		  }
 
@@ -235,8 +260,8 @@
 				    .innerRadius(radius - 30)
 				    .outerRadius(radius - 20);
 				var dataPie = [gendersAvg[1]['value']['count'],gendersAvg[2]['value']['count']];
-		  	var gX = drawPie.svgV().append('g');
-		  	var gX = drawPie.svgV().append('g');
+		  	var gX = drawGPie.svgV().append('g');
+		  	var gX = drawGPie.svgV().append('g');
 		  	var path = gX.datum(dataPie).selectAll("path").data(pie).enter()
 			   .append("path").attr("class",'piechart')
 			      .attr("fill", function(d, i) { return color(i); })
@@ -255,10 +280,69 @@
 			  	var men = gendersAvg[1]['value']['count'];
 			  	var women = gendersAvg[2]['value']['count'];
 					var dataPie = [men,women];
-					if (men === 0 || women === 0){
+					if (women === 0){
 						dataPie = [1,0];
 					}
-  				gX.datum(dataPie).selectAll("path").data(pie).transition().duration(250).attrTween("d", arcTween)
+					else if(men === 0){
+						dataPie = [0,1];
+					}
+  				gX.datum(dataPie).selectAll("path").data(pie).transition().duration(50).attrTween("d", arcTween)
+					
+					gX.datum(dataPie).selectAll("path")
+					    .data(pie)
+					  .enter().append("path")
+					    .attr("class","piechart")
+					    .attr("fill", function(d,i){ return color(i); })
+					    .attr("d", arc)
+					    .each(function(d){ this._current = d; })
+
+				  gX.datum(dataPie).selectAll("path")
+				    .data(pie).exit().remove();
+					
+			  }
+			  return {
+			  	change:change
+			  }
+			})()
+
+			var circleBorough = (function() {
+		  	//thank you Bostock http://bl.ocks.org/mbostock/1346410
+				var radius = Math.min(120, 120) / 2;
+
+				var color = d3.scale.category20();
+
+				var pie = d3.layout.pie().value(function(d){ return d; }).sort(null);
+				var arc = d3.svg.arc()
+				    .innerRadius(radius - 30)
+				    .outerRadius(radius - 20);
+				var dataPie = [boroughsAvg[0]['value']['count'],boroughsAvg[1]['value']['count']];
+		  	var gX = drawBPie.svgV().append('g');
+		  	var gX = drawBPie.svgV().append('g');
+		  	var path = gX.datum(dataPie).selectAll("path").data(pie).enter()
+			   .append("path").attr("class",'piechart')
+			      .attr("fill", function(d, i) { return color(i); })
+			      .attr("d", arc)
+			      .each(function(d) { this._current = d; }); // store the initial angles
+
+		    function arcTween(a) {
+				  var i = d3.interpolate(this._current, a);
+				  this._current = i(0);
+				  return function(t) {
+				    return arc(i(t));
+				  };
+				}
+
+			  function change() {
+			  	var women = boroughsAvg[0]['value']['count'];
+			  	var men = boroughsAvg[1]['value']['count'];
+					var dataPie = [men,women];
+					if (women === 0){
+						dataPie = [1,0];
+					} 
+					else if (men === 0){
+						dataPie = [0,1];
+					}
+  				gX.datum(dataPie).selectAll("path").data(pie).transition().duration(50).attrTween("d", arcTween)
 					
 					gX.datum(dataPie).selectAll("path")
 					    .data(pie)
@@ -301,6 +385,7 @@
 		    d3.select("#manTo").text(boroughRatio(boroughsAvg))
 
 		    circleGender.change();
+		    circleBorough.change();
 		  }
 		  
 			window.filter = function(filters) {
@@ -324,16 +409,23 @@
 			}
 
 		  function updateFilters(z,o) {
-		  	gender.filterFunction(function(d){ return d === parseInt(z[1]) || d === parseInt(z[0]) });
-		  	test = gendersAvg.filter(function(d){ console.log(d); return d === parseInt(z[1]) || d === parseInt(z[0]) });
-		  	console.log(test);
-		  	borough.filterFunction(function(d){ return d === z[2] || d === z[3] });
+		  	genderCheck.filterFunction(function(d){ return d === parseInt(z[1]) || d === parseInt(z[0]) });
+		  	gendersAvg.filter(function(d){ return d === parseInt(z[1]) || d === parseInt(z[0]) });
+		  	boroughCheck.filterFunction(function(d){ return d === z[2] || d === z[3] });
+		  	//boroughsAvg.filterFunction(function(d){ return d === z[2] || d === z[3] });
 		  	renderAll();
-		  	if( z[1] === null || z[0] === null ) {
-		    	d3.select("#menTo").html("&#8734");
+		  	if( z[0] === null || z[1] === null) {
+		    	d3.select("#menTo").html("-");
+		    	d3.select("#womenTo").html("-");
+		  	} else{
+		    	d3.select("#womenTo").html("1");
 		  	}
 		  	if( z[2] === null || z[3] === null ) {
-		    	d3.select("#manTo").html("&#8734");
+		    	d3.select("#manTo").html("-");
+		    	d3.select("#brookTo").html("-");
+		  	}
+		  	else{
+		  		d3.select("#brookTo").html("1");
 		  	}
 		  }
 
