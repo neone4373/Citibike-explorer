@@ -2,9 +2,11 @@
 
 //data processing: one of stations is missing?; duration/age limits; filter out gender;
 
-//1. clean the dataset
-//2. project the lines on the map
-//3. finalize design/write intro (with screenshot)
+//1. clean the dataset + create categories
+//2. add new card; add lines; fix border/padding/spacing; fix time riding graphic
+
+//3. project the lines on the map
+//4. finalize design/write intro (with screenshot)
 
 (function z(){
 	interactiveBuilder = {
@@ -145,16 +147,12 @@ data.forEach(function(t, i){
 	      boroughs = borough.group(),
 				boroughsAvg = borough.group().reduce(reduceAddBorough, reduceRemoveBorough, reduceInitialBorough).all(),
 
-	      startstation = rides.dimension(function(d){return d['start station id']; }),
-				startstationsAvg = startstation.group().reduce(reduceAdd, reduceRemove, reduceInitial).all(),
-
 	      duration = rides.dimension(function(d) { return d.timeonbike; }),
 	      durations = duration.group(),
 	      durationsAvg = duration.groupAll().reduce(reduceAddDuration, reduceRemoveDuration, reduceInitialDuration).value(),
 	      
 	      age = rides.dimension(function(d) { return d.ageonbike; }),
 	      ages = age.group(),
-	      ages2 = duration.group(function(d) { return Math.floor(d / 10)*10; }),
 	      agesAvg = age.groupAll().reduce(reduceAddAge, reduceRemoveAge, reduceInitialAge).value();
 
 	      var format = d3.format(",.4f");
@@ -188,6 +186,12 @@ data.forEach(function(t, i){
 			.dimension(age)
 			.group(ages)
 			.chartName('age')
+			.label(['16', '32','48', '64']),
+			
+		circleChart()
+			.dimension(age)
+			.group(ages)
+			.chartName('age')
 			.label(['16', '32','48', '64'])
 	]
 
@@ -209,7 +213,7 @@ data.forEach(function(t, i){
 		  	}
 		  	var avg = avgs[1]['value']['count'] / avgs[2]['value']['count'];
 		  	if (isFinite(avg)) {
-		  		return Number(avg).toFixed(2);
+		  		return Number(avg).toFixed(1);
 		  	} 
 		  	else {
 		  		return 0.0;
@@ -222,7 +226,7 @@ data.forEach(function(t, i){
 		  	}
 		  	var avg = avgs[1]['value']['count'] / avgs[0]['value']['count'];
 		  	if (isFinite(avg)) {
-		  		return Number(avg).toFixed(2);
+		  		return Number(avg).toFixed(1);
 		  	} 
 		  	else {
 		  		return 0;

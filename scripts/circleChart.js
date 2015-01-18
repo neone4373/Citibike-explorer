@@ -77,10 +77,10 @@ function circleChart() {
             .attr('y', function(d, i){ return  (i % 2) ? 4 :  i == 0 ? -16 :  24; });
       }
 
-
      div.select("svg").selectAll(".bar")
-      .transition().duration(zoomRender ? 100 : 0)
-        .attr("d", arcGen);
+      .transition().duration(zoomRender ? 50 : 0)
+        .attr("d", arcGen)
+            .attr("class", "foreground bar " + chartName + "");
 
       div.select(".title a").style("display", brush.empty() ? "none" : null);
 
@@ -90,7 +90,7 @@ function circleChart() {
 
         //only works for reseting...
         if (brush.empty()){
-          g.selectAll('.bar').style('fill', 'steelblue');
+          g.selectAll('.bar').style('fill', '#1529a3');
         }
       }
     });
