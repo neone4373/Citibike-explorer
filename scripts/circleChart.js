@@ -10,7 +10,7 @@ function circleChart() {
   var margin = {top: 0, right: 0, bottom: 0, left: 0},
       id = circleChart.id++,
       axis = d3.svg.axis().orient("bottom"),
-      brush = d3.svg.cbrush().innerRadius(30).outerRadius(100),
+      brush = d3.svg.cbrush().innerRadius(30).outerRadius(80),
       brushDirty,
       dimension,
       group,
@@ -18,9 +18,9 @@ function circleChart() {
       label = [],
       round,
       barWidth,
-      size = 200,
-      heightScale = d3.scale.linear().range([30, 100]),
-      height = 50,
+      size = 160,
+      heightScale = d3.scale.linear().range([30, 80]),
+      height,
       numGroups;
 
   var arcGen = d3.svg.arc()
@@ -44,7 +44,7 @@ function circleChart() {
 
       // Create the skeletal chart.
       if (g.empty()) {
-        div.select(".title").append("a")
+        div.select(".resettitle").append("a")
             .attr("href", "javascript:creset(" + id + ")")
             .attr("class", "reset")
             .html("<div class=\"reset\">Reset</div>")
@@ -78,11 +78,11 @@ function circleChart() {
       }
 
      div.select("svg").selectAll(".bar")
-      .transition().duration(zoomRender ? 50 : 0)
+      .transition().duration(zoomRender ? 20 : 20)
         .attr("d", arcGen)
             .attr("class", "foreground bar " + chartName + "");
 
-      div.select(".title a").style("display", brush.empty() ? "none" : null);
+      div.select(".resettitle a").style("display", brush.empty() ? "none" : null);
 
       if (brushDirty){
         brushDirty = false;

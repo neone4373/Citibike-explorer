@@ -57,20 +57,31 @@
 			    };
 			}
 			function reduceAddLat(p, v) {
-			    p.total += v['end station latitude'];
+					//console.log(v['start station id']);
+					//console.log(p);
+			    p.station = v['start station id'];
+			    p.endlati += v['end station latitude'];
+			    p.endlongi += v['end station longitude'];
 			    p.count++;
-			    p.average = p.total / p.count;
+			    p.latiaverage = p.endlati / p.count;
+			    p.longiaverage = p.endlongi / p.count;
 			    return p;
 			}
 			function reduceRemoveLat(p, v) {
-			    p.total -= v['end station latitude'];
+			    p.station = v['start station id'];
+			    p.endlati -= v['end station latitude'];
+			    p.endlongi -= v['end station longitude'];
 			    p.count--;
-			    p.average = p.total / p.count;
+			    p.latiaverage = p.endlati / p.count;
+			    p.longiaverage = p.endlongi / p.count;
+			    return p;
 			    return p;
 			}
 			function reduceInitialLat() {
 			    return {
-			        total: 0,
+			        station: 0,
+			        endlongi:0,
+			        endlati:0,
 			        count: 0,
 			        average: 0
 			    };

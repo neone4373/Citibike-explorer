@@ -7,7 +7,7 @@ body{
 	width:1168px;
 	text-align:center;
 	margin:auto;
-	margin-bottom:9px;
+	margin-bottom:80px;
 }
 #map{
 	width:900px;
@@ -33,7 +33,7 @@ body{
 }
 #active{
 	width:48px;
-	text-align:right;
+	text-align:left;
 	font-weight:700;
 	font-size:18px;
 }
@@ -96,18 +96,31 @@ body{
 #interactiveBottom{
 	margin:auto;
 	margin-top:5px;
-
+	display: inline-block;
+	vertical-align:top;
 	padding:8px;
-	width:1184px;
+	width:970px;
+}
+#interactiveBottomR{
+
+	margin-top:5px;
+	width:180px;
+	display: inline-block;
+	vertical-align:top;
 }
 #hour-chart{
 	display:inline-block;
-	margin:auto;
+	width:885px;
 }
 
 #topCharts{
-	width:1010px;
 	margin:auto;
+	
+	text-align:center!important;
+}
+#bottomCharts{
+	
+	text-align:center!important;
 }
 
 .pagetitle{
@@ -117,6 +130,15 @@ body{
 	height:24px;
 	font-size:18px;
 	vertical-align:top;
+	display:inline-block;
+}
+.resettitle{
+	vertical-align:top;
+	display:inline-block;
+	width:60px;
+	height:24px;
+	
+	font-size:18px;
 }
 .filterTitle{
 	margin-bottom:8px;
@@ -128,13 +150,13 @@ body{
 .reset{
       display: inline-block;
       position: relative;
-      width: 80px;
+      width: 50px;
       margin-top:2px;
       vertical-align:top;
-      height: 18px;
-      line-height: 18px;
+      height: 16px;
+      line-height: 16px;
       border-radius: 2px;
-      font-size: 0.8em;
+      font-size: 0.7em;
       text-align:center;
       background-color: #F2B50F;
       color: #fff;
@@ -144,18 +166,20 @@ svg {
   font: 10px Open Sans;
 }
 
-
 .background.bar {
+  fill: #ccc;
 }
 .foreground.bar {
   fill: #1529a3;
 }
 .foreground.bar.duration{
-
+	stroke:#fff;
+  stroke-width:1;
+  fill: #1529a3;
 }
 .foreground.bar.age{
   stroke:#fff;
-  stroke-width:.5;
+  stroke-width:1;
   
   fill: #a33239;
 }
@@ -204,7 +228,7 @@ svg {
 	display:inline-block;
 	text-align:center;
 	margin-right:20px;
-	width:270px;
+	width:230px;
 }
 
 

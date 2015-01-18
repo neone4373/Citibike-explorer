@@ -2,39 +2,28 @@
 
 //data processing: one of stations is missing?; duration/age limits; filter out gender;
 
-//1. clean the dataset + create categories
-//2. add new card; add lines; fix border/padding/spacing; fix time riding graphic
+//1. fix border/padding/spacing; 
+//fix the classes of the table areas
 
-//3. project the lines on the map
-//4. finalize design/write intro (with screenshot)
+// fix the grouping names to be consistent.
+
+//1. project the lines on the map
+//2. finalize design/write intro (with screenshot)
 
 (function z(){
 	interactiveBuilder = {
 		data:'',
 		domHandlers: function() {
-
-	    
-
-		},
-		formatDuration: function(d) {
-				return (d / 60) + " mins";
 		},
 		ready: function (error, data){
 
+			data.forEach(function(t, i){
+				t['timeonbike'] = +t['tripduration'];
+				t['ageonbike'] = +t['age'] - 15;
+			});
 
-data = data.filter(function(d){ return d.tripduration < 3600; });
-data = data.filter(function(d){ return d.age < 81; });
-
-data.forEach(function(t, i){
-	//t['tripduration'] = +t['tripduration'];
-	t['timeonbike'] = +t['tripduration'] - 60;
-	t['ageonbike'] = +t['age'] - 15;
-});
-
-
-	data = data.filter(function(d){ return d.timeonbike != 180; });
-	data = data.filter(function(d){ return d.ageonbike != 180; });
-
+			data = data.filter(function(d){ return d.timeonbike != 180; });
+			data = data.filter(function(d){ return d.ageonbike != 180; });
 
 			var drawGPie = (function () {
 
@@ -131,16 +120,17 @@ data.forEach(function(t, i){
 	      hour = rides.dimension(function(d) { 
 	      	return (d.starttime.getHours() * 60) + (d.starttime.getMinutes()); 
 	      }),
-	      hours = hour.group(function(d) { return Math.floor(d / 3)*3; });
+	      hours = hour.group(function(d) { return Math.floor(d / 6.8)*6.8; });
 	      gender = rides.dimension(function(d) { return d.gender; }),
 	      genderCheck = rides.dimension(function(d) { return d.gender; }),
 	      genders = gender.group(),
 				gendersAvg = gender.group().reduce(reduceAddGender, reduceRemoveGender, reduceInitialGender).all(),
 
-				endstationPathLong = rides.dimension(function(d) { return d['end station longitude']; }),
-				endstationPathLat = rides.dimension(function(d) { return d['end station latitude']; }),
-				endstationPathLongAvg = endstationPathLong.group().reduce(reduceAddLong, reduceRemoveLong, reduceInitialLong).all(),
-				endstationPathLatAvg = endstationPathLat.group().reduce(reduceAddLat, reduceRemoveLat, reduceInitialLat).all(),
+				dimensionStartStationEndLat = rides.dimension(function (d) {
+					return +d['start station id'];
+				  //return +d['end station latitude']+','+d['start station id'];
+				}),
+				dimensionsAvg = dimensionStartStationEndLat.group().reduce(reduceAddLat, reduceRemoveLat, reduceInitialLat).all(),
 
 	      borough = rides.dimension(function(d) { return d.borough; }),
 	      boroughCheck = rides.dimension(function(d) { return d.borough; }),
@@ -149,29 +139,28 @@ data.forEach(function(t, i){
 
 	      duration = rides.dimension(function(d) { return d.timeonbike; }),
 	      durations = duration.group(),
-	      durationsAvg = duration.groupAll().reduce(reduceAddDuration, reduceRemoveDuration, reduceInitialDuration).value(),
+
+	      duration2 = rides.dimension(function(d) { return d.timeonbike; }),
+	      durationsAvg = duration2.groupAll().reduce(reduceAddDuration, reduceRemoveDuration, reduceInitialDuration).value(),
 	      
 	      age = rides.dimension(function(d) { return d.ageonbike; }),
 	      ages = age.group(),
 	      agesAvg = age.groupAll().reduce(reduceAddAge, reduceRemoveAge, reduceInitialAge).value();
 
-	      var format = d3.format(",.4f");
-	      /*var duration = rides.dimension(function(d){ return d.timeonbike; }),
-				durations = hour2.group();*/
-
+	     var format = d3.format(",.4f");
 	     var charts = [
 
 		    barChart()
 		      .dimension(hour)
 		      .group(hours)
 		      .tickFormat(formatTimeofDay)
-		      .barwidth(1.5)
+		      .barwidth(2.75)
 		      .tickF([0,120,240,360,480,600,720,840,960,1080,1200,1320,1440,1560]
     			)
-    			.y(d3.scale.linear().range([70, 0]))
+    			.y(d3.scale.linear().range([80, 0]))
 		    	.x(d3.scale.linear()
 		      .domain([0,1440])
-		      .rangeRound([0, (1440*2)/3]))
+		      .rangeRound([0, (1440*3)/5.1]))
 		  ]
 
 
@@ -180,19 +169,19 @@ data.forEach(function(t, i){
 			.dimension(duration)
 			.group(durations)
 			.chartName('duration')
-			.label(['tk']),
+			.label(['0m','15m','30m','45m']),
 
 		circleChart()
 			.dimension(age)
 			.group(ages)
 			.chartName('age')
 			.label(['16', '32','48', '64']),
-			
+
 		circleChart()
 			.dimension(age)
 			.group(ages)
 			.chartName('age')
-			.label(['16', '32','48', '64'])
+			.label(['16y', '32y','48y', '64y'])
 	]
 
 		  var chartz = d3.selectAll(".chart")
@@ -211,7 +200,7 @@ data.forEach(function(t, i){
 		  	if (typeof avgs === undefined) {
 		  		return "z"
 		  	}
-		  	var avg = avgs[1]['value']['count'] / avgs[2]['value']['count'];
+		  	var avg = avgs[0]['value']['count'] / avgs[1]['value']['count'];
 		  	if (isFinite(avg)) {
 		  		return Number(avg).toFixed(1);
 		  	} 
@@ -234,7 +223,7 @@ data.forEach(function(t, i){
 		  }
 
 		  function durationAv(avgs){
-		  	var avg = avgs['average'] / 60;
+		  	var avg = avgs['average'];
 		  	if (isNaN(avg)) {
 		  		return "0"
 		  	} 
@@ -263,7 +252,7 @@ data.forEach(function(t, i){
 				var arc = d3.svg.arc()
 				    .innerRadius(radius - 30)
 				    .outerRadius(radius - 20);
-				var dataPie = [gendersAvg[1]['value']['count'],gendersAvg[2]['value']['count']];
+				var dataPie = [gendersAvg[0]['value']['count'],gendersAvg[1]['value']['count']];
 		  	var gX = drawGPie.svgV().append('g');
 		  	var gX = drawGPie.svgV().append('g');
 		  	var path = gX.datum(dataPie).selectAll("path").data(pie).enter()
@@ -281,8 +270,8 @@ data.forEach(function(t, i){
 				}
 
 			  function change() {
-			  	var men = gendersAvg[1]['value']['count'];
-			  	var women = gendersAvg[2]['value']['count'];
+			  	var men = gendersAvg[0]['value']['count'];
+			  	var women = gendersAvg[1]['value']['count'];
 					var dataPie = [men,women];
 					if (women === 0){
 						dataPie = [1,0];
@@ -369,13 +358,13 @@ data.forEach(function(t, i){
 				// During the transition, _current is updated in-place by d3.interpolate.
 				
 
-
 		  renderAll();
 		  // Renders the specified chart or list.
 		  function render(method) {
 		  	
 		    d3.select(this).call(method);
 		  }
+
 
 		  function renderAll() {
 		  
@@ -390,6 +379,7 @@ data.forEach(function(t, i){
 
 		    circleGender.change();
 		    circleBorough.change();
+		    console.log(dimensionsAvg);
 		  }
 		  
 			window.filter = function(filters) {
