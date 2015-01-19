@@ -44,7 +44,7 @@ var layMap = (function(){
             var series = []
             for (i=0;i<300;i++){
                 if(seriesFirst[i]['value']['count'] !== 0) { 
-                    series.push([{lo: seriesFirst[i]['value']['startlongi'], lat: seriesFirst[i]['value']['startlati']},{lo:seriesFirst[i]['value']['longiaverage'], lat:seriesFirst[i]['value']['latiaverage'] }])
+                    series.push([{lo:+seriesFirst[i]['value']['startlongi'],lat:+seriesFirst[i]['value']['startlati']},{lo:+seriesFirst[i]['value']['longiaverage'],lat:+seriesFirst[i]['value']['latiaverage'] }])
                 }
             }
            
@@ -68,7 +68,7 @@ var layMap = (function(){
 
 
         var toLine = d3.svg.line()
-          .interpolate("basis")
+          .interpolate("linear")
             .x(function(d,i) {
                 return applyLatLngToLayer(d).x
             })
@@ -182,7 +182,7 @@ var layMap = (function(){
         // fed to the attrTween operator
         function transition() {
             linePath.transition()
-                .duration(4500)
+                .duration(800)
                 .attrTween("stroke-dasharray", tweenDash);
         } //end transition //end transition
 
@@ -206,15 +206,15 @@ var layMap = (function(){
                 // of 250px.
                 interpolate = d3.interpolateString("0," + l, l + "," + l);
                 //t is fraction of time 0-1 since transition began
-                var marker = d3.select("#marker");
+               // var marker = d3.select("#marker");
                 
                 // p is the point on the line (coordinates) at a given length
                 // along the line. In this case if l=50 and we're midway through
                 // the time then this would 25.
-                var p = linePath.node().getPointAtLength(t * l);
+                //var p = linePath.node().getPointAtLength(t * l);
 
                 //Move the marker to that point
-                marker.attr("transform", "translate(" + p.x + "," + p.y + ")"); //move marker
+                //marker.attr("transform", "translate(" + p.x + "," + p.y + ")"); //move marker
                 return interpolate(t);
             }
         } //end tweenDash
