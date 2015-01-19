@@ -3,12 +3,12 @@
 //data processing: one of stations is missing?; duration/age limits; filter out gender;
 
 //1. fix border/padding/spacing; 
+//2. add the direction category/radial
+//group ages by 5
 //fix the classes of the table areas
+//work on performance
 
-// fix the grouping names to be consistent.
 
-//1. project the lines on the map
-//2. finalize design/write intro (with screenshot)
 
 (function z(){
 	interactiveBuilder = {
@@ -23,7 +23,6 @@
 			});
 
 			data = data.filter(function(d){ return d.timeonbike != 180; });
-			data = data.filter(function(d){ return d.ageonbike != 180; });
 
 			var drawGPie = (function () {
 
@@ -123,7 +122,6 @@
 	      hours = hour.group(function(d) { return Math.floor(d / 6.8)*6.8; });
 	      gender = rides.dimension(function(d) { return d.gender; }),
 	      genderCheck = rides.dimension(function(d) { return d.gender; }),
-	      genders = gender.group(),
 				gendersAvg = gender.group().reduce(reduceAddGender, reduceRemoveGender, reduceInitialGender).all(),
 
 				dimensionStartStationEndLat = rides.dimension(function (d) {
@@ -134,7 +132,6 @@
 
 	      borough = rides.dimension(function(d) { return d.borough; }),
 	      boroughCheck = rides.dimension(function(d) { return d.borough; }),
-	      boroughs = borough.group(),
 				boroughsAvg = borough.group().reduce(reduceAddBorough, reduceRemoveBorough, reduceInitialBorough).all(),
 
 	      duration = rides.dimension(function(d) { return d.timeonbike; }),
@@ -173,11 +170,6 @@
 			.chartName('duration')
 			.label(['0m','15m','30m','45m']),
 
-		circleChart()
-			.dimension(age)
-			.group(ages)
-			.chartName('age')
-			.label(['16', '32','48', '64']),
 
 		circleChart()
 			.dimension(age)

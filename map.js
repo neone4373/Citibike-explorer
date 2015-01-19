@@ -5,44 +5,33 @@ var layMap = (function(){
     }
 
     
-    var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v3/examples.map-zr0njcqy/{z}/{x}/{y}.png', {
-        attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
-    });
 
+var theMap = {
+        viewLong:40.738,
+        viewLat:-73.985
+  };
 
-    var map = L.map('mapSpace')
-        .addLayer(mapboxTiles)
-        .setView([40.72332345541449, -73.99], 13);
+L.mapbox.accessToken = 'pk.eyJ1IjoicGV0dWxsYSIsImEiOiJwS2NQbHM0In0.H4_dRGQiQAyFKoxcbc9x1g';
 
+var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13);
 
-    // we will be appending the SVG to the Leaflet map pane
-    // g (group) element will be inside the svg 
+  var topPane = map._createPane('leaflet-top-pane', map.getPanes().mapPane);
+    var topLayer = L.mapbox.tileLayer('petulla.jdmil1i6').addTo(map);
+
     var svg = d3.select(map.getPanes().overlayPane).append("svg");
 
-    // if you don't include the leaflet-zoom-hide when a 
-    // user zooms in or out you will still see the phantom
-    // original SVG 
     var g = svg.append("g").attr("class", "leaflet-zoom-hide");
 
     function drawMap(coordVals){
-    //read in the GeoJSON. This function is asynchronous so
-    // anything that needs the json file should be within
 
-        // this is not needed right now, but for future we may need
-        // to implement some filtering. This uses the d3 filter function
-        // featuresdata is an array of point objects
-
-      if (typeof coordVals === 'undefined'){
-        var series = [
-        [{time: 1, lo: -73.9927, lat:40.72219 }, {time: 2, lo: -73.98105, lat:40.73432}],
-        [{time: 1, lo: -73.99517, lat:40.7229 }, {time: 2, lo: -73.9845, lat:40.72139}]
-          ];
+        if (typeof coordVals === 'undefined'){
+            var series = [[{lo: -73.99517, lat:40.7229 }, {lo: -73.99517, lat:40.7229}]];
         }
         else { 
             var seriesFirst = coordVals;
             //console.log(seriesFirst.length);
             var series = []
-            for (i=0;i<300;i++){
+            for (i=0;i<seriesFirst.length;i++){
                 if(seriesFirst[i]['value']['count'] !== 0) { 
                     series.push([{lo:+seriesFirst[i]['value']['startlongi'],lat:+seriesFirst[i]['value']['startlati']},{lo:+seriesFirst[i]['value']['longiaverage'],lat:+seriesFirst[i]['value']['latiaverage'] }])
                 }
@@ -52,20 +41,12 @@ var layMap = (function(){
                 series = [[{lo: -73.99517, lat:40.7229 }, {lo: -73.99517, lat:40.7229}]];
             }
         }
-        //console.log('done');
-
 
         var transform = d3.geo.transform({
             point: projectPoint
         });
 
-        //d3.geo.path translates GeoJSON to SVG path codes.
-        //essentially a path generator. In this case it's
-        // a path generator referencing our custom "projection"
-        // which is the Leaflet method latLngToLayerPoint inside
-        // our function called projectPoint
         var d3path = d3.geo.path().projection(transform);
-
 
         var toLine = d3.svg.line()
           .interpolate("linear")
@@ -76,28 +57,14 @@ var layMap = (function(){
                 return applyLatLngToLayer(d).y
             });
 
-
-        // From now on we are essentially appending our features to the
-        // group element. We're adding a class with the line name
-        // and we're making them invisible
-        
-        //console.log(collection.features);
-        
-        // Here we will make the points into a single
-        // line/path. Note that we surround the featuresdata
-        // with [] to tell d3 to treat all the points as a
-        // single line. For now these are basically points
-        // but below we set the "d" attribute using the 
-
         g.selectAll(".lineConnect").remove();
-        // line creator function from above.
+
         var linePath = g.selectAll(".lineConnect")
             .data(series)
             .enter()
             .append("path")
             .attr("class", "lineConnect")
             //.attr("d", toLine);
-
 
         /*var originANDdestination = [featuresdata[0]]
 
@@ -111,8 +78,7 @@ var layMap = (function(){
 
         map.on("viewreset", reset);
 
-        reset();
-        transition();
+        reset(); linePath.each(transition);
 
         // Reposition the SVG to cover the features.
         function reset() {
@@ -181,43 +147,20 @@ var layMap = (function(){
         // on. The values themselves ("0,500", "1,500" etc) are being
         // fed to the attrTween operator
         function transition() {
-            linePath.transition()
-                .duration(800)
-                .attrTween("stroke-dasharray", tweenDash);
-        } //end transition //end transition
-
-        // this function feeds the attrTween operator above with the 
-        // stroke and dash lengths
-        function tweenDash() {
+            d3.select(this).transition()
+                .duration(700).attrTween("stroke-dasharray", tweenDash);
+        }
+    
+         function tweenDash() {
+            var that = this;
             return function(t) {
-                //total length of path (single value)
-                var l = linePath.node().getTotalLength(); 
-                // this is creating a function called interpolate which takes
-                // as input a single value 0-1. The function will interpolate
-                // between the numbers embedded in a string. An example might
-                // be interpolatString("0,500", "500,500") in which case
-                // the first number would interpolate through 0-500 and the
-                // second number through 500-500 (always 500). So, then
-                // if you used interpolate(0.5) you would get "250, 500"
-                // when input into the attrTween above this means give me
-                // a line of length 250 followed by a gap of 500. Since the
-                // total line length, though is only 500 to begin with this
-                // essentially says give me a line of 250px followed by a gap
-                // of 250px.
+                var l = that.getTotalLength(); 
                 interpolate = d3.interpolateString("0," + l, l + "," + l);
-                //t is fraction of time 0-1 since transition began
-               // var marker = d3.select("#marker");
-                
-                // p is the point on the line (coordinates) at a given length
-                // along the line. In this case if l=50 and we're midway through
-                // the time then this would 25.
-                //var p = linePath.node().getPointAtLength(t * l);
-
-                //Move the marker to that point
-                //marker.attr("transform", "translate(" + p.x + "," + p.y + ")"); //move marker
                 return interpolate(t);
             }
-        } //end tweenDash
+         }
+ 
+        //end tweenDash
 
         // Use Leaflet to implement a D3 geometric transformation.
         // the latLngToLayerPoint is a Leaflet conversion method:

@@ -15,8 +15,9 @@ body{
 	display:inline-block;
 }
 #mapSpace{
-	width:850px;
-	height:400px;
+	width:100%;
+	height:calc(100% - 30px);
+	padding-bottom:15px;
 }
 #rightInfo{
 	padding:8px;
@@ -306,23 +307,10 @@ div.card {
 svg {
         position: relative;
     }
-    .travelMarker {
-        fill: yellow;
-        opacity: 0.75;
-    }
-    .waypoints {
-        fill: black;
-        opacity: 0;
-    }
-}
-.drinks {
-    stroke: black;
-    fill: red;
-}
 .lineConnect {
 
-        stroke-width: 4px;
+	stroke-width: 4px;
     fill: none;
-    stroke: black;
+    stroke: #3e5d9f;
     opacity: .2;
 }
