@@ -1,66 +1,10 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<head>
-<style>
-
-@import url(//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.css);
-
-#mapSpace {
-  width: 960px;
-  height: 500px;
-}
-svg {
-        position: relative;
+var layMap = (function(){
+    function p(name){
+        return function(d){ return d[name]; }
     }
-    path {
-        fill: yellow;
-        stroke-width: 2px;
-        stroke: red;
-        stroke-opacity: 1;
-    }
-    .travelMarker {
-        fill: yellow;
-        opacity: 0.75;
-    }
-    .waypoints {
-        fill: black;
-        opacity: 0;
-    }
-}
-.drinks {
-    stroke: black;
-    fill: red;
-}
-.lineConnect {
-    fill: none;
-    stroke: black;
-    opacity: 1;
-}
-.locnames {
-    fill: black;
-    text-shadow: 1px 1px 1px #FFF, 3px 3px 5px #000;
-    font-weight: bold;
-    font-size: 13px;
-}
 
-</style>
-</head>
-<body>
-
-
-    <div id="mapSpace" style="width: 600px; height: 400px"></div>
-</div>
-</body>
-<script src="./scripts/d3.v3.js"></script> <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js">
-    </script>
-
-
-
-    <script>
-
+    
     var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v3/examples.map-zr0njcqy/{z}/{x}/{y}.png', {
         attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
     });
@@ -68,7 +12,7 @@ svg {
 
     var map = L.map('mapSpace')
         .addLayer(mapboxTiles)
-        .setView([40.72332345541449, -73.99], 14);
+        .setView([40.72332345541449, -73.99], 13);
 
 
     // we will be appending the SVG to the Leaflet map pane
@@ -80,7 +24,7 @@ svg {
     // original SVG 
     var g = svg.append("g").attr("class", "leaflet-zoom-hide");
 
-    (function(){
+    function drawMap(coordVals){
     //read in the GeoJSON. This function is asynchronous so
     // anything that needs the json file should be within
 
@@ -88,10 +32,28 @@ svg {
         // to implement some filtering. This uses the d3 filter function
         // featuresdata is an array of point objects
 
-      var series = [
+      if (typeof coordVals === 'undefined'){
+        var series = [
         [{time: 1, lo: -73.9927, lat:40.72219 }, {time: 2, lo: -73.98105, lat:40.73432}],
         [{time: 1, lo: -73.99517, lat:40.7229 }, {time: 2, lo: -73.9845, lat:40.72139}]
           ];
+        }
+        else { 
+            var seriesFirst = coordVals;
+            //console.log(seriesFirst.length);
+            var series = []
+            for (i=0;i<300;i++){
+                if(seriesFirst[i]['value']['count'] !== 0) { 
+                    series.push([{lo: seriesFirst[i]['value']['startlongi'], lat: seriesFirst[i]['value']['startlati']},{lo:seriesFirst[i]['value']['longiaverage'], lat:seriesFirst[i]['value']['latiaverage'] }])
+                }
+            }
+           
+            if(series.length === 0){
+                series = [[{lo: -73.99517, lat:40.7229 }, {lo: -73.99517, lat:40.7229}]];
+            }
+        }
+        //console.log('done');
+
 
         var transform = d3.geo.transform({
             point: projectPoint
@@ -126,6 +88,8 @@ svg {
         // with [] to tell d3 to treat all the points as a
         // single line. For now these are basically points
         // but below we set the "d" attribute using the 
+
+        g.selectAll(".lineConnect").remove();
         // line creator function from above.
         var linePath = g.selectAll(".lineConnect")
             .data(series)
@@ -154,9 +118,8 @@ svg {
         function reset() {
 
           function reformat(array) {
-                var data = [];  console.log(array);
+                var data = [];
                 array.map(function (d, i) {
-                  console.log(d);
                   for (i=0;i<d.length;i++){
                     data.push({
                         id: i,
@@ -165,8 +128,6 @@ svg {
                             coordinates: [+d[i].lo, +d[i].lat],
                             type: "Point"
                         }
-                       
-
                     });
                   }
                 });
@@ -174,8 +135,6 @@ svg {
             }
             var geoData = { type: "FeatureCollection", features: reformat(series) };
 
-            console.log(geoData);
-          
           var bounds = d3path.bounds(geoData),
                 topLeft = bounds[0],
                 bottomRight = bounds[1];
@@ -223,11 +182,8 @@ svg {
         // fed to the attrTween operator
         function transition() {
             linePath.transition()
-                .duration(1500)
-                .attrTween("stroke-dasharray", tweenDash).delay(2500)
-                .each("end", function() {
-                    d3.select(this).call(transition);// infinite loop
-                }); 
+                .duration(4500)
+                .attrTween("stroke-dasharray", tweenDash);
         } //end transition //end transition
 
         // this function feeds the attrTween operator above with the 
@@ -271,7 +227,8 @@ svg {
             var point = map.latLngToLayerPoint(new L.LatLng(y, x));
             this.stream.point(point.x, point.y);
         } //end projectPoint
-    })();
+    }
+
 
 
     // similar to projectPoint this function converts lat/long to
@@ -282,6 +239,8 @@ svg {
         var y = d.lat;
         var x = d.lo;
         return map.latLngToLayerPoint(new L.LatLng(y, x))
-
     }
-    </script>
+    return {
+        drawMap:drawMap
+    }
+})()

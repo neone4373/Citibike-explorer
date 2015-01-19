@@ -37,29 +37,12 @@
 			        average: 0
 			    };
 			}
-			function reduceAddLong(p, v) {
-			    p.total += v['end station longitude'];
-			    p.count++;
-			    p.average = p.total / p.count;
-			    return p;
-			}
-			function reduceRemoveLong(p, v) {
-			    p.total -= v['end station longitude'];
-			    p.count--;
-			    p.average = p.total / p.count;
-			    return p;
-			}
-			function reduceInitialLong() {
-			    return {
-			        total: 0,
-			        count: 0,
-			        average: 0
-			    };
-			}
 			function reduceAddLat(p, v) {
 					//console.log(v['start station id']);
 					//console.log(p);
 			    p.station = v['start station id'];
+			    p.startlongi = v['start station longitude'];
+			    p.startlati = v['start station latitude'];
 			    p.endlati += v['end station latitude'];
 			    p.endlongi += v['end station longitude'];
 			    p.count++;
@@ -69,6 +52,8 @@
 			}
 			function reduceRemoveLat(p, v) {
 			    p.station = v['start station id'];
+			    p.startlongi = v['start station longitude'];
+			    p.startlati = v['start station latitude'];
 			    p.endlati -= v['end station latitude'];
 			    p.endlongi -= v['end station longitude'];
 			    p.count--;
@@ -80,6 +65,8 @@
 			function reduceInitialLat() {
 			    return {
 			        station: 0,
+			        startlongi:0,
+			        startlati:0,
 			        endlongi:0,
 			        endlati:0,
 			        count: 0,

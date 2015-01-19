@@ -14,6 +14,10 @@ body{
 	height:450px;
 	display:inline-block;
 }
+#mapSpace{
+	width:850px;
+	height:400px;
+}
 #rightInfo{
 	padding:8px;
 	width:250px;
@@ -292,3 +296,33 @@ div.card {
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
 	}
+
+
+
+
+
+
+
+svg {
+        position: relative;
+    }
+    .travelMarker {
+        fill: yellow;
+        opacity: 0.75;
+    }
+    .waypoints {
+        fill: black;
+        opacity: 0;
+    }
+}
+.drinks {
+    stroke: black;
+    fill: red;
+}
+.lineConnect {
+
+        stroke-width: 4px;
+    fill: none;
+    stroke: black;
+    opacity: .2;
+}

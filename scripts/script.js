@@ -145,7 +145,9 @@
 	      
 	      age = rides.dimension(function(d) { return d.ageonbike; }),
 	      ages = age.group(),
-	      agesAvg = age.groupAll().reduce(reduceAddAge, reduceRemoveAge, reduceInitialAge).value();
+
+	      age2 = rides.dimension(function(d) { return d.age; }),
+	      agesAvg = age2.groupAll().reduce(reduceAddAge, reduceRemoveAge, reduceInitialAge).value();
 
 	     var format = d3.format(",.4f");
 	     var charts = [
@@ -379,7 +381,7 @@
 
 		    circleGender.change();
 		    circleBorough.change();
-		    console.log(dimensionsAvg);
+		    layMap.drawMap(dimensionsAvg);
 		  }
 		  
 			window.filter = function(filters) {

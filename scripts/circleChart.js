@@ -10,7 +10,7 @@ function circleChart() {
   var margin = {top: 0, right: 0, bottom: 0, left: 0},
       id = circleChart.id++,
       axis = d3.svg.axis().orient("bottom"),
-      brush = d3.svg.cbrush().innerRadius(30).outerRadius(80),
+      brush = d3.svg.cbrush().innerRadius(30).outerRadius(70),
       brushDirty,
       dimension,
       group,
@@ -18,8 +18,8 @@ function circleChart() {
       label = [],
       round,
       barWidth,
-      size = 160,
-      heightScale = d3.scale.linear().range([30, 80]),
+      size = 170,
+      heightScale = d3.scale.linear().range([30, 70]),
       height,
       numGroups;
 
@@ -73,8 +73,8 @@ function circleChart() {
           .append('text')
             .text(function(d, i){ return d; })
             .attr('text-anchor', 'middle')
-            .attr('x', function(d, i){ return !(i % 2) ? 0 :  i == 1 ?  18 : -18; })
-            .attr('y', function(d, i){ return  (i % 2) ? 4 :  i == 0 ? -16 :  24; });
+            .attr('x', function(d, i){ return !(i % 2) ? 0 :  i == 1 ?  16 : -16; })
+            .attr('y', function(d, i){ return  (i % 2) ? 4 :  i == 0 ? -14 :  22; });
       }
 
      div.select("svg").selectAll(".bar")
