@@ -14,6 +14,8 @@
 // any other grunt tasks
 // host open sans locally
 //modernizr
+//jslint/hint
+
 
 
 
@@ -30,49 +32,6 @@
 			});
 
 			data = data.filter(function(d){ return d.timeonbike != 180; });
-
-			var drawGPie = (function () {
-
-				var width = 100,
-				    height = 100;
-
-				var svg = d3.select("#genderPie").append("svg")
-				    .attr("width", width)
-				    .attr("height", height)
-				  .append("g")
-				    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-				function svgR() {	
-					return svg;
-				}
-
-		    return {
-		    	svgV:svgR
-		    };
-
-		  })();
-
-
-			var drawBPie = (function () {
-
-				var width = 100,
-				    height = 100;
-
-				var svg = d3.select("#boroughPie").append("svg")
-				    .attr("width", width)
-				    .attr("height", height)
-				  .append("g")
-				    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-				function svgR() {	
-					return svg;
-				}
-
-		    return {
-		    	svgV:svgR
-		    };
-
-		  })();
 
 			var formatNumber = d3.format(",d"),
       formatChange = d3.format("+,d");
@@ -153,8 +112,8 @@
 	      age2 = rides.dimension(function(d) { return d.age; }),
 	      agesAvg = age2.groupAll().reduce(reduceAddAge, reduceRemoveAge, reduceInitialAge).value();
 
-	     var format = d3.format(",.4f");
-	     var charts = [
+    	var format = d3.format(",.4f");
+    	var charts = [
 
 		    barChart()
 		      .dimension(hour)
@@ -169,21 +128,20 @@
 		      .rangeRound([0, (1440*3)/5.1]))
 		  ]
 
+			cCharts = [
+				circleChart()
+					.dimension(duration)
+					.group(durations)
+					.chartName('duration')
+					.label(['0m','15m','30m','45m']),
 
-	cCharts = [
-		circleChart()
-			.dimension(duration)
-			.group(durations)
-			.chartName('duration')
-			.label(['0m','15m','30m','45m']),
 
-
-		circleChart()
-			.dimension(age)
-			.group(ages)
-			.chartName('age')
-			.label(['16y', '32y','48y', '64y'])
-	]
+				circleChart()
+					.dimension(age)
+					.group(ages)
+					.chartName('age')
+					.label(['16y', '32y','48y', '64y'])
+			]
 
 		  var chartz = d3.selectAll(".chart")
 	      .data(charts)
@@ -243,6 +201,7 @@
 		  	}
 		  }
 
+		  /*
 		  var circleGender = (function() {
 		  	//thank you Bostock http://bl.ocks.org/mbostock/1346410
 				var radius = Math.min(120, 120) / 2;
@@ -353,7 +312,7 @@
 			  return {
 			  	change:change
 			  }
-			})()
+			})() */
 				// Store the displayed angles in _current.
 				// Then, interpolate from _current to the new angles.
 				// During the transition, _current is updated in-place by d3.interpolate.
@@ -379,8 +338,9 @@
 		    d3.select("#yearsOld").text(ageAv(agesAvg));
 		    d3.select("#manTo").text(boroughRatio(boroughsAvg))
 
-		    circleGender.change();
-		    circleBorough.change();
+		    /*circleGender.change();
+		    circleBorough.change();*/
+
 		    layMap.drawMap(dimensionsAvg);
 		  }
 		  

@@ -125,6 +125,7 @@ function circleChart() {
 
     g.selectAll(".bar").style('fill', function(d, i){ return isBetween(i) ? 'steelblue' : '#ccc'; });
     dimension.filterFunction(isBetween)
+
   });
 
   chart.margin = function(_) {

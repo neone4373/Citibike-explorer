@@ -79,7 +79,8 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
           function reformat(array) {
                 var data = [];
                 array.map(function (d, i) {
-                  for (i=0;i<d.length;i++){
+                    var j = d.length;
+                  for (i=0;i<j;i++){
                     data.push({
                         id: i,
                         type: "Feature",
