@@ -1,12 +1,19 @@
-//http://zevross.com/blog/2014/09/30/use-the-amazing-d3-library-to-animate-a-path-on-a-leaflet-map/
+//data processing: capture brooklyn value?; duration/age limits; filter out gender;
 
-//data processing: one of stations is missing?; duration/age limits; filter out gender;
-
+//reorganize
 //1. fix border/padding/spacing; 
 //2. add the direction category/radial
 //group ages by 5
+//group time of day by 5
 //fix the classes of the table areas
-//work on performance
+//add index
+
+//grunt uncss
+//grunt minify
+//bower
+// any other grunt tasks
+// host open sans locally
+//modernizr
 
 
 
@@ -73,7 +80,7 @@
 			var dateFormat = d3.time.format("%Y-%m-%d %X");
 
 			data.forEach(function(d, i) {
-			  d.index = i;
+			  //d.index = i;
 			  d.tripduration = +d.tripduration;
 			  d.starttime = dateFormat.parse(d.starttime);
 			  d.stoptime = dateFormat.parse(d.stoptime);
@@ -351,8 +358,9 @@
 				// Then, interpolate from _current to the new angles.
 				// During the transition, _current is updated in-place by d3.interpolate.
 				
-
+			var startMap = (function () {
 		  renderAll();
+			})()
 		  // Renders the specified chart or list.
 		  function render(method) {
 		  	
@@ -397,8 +405,8 @@
 			}
 
 		  function updateFilters(z,o) {
-		  	genderCheck.filterFunction(function(d){ return d === parseInt(z[1]) || d === parseInt(z[0]) });
-		  	gendersAvg.filter(function(d){ return d === parseInt(z[1]) || d === parseInt(z[0]) });
+		  	genderCheck.filterFunction(function(d){ return d === parseInt(z[1],10) || d === parseInt(z[0],10) });
+		  	gendersAvg.filter(function(d){ return d === parseInt(z[1],10) || d === parseInt(z[0],10) });
 		  	boroughCheck.filterFunction(function(d){ return d === z[2] || d === z[3] });
 		  	//boroughsAvg.filterFunction(function(d){ return d === z[2] || d === z[3] });
 		  	renderAll();
@@ -436,9 +444,9 @@
 				$('#checkFilters :checkbox').change(function(e) {
 	    		var id = '#' + e['currentTarget']['id'];
 	    		checkedId = $(id);
-   				var i = parseInt(checkedId.attr('data-val'));
+   				var i = parseInt(checkedId.attr('data-val'),10);
 	        checkedId.attr('data-val', i + 1);
-	        var j = parseInt(checkedId.attr('data-val'));
+	        var j = parseInt(checkedId.attr('data-val'),10);
 	        var z = checkedId.attr('cat');
 	        return checkFilters(z);
 	    	});
