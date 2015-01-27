@@ -28,7 +28,7 @@
 		              .attr("href", "javascript:breset(" + id + ")")
 		              .attr("class", "reset")
 		              .html("<div class=\"reset\">Reset</div>")
-		              .style("display", "none");
+		              ;
 		          g = div.append("svg")
 		              .attr("width", width + margin.left + margin.right)
 		              .attr("height", height + margin.top + margin.bottom)
@@ -54,12 +54,17 @@
 		          var gBrush = g.append("g").attr("class", "brush").call(brush);
 		          gBrush.selectAll("rect").attr("height", height);
 		          gBrush.selectAll(".resize").append("path").attr("d", resizePath);
+		        
 		        }
+
+
+      				div.select(".reset").style("background-color", brush.empty() ? "#e2e2e2" : "#F2B50F");
+		          div.select(".title a").attr("href", brush.empty() ? null : "javascript:breset(" + id + ")")
+
 		        // Only redraw the brush if set externally.
 		        if (brushDirty) {
 		          brushDirty = false;
 		          g.selectAll(".brush").call(brush);
-		          div.select(".title a").style("display", brush.empty() ? "none" : null);
 		          if (brush.empty()) {
 		            g.selectAll("#clip-" + id + " rect")
 		                .attr("x", 0)

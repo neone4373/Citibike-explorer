@@ -32,7 +32,7 @@ body{
 
 .filterTitle{
 	margin-bottom:8px;
-	font-size:14px !important;
+	font-size:16px !important;
 	font-weight:700;
 	margin-right:5px;
 	margin-left:20px;
@@ -44,7 +44,8 @@ body{
 
 .checks{
 	display:inline-block;
-	margin-right:10px;
+	margin-right:2px;
+	color:#888;
 }
 
 .checkbox {
@@ -108,14 +109,14 @@ body{
 	height:538px;
 	display:inline-block;
 	vertical-align:top;
-	text-align:left;
+	text-align:center;
 	font-size:16px;
 }
 
 #checkFilters{
 	display: inline-block;
 	line-height:20px;
-	font-size:12px;
+	font-size:14px;
 }
 
 
@@ -127,6 +128,7 @@ body{
 	display:inline-block;
 	width:19%;
 	font-size:10px;
+	color:#888;
 }
 #genderRatio,#boroughRatio{
 	vertical-align:top;
@@ -134,7 +136,7 @@ body{
 	text-align:center;
 	width:19%;
 	font-size:10px;
-	
+		color:#888;
 }
 .activeR{
 	vertical-align:top;
@@ -142,6 +144,7 @@ body{
 	text-align:center;
 	width:19%;
 	font-size:10px;
+		color:#888;
 }
 
 
@@ -151,6 +154,7 @@ body{
 	font-weight:700;
 	font-size:18px;
 	display:inline-block;
+			color:#333;
 	
 }
 
@@ -159,11 +163,14 @@ body{
 	font-weight:700;
 	font-size:18px;
 	margin-top:3px;
+			color:#333;
 }
 #boroughTo,#genderTo,#selectedTo{
 	margin-top:3px;
 	text-align:center;
 	display:block;
+			color:#333;
+
 }
 
 #active{
@@ -188,7 +195,8 @@ body{
 
 #hour-chart{
 	display:inline-block;
-	width:885px;
+	width:100%;
+	text-align:left;
 }
 
 #topCharts{
@@ -204,9 +212,13 @@ body{
 .pagetitle{
 	font-size:40px;
 }
+.titlestarted{
+	margin-left:40px;
+}
 .title{
 	height:20px;
-	font-size:16px;
+	font-size:18px;
+	font-weight:700;
 	vertical-align:top;
 	display:inline-block;
 }
@@ -214,26 +226,26 @@ body{
 	vertical-align:top;
 	display:inline-block;
 	width:60px;
-	height:24px;
-	
+	height:19px;
 	font-size:18px;
+	outline:none;
 }
 .reset{
+	outline:none;
       display: inline-block;
       position: relative;
       width: 50px;
-      margin-top:2px;
+      margin-top:5px;
       vertical-align:top;
-      height: 16px;
-      line-height: 16px;
+      height: 12px;
+      line-height: 4px;
       -webkit-border-radius: 2px;
               border-radius: 2px;
       font-size: 0.7em;
       text-align:center;
-      background-color: #F2B50F;
       color: #fff;
-      -webkit-box-shadow: 0 1.5px .5px 0 rgba(0, 0, 0, 0.15);
-              box-shadow: 0 1.5px .5px 0 rgba(0, 0, 0, 0.15);
+      -webkit-box-shadow: 0 .5px .5px 0 rgba(0, 0, 0, 0.15);
+              box-shadow: 0 1.2px .5px 0 rgba(0, 0, 0, 0.05);
 }
 svg {
   font: 10px Open Sans;
@@ -254,10 +266,10 @@ svg {
   stroke:#fff;
   stroke-width:1.5;
   
-  fill: #a33239;
+  fill: #1529a3;
 }
 .foreground.bar.z2 {
-  fill: #a33239;
+  fill: #1529a3;
 }
 .axis path, .axis line {
   fill: none;
@@ -265,7 +277,7 @@ svg {
   shape-rendering: crispEdges;
 }
 .axis text {
-  font: 10px Open Sans;
+  font: 9px Open Sans;
 }
 .brush rect.extent {
   fill: steelblue;
@@ -299,9 +311,7 @@ svg {
 }
 .cChart{
 	display:block;
-	text-align:center;
-	margin-right:20px;
-	width:180px;
+	text-align:left
 }
 
 
@@ -324,7 +334,8 @@ div.card {
 	}
 
 svg {
-        position: relative;
+      display:block;
+      margin:auto;
     }
 .lineConnect {
 stroke-linecap:butt;

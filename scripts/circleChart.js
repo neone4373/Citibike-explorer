@@ -47,8 +47,7 @@ function circleChart() {
         div.select(".resettitle").append("a")
             .attr("href", "javascript:creset(" + id + ")")
             .attr("class", "reset")
-            .html("<div class=\"reset\">Reset</div>")
-            .style("display", "none");
+            .html("<div class=\"reset\">Reset</div>");
 
         var g = div.append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -82,7 +81,8 @@ function circleChart() {
         .attr("d", arcGen)
             .attr("class", "foreground bar " + chartName + "");
 
-      div.select(".resettitle a").style("display", brush.empty() ? "none" : null);
+      div.select(".reset").style("background-color", brush.empty() ? "#e2e2e2" : "#F2B50F");
+      div.select(".resettitle a").attr("href", brush.empty() ? null : "javascript:creset(" + id + ")")
 
       if (brushDirty){
         brushDirty = false;

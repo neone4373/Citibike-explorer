@@ -139,7 +139,7 @@
 					.dimension(age)
 					.group(ages)
 					.chartName('age')
-					.label(['16y', '32y','48y', '64y']),
+					.label(['N', 'E','S', 'W']),
 
 				circleChart()
 					.dimension(age)
