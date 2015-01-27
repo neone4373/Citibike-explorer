@@ -27,12 +27,7 @@
   </div>
   <div id="interactive">
   	<div id="interactiveTop">
-	  	<div id="map" class="card">
-	  		<div id="mapSpace">
-	  		</div>
-	  		
-	  	</div>
-	  	<div id="rightInfo" class="card">
+	  	<div id="Info" class="card">
 	  		<div id="mins">
 	  			<div id="minsSpent">0.0</div>
 	  		ride time average
@@ -41,34 +36,31 @@
 		  			<div id="yearsOld">0.0</div>
 		  		rider age average
 		  	</div>
-			  	<div id="boroughRatio">
+			  <div id="boroughRatio">
 			  			<div id="manTo">0</div> : 
 							<div id="brookTo">1</div>
 							Manhattan to Brooklyn
-			  	</div>
-			  	<div id="boroughPie" class="donutchart"></div>
-			  	<div id="genderRatio">
+			  </div>
+			  <div id="boroughPie" class="donutchart"></div>
+			  <div id="genderRatio">
 			  			<div id="menTo">0</div> : 
 							<div id="womenTo">1</div>
 							Men to women
-			  	</div>
-			  	<div id="genderPie" class="donutchart">
-			  	</div>
-			  	<div class="activeR">
-				  	<div id="active">0</div>
-				  	&nbsp selected of 
-				  	<div id="total">
-			  	</div>
 		  	</div>
-		 </div>
+		  	<div id="genderPie" class="donutchart">
+		  	</div>
+		  	<div class="activeR">
+			  	<div id="active">0</div>
+			  	&nbsp selected of 
+			  	<div id="total"></div>
+		  	</div>
 	  	</div>
-	  	<div id="interactiveBottom" class="card">
-				<div id="topCharts">
-					<div id="hour-chart" class="chart">
-					  <div class="title">Time when started riding &nbsp&nbsp</div>
-					</div>
-					
-			  </div>
+
+	  	<div id="map" class="card">
+	  		<div id="mapSpace"></div>
+	  	</div>
+		<div id="rightInfoC">
+	  	<div id="rightInfo" class="card">
 			  <div id="bottomCharts">
 					<div class="cChart display">
 						<div class="title">Time spent on bike &nbsp</div><div class="resettitle"></div>
@@ -81,6 +73,7 @@
 					</div>
 				</div>
 	  	</div>
+
 	  	<div id="interactiveBottomR" class="card">
 					<div id="checkFilters">
 					  <div class="title filterTitle"><img src="filter.png" class="filterImg"> Filtering</div><br>
@@ -92,6 +85,13 @@
 				  </div>
 	  	</div>
 	  </div>
+  	<div id="interactiveBottom" class="card">
+			<div id="topCharts">
+				<div id="hour-chart" class="chart">
+				  <div class="title">Time when started riding &nbsp&nbsp</div>
+				</div>
+		  </div>
+  	</div>
   </div>
 
 <script src="./scripts/donuts.js"></script>
@@ -103,7 +103,7 @@
   <script>
 $(document).ready(function(){
 
-	interactiveBuilder.start();
+	interactiveBuilder.start() || {};
 });
 </script>
 </body>

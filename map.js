@@ -1,14 +1,13 @@
+"use strict";
 
 var layMap = (function(){
-    function p(name){
-        return function(d){ return d[name]; }
+    function p(name) {
+        return function(d){ return d[name]; };
     }
 
-    
-
 var theMap = {
-        viewLong:40.738,
-        viewLat:-73.985
+        viewLong:40.728,
+        viewLat:-73.988
   };
 
 L.mapbox.accessToken = 'pk.eyJ1IjoicGV0dWxsYSIsImEiOiJwS2NQbHM0In0.H4_dRGQiQAyFKoxcbc9x1g';
@@ -31,7 +30,7 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
         else { 
             var seriesFirst = coordVals;
             var series = [];
-            for (i=0;i<seriesFirst.length;i++){
+            for (var i=0;i<seriesFirst.length;i++){
                 if(seriesFirst[i]['value']['count'] !== 0) { 
                     series.push([{lo:+seriesFirst[i]['value']['startlongi'],lat:+seriesFirst[i]['value']['startlati']},{lo:+seriesFirst[i]['value']['longiaverage'],lat:+seriesFirst[i]['value']['latiaverage'] }])
                 }
@@ -60,7 +59,7 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
 
         g.selectAll(".lineConnect").remove();
 
-        var linePath = g.selectAll(".lineConnect")
+        var linePath = g.selectAll('.lineConnect')
             .data(series)
             .enter()
             .append("path")
@@ -68,13 +67,10 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
            
         map.on("viewreset", reset);
 
-
         reset(); 
         linePath.each(transition);
 
-
         function reset() {
-
 
           function reformat(array) {
                 var data = [];
@@ -108,7 +104,6 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
             linePath.attr("d", toLine)
 
             g.attr("transform", "translate(" + (-topLeft[0] + 50) + "," + (-topLeft[1] + 50) + ")");
-
         } 
 
         function transition() {
@@ -120,7 +115,7 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
             var that = this;
             return function(t) {
                 var l = that.getTotalLength(); 
-                interpolate = d3.interpolateString("0," + l, l + "," + l);
+                var interpolate = d3.interpolateString("0," + l, l + "," + l);
                 return interpolate(t);
             }
          }
@@ -131,12 +126,6 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
         }
 
     }
-
-
-
-    // similar to projectPoint this function converts lat/long to
-    // svg coordinates except that it accepts a point from our 
-    // GeoJSON
 
     function applyLatLngToLayer(d) {
     

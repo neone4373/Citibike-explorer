@@ -10,24 +10,47 @@ body{
 	margin-bottom:80px;
 }
 #map{
-	width:900px;
-	height:450px;
+	width:866px;
+	height:600px;
 	display:inline-block;
+	padding: 2px !important;
 }
 #mapSpace{
 	width:100%;
-	height:-webkit-calc(100% - 30px);
-	height:calc(100% - 30px);
-	padding-bottom:15px;
+	height:-webkit-calc(100%);
+	height:calc(100%);
+}
+#rightInfoC{
+	vertical-align:top;
+	height:auto;
+	width:auto;
+	display:inline-block;
 }
 #rightInfo{
 	padding:8px;
-	width:250px;
+	width:240px;
 	height:449px;
-	display:inline-block;
+	display:block;
 	vertical-align:top;
 	text-align:left;
 	font-size:16px;
+}
+
+#interactiveBottomR{
+
+	margin-top:3px;
+	width:240px;
+	padding:8px;
+	display: block;
+	vertical-align:top;
+}
+
+#Info{
+	width:1100px;
+	margin:auto;
+	margin-bottom:3px;
+	vertical-align:top;
+	height:60px;
 }
 #genderPie,#boroughPie{
 
@@ -101,19 +124,13 @@ body{
 
 #interactiveBottom{
 	margin:auto;
-	margin-top:5px;
+	margin-top:3px;
 	display: inline-block;
 	vertical-align:top;
 	padding:8px;
 	width:970px;
 }
-#interactiveBottomR{
 
-	margin-top:5px;
-	width:180px;
-	display: inline-block;
-	vertical-align:top;
-}
 #hour-chart{
 	display:inline-block;
 	width:885px;
@@ -233,10 +250,10 @@ svg {
   margin-bottom: 8px;
 }
 .cChart{
-	display:inline-block;
+	display:block;
 	text-align:center;
 	margin-right:20px;
-	width:230px;
+	width:180px;
 }
 
 
