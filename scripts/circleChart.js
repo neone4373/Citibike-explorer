@@ -10,7 +10,7 @@ function circleChart() {
   var margin = {top: 0, right: 0, bottom: 0, left: 0},
       id = circleChart.id++,
       axis = d3.svg.axis().orient("bottom"),
-      brush = d3.svg.cbrush().innerRadius(30).outerRadius(70),
+      brush = d3.svg.cbrush().innerRadius(30).outerRadius(75),
       brushDirty,
       dimension,
       group,
@@ -18,8 +18,8 @@ function circleChart() {
       label = [],
       round,
       barWidth,
-      size = 170,
-      heightScale = d3.scale.linear().range([30, 70]),
+      size = 150,
+      heightScale = d3.scale.linear().range([30, 75]),
       height,
       numGroups;
 

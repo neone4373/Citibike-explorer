@@ -6,9 +6,11 @@ var layMap = (function(){
     }
 
 var theMap = {
-        viewLong:40.728,
+        viewLong:40.724,
         viewLat:-73.988
   };
+
+
 
 L.mapbox.accessToken = 'pk.eyJ1IjoicGV0dWxsYSIsImEiOiJwS2NQbHM0In0.H4_dRGQiQAyFKoxcbc9x1g';
 
@@ -63,7 +65,7 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
             .data(series)
             .enter()
             .append("path")
-            .attr("class", "lineConnect")
+            .attr("class", "lineConnect");
            
         map.on("viewreset", reset);
 

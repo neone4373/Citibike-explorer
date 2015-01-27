@@ -7,13 +7,12 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="./style/style.css">
 
-<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
 
+<script src='//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
 <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.11/crossfilter.min.js"></script>
 <script src="./scripts/d3.3.3.js"></script>
-<!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
- <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
 <style>
 
@@ -27,64 +26,66 @@
   </div>
   <div id="interactive">
   	<div id="interactiveTop">
-	  	<div id="Info" class="card">
-	  		<div id="mins">
+	  	<div id="info" class="card">
+	  		<div id="mins">Ride time avg
 	  			<div id="minsSpent">0.0</div>
-	  		ride time average
 	  		</div>
-		  	<div id="years">
+		  	<div id="years">Rider age avg
 		  			<div id="yearsOld">0.0</div>
-		  		rider age average
+		  		
 		  	</div>
-			  <div id="boroughRatio">
+			  <div id="boroughRatio">Manhattan to Brooklyn
+		  			<div id="boroughTo">
 			  			<div id="manTo">0</div> : 
 							<div id="brookTo">1</div>
-							Manhattan to Brooklyn
+						</div>
 			  </div>
-			  <div id="boroughPie" class="donutchart"></div>
-			  <div id="genderRatio">
+			  <div id="genderRatio">Men to women
+			  		<div id="genderTo">
 			  			<div id="menTo">0</div> : 
 							<div id="womenTo">1</div>
-							Men to women
+						</div>
 		  	</div>
-		  	<div id="genderPie" class="donutchart">
-		  	</div>
-		  	<div class="activeR">
-			  	<div id="active">0</div>
-			  	&nbsp selected of 
-			  	<div id="total"></div>
+		
+		  	<div class="activeR">Selected (of 35,244)
+		  		<div id="selectedTo">
+				  	<div id="active">0</div>
+			  	</div>
 		  	</div>
 	  	</div>
 
-	  	<div id="map" class="card">
-	  		<div id="mapSpace"></div>
-	  	</div>
-		<div id="rightInfoC">
-	  	<div id="rightInfo" class="card">
-			  <div id="bottomCharts">
-					<div class="cChart display">
-						<div class="title">Time spent on bike &nbsp</div><div class="resettitle"></div>
-					</div>
-					<div class="cChart display">
-						<div class="title">Ride direction &nbsp</div><div class="resettitle"></div>
-					</div>
-					<div class="cChart display">
-						<div class="title">Rider age &nbsp</div><div class="resettitle"></div>
-					</div>
-				</div>
-	  	</div>
-
-	  	<div id="interactiveBottomR" class="card">
+	  	<div id="infoTopR" class="card">
 					<div id="checkFilters">
-					  <div class="title filterTitle"><img src="filter.png" class="filterImg"> Filtering</div><br>
-				  		<input type="checkbox" class="checkbox" cat="gender" id="womenSelect" name=2 checked data-val="1">Women<br>
-				  		<input type="checkbox" class="checkbox" cat="gender" id="menSelect" name=1 checked data-val="1">Men<br>
-							<br>
-				  		<input type="checkbox" class="checkbox" id="manSelect" name="Manhattan" checked data-val="1">Manhattan<br>
-				  		<input type="checkbox" class="checkbox" id="brookSelect" name="Brooklyn" checked data-val="1">Brooklyn<br>
+					  <div class="title filterTitle"><img src="filter.png" class="filterImg"> Filter</div>
+				  		<div class="checks">
+					  		<input type="checkbox" class="checkbox" cat="gender" id="womenSelect" name=2 checked data-val="1">Women<br>
+					  		<input type="checkbox" class="checkbox" cat="gender" id="menSelect" name=1 checked data-val="1">Men
+					  		</div>
+				  		<div class="checks">
+					  		<input type="checkbox" class="checkbox" id="manSelect" name="Manhattan" checked data-val="1">Manhattan<br>
+					  		<input type="checkbox" class="checkbox" id="brookSelect" name="Brooklyn" checked data-val="1">Brooklyn
+				  		</div>
 				  </div>
 	  	</div>
-	  </div>
+
+  	<div id="map" class="card">
+  		<div id="mapSpace"></div>
+  	</div>
+
+  	<div id="rightInfo" class="card">
+		  <div id="bottomCharts">
+				<div class="cChart display">
+					<div class="title">Ride duration &nbsp</div><div class="resettitle"></div>
+				</div>
+				<div class="cChart display">
+					<div class="title">Ride direction &nbsp</div><div class="resettitle"></div>
+				</div>
+				<div class="cChart display">
+					<div class="title">Rider age &nbsp</div><div class="resettitle"></div>
+				</div>
+			</div>
+  	</div>
+
   	<div id="interactiveBottom" class="card">
 			<div id="topCharts">
 				<div id="hour-chart" class="chart">
