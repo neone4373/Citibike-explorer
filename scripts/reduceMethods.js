@@ -19,13 +19,13 @@
 			    };
 			}
 			function reduceAddDuration(p, v) {
-			    p.total += v['tripduration'];
+			    p.total += v['timeonbike'];
 			    p.count++;
 			    p.average = p.total / p.count;
 			    return p;
 			}
 			function reduceRemoveDuration(p, v) {
-			    p.total -= v['tripduration'];
+			    p.total -= v['timeonbike'];
 			    p.count--;
 			    p.average = p.total / p.count;
 			    return p;
@@ -74,13 +74,13 @@
 			    };
 			}
 			function reduceAddAge(p, v) {
-			    p.total += v['age'];
+			    p.total += v['ageonbike'];
 			    p.count++;
 			    p.average = p.total / p.count;
 			    return p;
 			}
 			function reduceRemoveAge(p, v) {
-			    p.total -= v['age'];
+			    p.total -= v['ageonbike'];
 			    p.count--;
 			    p.average = p.total / p.count;
 			    return p;

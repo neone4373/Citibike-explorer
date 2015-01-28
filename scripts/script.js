@@ -1,12 +1,13 @@
-//data processing: capture brooklyn value?; 
-//duration/age limits;
 
-//2. add the direction category/radial
-//group ages by 5
-//group time of day by 5
-//fix the classes of the table areas
-//add index
 
+
+//add the direction category/radial
+//bk values
+//intro text
+//loading thing
+
+
+//post:
 //grunt uncss
 //grunt minify
 //bower
@@ -26,11 +27,12 @@
 		ready: function (error, data){
 
 			data.forEach(function(t, i){
-				t['timeonbike'] = +t['tripduration'];
-				t['ageonbike'] = +t['age'] - 15;
+				t['minuteonbike'] = +t['timeminutes'];
+				t['timeonbike'] = +t['tripdurationintervals'];
+				t['ageonbike'] = +t['ageintervals'] - 7;
 			});
 
-			data = data.filter(function(d){ return d.timeonbike != 180; });
+			//data = data.filter(function(d){ return d.timeonbike != 180; });
 
 			var formatNumber = d3.format(",d"),
       formatChange = d3.format("+,d");
@@ -39,7 +41,7 @@
 
 			data.forEach(function(d, i) {
 			  //d.index = i;
-			  d.tripduration = +d.tripduration;
+			  d.tripduration = 0;
 			  d.starttime = dateFormat.parse(d.starttime);
 			  d.stoptime = dateFormat.parse(d.stoptime);
 			  d['start station id'] = +d['start station id'];
@@ -49,42 +51,45 @@
 			  d['start station longitude'] = +d['start station longitude'];
 			  d['end station longitude'] = +d['end station longitude'];
 			  d.gender = +d.gender;
-			  d.age = +d.age;
+			  //console.log(d.ageonbike);
 			});
 
 			function formatTimeofDay(d) {
 				var m;
 		
-				if (d === 1440){
-					m = 120;
+				if (d === 288){
+					m = 24;
 				} 
 				else {
-					m = 60;
+					m = 12;
 				}
 
-			  if (d > 0 && d < 720 || d === 1440) {
+			  if (d > 0 && d < 144 || d === 288) {
 			  	return d/m + " a.m.";
 			  }
 			  else if (d === 0) {
 			  	return d + 12 + " a.m."
 			  }
-			  else if (d === 720) {
+			  else if (d === 144) {
 			  	return d/m + " p.m.";
 			  }
 				else {
-			  	return (d - 720)/m + " p.m.";
+			  	return (d - 144)/m + " p.m.";
 			  }
 			}
 
 
 			var rides = crossfilter(data),
 	      all = rides.groupAll(),
-	      /*startTime = rides.dimension(function(d) { return d.starttime; }),
-	      startTimes = startTime.group(d3.time.day),*/
-	      hour = rides.dimension(function(d) { 
+	     
+	     /* hour = rides.dimension(function(d) { 
 	      	return (d.starttime.getHours() * 60) + (d.starttime.getMinutes()); 
 	      }),
-	      hours = hour.group(function(d) { return Math.floor(d / 6.8)*6.8; });
+	      hours = hour.group(function(d) { return Math.floor(d / 6.8)*6.8; });*/
+
+	      hour = rides.dimension(function(d) { return d.minuteonbike; }),
+	     	hours = hour.group(),
+
 	      gender = rides.dimension(function(d) { return d.gender; }),
 	      genderCheck = rides.dimension(function(d) { return d.gender; }),
 				gendersAvg = gender.group().reduce(reduceAddGender, reduceRemoveGender, reduceInitialGender).all(),
@@ -95,20 +100,23 @@
 				}),
 				dimensionsAvg = dimensionStartStationEndLat.group().reduce(reduceAddLat, reduceRemoveLat, reduceInitialLat).all(),
 
+				/*
+				duration3 = rides.dimension(function(d) { return d.tripduration; }),
+				durations3 = duration3.group(),*/
+
 	      borough = rides.dimension(function(d) { return d.borough; }),
 	      boroughCheck = rides.dimension(function(d) { return d.borough; }),
 				boroughsAvg = borough.group().reduce(reduceAddBorough, reduceRemoveBorough, reduceInitialBorough).all(),
 
 	      duration = rides.dimension(function(d) { return d.timeonbike; }),
 	      durations = duration.group(),
-
 	      duration2 = rides.dimension(function(d) { return d.timeonbike; }),
 	      durationsAvg = duration2.groupAll().reduce(reduceAddDuration, reduceRemoveDuration, reduceInitialDuration).value(),
 	      
 	      age = rides.dimension(function(d) { return d.ageonbike; }),
 	      ages = age.group(),
 
-	      age2 = rides.dimension(function(d) { return d.age; }),
+	      age2 = rides.dimension(function(d) { return d.ageonbike; }),
 	      agesAvg = age2.groupAll().reduce(reduceAddAge, reduceRemoveAge, reduceInitialAge).value();
 
     	var format = d3.format(",.4f");
@@ -118,13 +126,13 @@
 		      .dimension(hour)
 		      .group(hours)
 		      .tickFormat(formatTimeofDay)
-		      .barwidth(2.75)
-		      .tickF([0,120,240,360,480,600,720,840,960,1080,1200,1320,1440,1560]
+		      .barwidth(1)
+		      .tickF([0,24,48,72,96,120,144,168,192,216,240,264,288]
     			)
     			.y(d3.scale.linear().range([80, 0]))
 		    	.x(d3.scale.linear()
-		      .domain([0,1440])
-		      .rangeRound([0, (1440*3)/5.1]))
+		      .domain([0,288])
+		      .rangeRound([0, 288*3]))
 		  ]
 
 			cCharts = [
@@ -192,7 +200,7 @@
 		  		return "0"
 		  	} 
 		  	else {
-		  		return Number(avg).toFixed(1);
+		  		return Number(avg*2).toFixed(1);
 		  	}
 		  }
 
@@ -202,7 +210,7 @@
 		  		return "0"
 		  	} 
 		  	else {
-		  		return Number(avg).toFixed(1);
+		  		return Number((avg + 7)*2).toFixed(1);
 		  	}
 		  }
 
@@ -306,7 +314,7 @@
 		start: function (){
 
 			queue()
-	    .defer(d3.csv,"./dataset/dataset.csv")
+	    .defer(d3.csv,"./dataset/dataset3.csv")
 	    .await(interactiveBuilder.ready);
 
 		}

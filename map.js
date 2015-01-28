@@ -10,8 +10,6 @@ var theMap = {
         viewLat:-73.988
   };
 
-
-
 L.mapbox.accessToken = 'pk.eyJ1IjoicGV0dWxsYSIsImEiOiJwS2NQbHM0In0.H4_dRGQiQAyFKoxcbc9x1g';
 
 var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13);

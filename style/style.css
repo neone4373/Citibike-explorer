@@ -75,7 +75,7 @@ body{
       -o-transform: rotate(-45deg);
      transform: rotate(-45deg);
   height: .5rem;
-  border-color: #009688;
+  border-color: #D81B60;
   border-top-style: none;
   border-right-style: none;
 }
@@ -217,7 +217,7 @@ body{
 }
 .title{
 	height:20px;
-	font-size:18px;
+	font-size:16px;
 	font-weight:700;
 	vertical-align:top;
 	display:inline-block;
@@ -255,22 +255,26 @@ svg {
   fill: #ccc;
 }
 .foreground.bar {
-  fill: #1529a3;
+  fill: #16ae3c;
 }
 .foreground.bar.duration{
 	stroke:#fff;
   stroke-width:1.5;
-  fill: #1529a3;
+  fill: #FFA000;
 }
 .foreground.bar.age{
   stroke:#fff;
   stroke-width:1.5;
   
-  fill: #1529a3;
+  fill: #FFA000;
 }
-.foreground.bar.z2 {
-  fill: #1529a3;
+.foreground.bar.direction{
+  stroke:#fff;
+  stroke-width:1.5;
+  
+  fill: #FBC02D;
 }
+
 .axis path, .axis line {
   fill: none;
   stroke: #000;
@@ -341,6 +345,6 @@ svg {
 stroke-linecap:butt;
 	stroke-width: 3.5px;
     fill: none;
-    stroke: #177fec;
+    stroke: #0288D1;
     opacity: .4;
 }

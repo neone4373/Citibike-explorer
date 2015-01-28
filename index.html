@@ -4,19 +4,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="./style/style.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
 
 <script src='//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
 <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.11/crossfilter.min.js"></script>
 <script src="./scripts/d3.3.3.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
 <style>
 
-@import url(//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.css);</style>
+/*@import url(//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.css);*/</style>
 </head>
 <body>
   <div id="topTitle" class="card">
@@ -27,10 +28,10 @@
   <div id="interactive">
   	<div id="interactiveTop">
 	  	<div id="info" class="card">
-	  		<div id="mins">Ride time avg
+	  		<div id="mins">Ride time avg (m)
 	  			<div id="minsSpent">0.0</div>
 	  		</div>
-		  	<div id="years">Rider age avg
+		  	<div id="years">Rider age avg (y)
 		  			<div id="yearsOld">0.0</div>
 		  		
 		  	</div>
@@ -89,7 +90,7 @@
   	<div id="interactiveBottom" class="card">
 			<div id="topCharts">
 				<div id="hour-chart" class="chart">
-				  <div class="title titlestarted">Time when started riding &nbsp&nbsp</div>
+				  <div class="title titlestarted">Time a ride started &nbsp&nbsp</div>
 				</div>
 		  </div>
   	</div>
