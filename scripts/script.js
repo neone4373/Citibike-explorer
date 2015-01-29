@@ -2,7 +2,8 @@
 
 //intro text
 //loading thing
-
+//clean data file
+//desktop only
 
 //post:
 //grunt uncss
@@ -29,9 +30,6 @@
 				t['ageonbike'] = +t['ageintervals'] - 7;
 				t['degrees'] = +t['degrees'];
 			});
-
-			//data = data.filter(function(d){ return d.timeonbike != 180; });
-
 			var formatNumber = d3.format(",d"),
       formatChange = d3.format("+,d");
 
@@ -75,11 +73,6 @@
 			var rides = crossfilter(data),
 	      all = rides.groupAll(),
 	     
-	     /* hour = rides.dimension(function(d) { 
-	      	return (d.starttime.getHours() * 60) + (d.starttime.getMinutes()); 
-	      }),
-	      hours = hour.group(function(d) { return Math.floor(d / 6.8)*6.8; });*/
-
 	      hour = rides.dimension(function(d) { return d.minuteonbike; }),
 	     	hours = hour.group(),
 
@@ -89,7 +82,6 @@
 
 				dimensionStartStationEndLat = rides.dimension(function (d) {
 					return +d['start station id'];
-				  //return +d['end station latitude']+','+d['start station id'];
 				}),
 				dimensionsAvg = dimensionStartStationEndLat.group().reduce(reduceAddLat, reduceRemoveLat, reduceInitialLat).all(),
 
@@ -227,8 +219,6 @@
 		    d3.select("#yearsOld").text(ageAv(agesAvg));
 		    d3.select("#manTo").text(boroughRatio(boroughsAvg))
 
-		    /*circleGender.change();
-		    circleBorough.change();*/
 
 		    layMap.drawMap(dimensionsAvg);
 		  }
@@ -236,11 +226,7 @@
 			window.filter = function(filters) {
 		    filters.forEach(function(d, i) { charts[i].filter(d); });
 		    renderAll();
-		  };/*
-		  window.reset = function(i) {
-		    charts[i].filter(null);
-		    renderAll();
-		  };*/
+		  };
 
 		  window.breset = function(i){
 				charts[i].filter(null);
@@ -301,7 +287,6 @@
 	    	});
 			})()
 
-			//return ;
 			return ;
 		},
 		start: function (){

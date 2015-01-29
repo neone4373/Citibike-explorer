@@ -75,7 +75,7 @@ body{
       -o-transform: rotate(-45deg);
      transform: rotate(-45deg);
   height: .5rem;
-  border-color: #C51162;
+  border-color: #00BFA5;
   border-top-style: none;
   border-right-style: none;
 }
@@ -195,6 +195,7 @@ body{
 
 #hour-chart{
 	display:inline-block;
+	width:-webkit-calc(100% - 200px);
 	width:calc(100% - 200px);
 	text-align:left;
 }
