@@ -81,7 +81,7 @@ function circleChart() {
         .attr("d", arcGen)
             .attr("class", "foreground bar " + chartName + "");
 
-      div.select(".reset").style("background-color", brush.empty() ? "#e2e2e2" : "#F2B50F");
+      div.select(".reset").style("background-color", brush.empty() ? "#e2e2e2" : "#FDD835");
       div.select(".resettitle a").attr("href", brush.empty() ? null : "javascript:creset(" + id + ")")
 
       if (brushDirty){

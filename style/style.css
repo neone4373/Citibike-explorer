@@ -1,5 +1,5 @@
 body{
-	background-color:#d0d0d0;
+	background-color:#ededed;
 	text-align:center;
 }
 #topTitle{
@@ -34,8 +34,8 @@ body{
 	margin-bottom:8px;
 	font-size:16px !important;
 	font-weight:700;
-	margin-right:5px;
-	margin-left:20px;
+	margin-right: 5px;
+	margin-left: 10px;
 }
 .filterImg{
 	height:20px;
@@ -75,7 +75,7 @@ body{
       -o-transform: rotate(-45deg);
      transform: rotate(-45deg);
   height: .5rem;
-  border-color: #D81B60;
+  border-color: #C51162;
   border-top-style: none;
   border-right-style: none;
 }
@@ -195,7 +195,7 @@ body{
 
 #hour-chart{
 	display:inline-block;
-	width:100%;
+	width:calc(100% - 200px);
 	text-align:left;
 }
 
@@ -213,7 +213,8 @@ body{
 	font-size:40px;
 }
 .titlestarted{
-	margin-left:40px;
+	margin-left:20px;
+	display:inline-block;
 }
 .title{
 	height:20px;
@@ -242,6 +243,7 @@ body{
       -webkit-border-radius: 2px;
               border-radius: 2px;
       font-size: 0.7em;
+      font-weight:700;
       text-align:center;
       color: #fff;
       -webkit-box-shadow: 0 .5px .5px 0 rgba(0, 0, 0, 0.15);
@@ -255,33 +257,32 @@ svg {
   fill: #ccc;
 }
 .foreground.bar {
-  fill: #16ae3c;
+  fill: #FBC02D;
 }
 .foreground.bar.duration{
 	stroke:#fff;
   stroke-width:1.5;
-  fill: #FFA000;
+  fill: #00ACC1;
 }
 .foreground.bar.age{
   stroke:#fff;
   stroke-width:1.5;
-  
-  fill: #FFA000;
+  fill: #00ACC1;
 }
 .foreground.bar.direction{
   stroke:#fff;
+  fill:#00ACC1;
   stroke-width:1.5;
-  
-  fill: #FBC02D;
 }
 
 .axis path, .axis line {
   fill: none;
-  stroke: #000;
+  stroke: #333;
   shape-rendering: crispEdges;
 }
 .axis text {
   font: 9px Open Sans;
+  fill:#333;
 }
 .brush rect.extent {
   fill: steelblue;
@@ -345,6 +346,6 @@ svg {
 stroke-linecap:butt;
 	stroke-width: 3.5px;
     fill: none;
-    stroke: #0288D1;
-    opacity: .4;
+    stroke: #DD2C00;
+    opacity: .25;
 }

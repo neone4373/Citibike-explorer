@@ -1,8 +1,5 @@
 
 
-
-//add the direction category/radial
-//bk values
 //intro text
 //loading thing
 
@@ -30,6 +27,7 @@
 				t['minuteonbike'] = +t['timeminutes'];
 				t['timeonbike'] = +t['tripdurationintervals'];
 				t['ageonbike'] = +t['ageintervals'] - 7;
+				t['degrees'] = +t['degrees'];
 			});
 
 			//data = data.filter(function(d){ return d.timeonbike != 180; });
@@ -40,10 +38,6 @@
 			var dateFormat = d3.time.format("%Y-%m-%d %X");
 
 			data.forEach(function(d, i) {
-			  //d.index = i;
-			  d.tripduration = 0;
-			  d.starttime = dateFormat.parse(d.starttime);
-			  d.stoptime = dateFormat.parse(d.stoptime);
 			  d['start station id'] = +d['start station id'];
 			  d['end station id'] = +d['end station id'];
 			  d['start station latitude'] = +d['start station latitude'];
@@ -51,7 +45,6 @@
 			  d['start station longitude'] = +d['start station longitude'];
 			  d['end station longitude'] = +d['end station longitude'];
 			  d.gender = +d.gender;
-			  //console.log(d.ageonbike);
 			});
 
 			function formatTimeofDay(d) {
@@ -100,9 +93,9 @@
 				}),
 				dimensionsAvg = dimensionStartStationEndLat.group().reduce(reduceAddLat, reduceRemoveLat, reduceInitialLat).all(),
 
-				/*
-				duration3 = rides.dimension(function(d) { return d.tripduration; }),
-				durations3 = duration3.group(),*/
+				
+				degree = rides.dimension(function(d) { return d.degrees; }),
+				degrees = degree.group(),
 
 	      borough = rides.dimension(function(d) { return d.borough; }),
 	      boroughCheck = rides.dimension(function(d) { return d.borough; }),
@@ -126,7 +119,7 @@
 		      .dimension(hour)
 		      .group(hours)
 		      .tickFormat(formatTimeofDay)
-		      .barwidth(1)
+		      .barwidth(2)
 		      .tickF([0,24,48,72,96,120,144,168,192,216,240,264,288]
     			)
     			.y(d3.scale.linear().range([80, 0]))
@@ -144,16 +137,16 @@
 
 
 				circleChart()
-					.dimension(age)
-					.group(ages)
-					.chartName('age')
+					.dimension(degree)
+					.group(degrees)
+					.chartName('direction')
 					.label(['N', 'E','S', 'W']),
 
 				circleChart()
 					.dimension(age)
 					.group(ages)
 					.chartName('age')
-					.label(['16y', '32y','48y', '64y'])
+					.label(['15y', '30y','45y', '60y'])
 			]
 
 		  var chartz = d3.selectAll(".chart")
@@ -314,7 +307,7 @@
 		start: function (){
 
 			queue()
-	    .defer(d3.csv,"./dataset/dataset3.csv")
+	    .defer(d3.csv,"./dataset/dataset4.csv")
 	    .await(interactiveBuilder.ready);
 
 		}
