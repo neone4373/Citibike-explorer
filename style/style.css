@@ -1,6 +1,11 @@
 body{
-	background-color:#ededed;
+	background-color:#e9e9e9;
 	text-align:center;
+}
+.bodyText{
+	width:80%;
+	margin:auto;
+	text-align:left;
 }
 #topTitle{
 	height:200px;
@@ -32,10 +37,11 @@ body{
 
 .filterTitle{
 	margin-bottom:8px;
-	font-size:16px !important;
+	font-size:17px !important;
 	font-weight:700;
 	margin-right: 5px;
 	margin-left: 10px;
+	font-family: 'Raleway', sans-serif;
 }
 .filterImg{
 	height:20px;
@@ -127,24 +133,30 @@ body{
 	vertical-align:top;
 	display:inline-block;
 	width:19%;
-	font-size:10px;
+	font-size:11px;
 	color:#888;
+	
+	font-family: 'Open Sans Condensed', sans-serif;
 }
 #genderRatio,#boroughRatio{
 	vertical-align:top;
 	display:inline-block;
 	text-align:center;
 	width:19%;
-	font-size:10px;
+	font-size:11px;
 		color:#888;
+		
+	font-family: 'Open Sans Condensed', sans-serif;
 }
 .activeR{
 	vertical-align:top;
 	display:inline-block;
 	text-align:center;
 	width:19%;
-	font-size:10px;
+	font-size:11px;
 		color:#888;
+		
+	font-family: 'Open Sans Condensed', sans-serif;
 }
 
 
@@ -155,7 +167,7 @@ body{
 	font-size:18px;
 	display:inline-block;
 			color:#333;
-	
+			font-family: 'Open Sans', sans-serif;
 }
 
 #minsSpent,#yearsOld{
@@ -164,18 +176,21 @@ body{
 	font-size:18px;
 	margin-top:3px;
 			color:#333;
+			font-family: 'Open Sans', sans-serif;
 }
 #boroughTo,#genderTo,#selectedTo{
 	margin-top:3px;
 	text-align:center;
 	display:block;
 			color:#333;
+			font-family: 'Open Sans', sans-serif;
 
 }
 
 #active{
 	width:60px;
 	text-align:right;
+	font-family: 'Open Sans', sans-serif;
 	}
 
 /*  */
@@ -212,6 +227,7 @@ body{
 
 .pagetitle{
 	font-size:40px;
+	font-weight:200;
 }
 .titlestarted{
 	margin-left:20px;
@@ -219,10 +235,11 @@ body{
 }
 .title{
 	height:20px;
-	font-size:16px;
+	font-size:17px;
 	font-weight:700;
 	vertical-align:top;
 	display:inline-block;
+	font-family: 'Raleway', sans-serif;
 }
 .resettitle{
 	vertical-align:top;
@@ -237,10 +254,10 @@ body{
       display: inline-block;
       position: relative;
       width: 50px;
-      margin-top:5px;
+      margin-top:3px;
       vertical-align:top;
       height: 12px;
-      line-height: 4px;
+      line-height: 6px;
       -webkit-border-radius: 2px;
               border-radius: 2px;
       font-size: 0.7em;
@@ -347,6 +364,6 @@ svg {
 stroke-linecap:butt;
 	stroke-width: 3.5px;
     fill: none;
-    stroke: #DD2C00;
+    stroke: #AD1457;
     opacity: .25;
 }
