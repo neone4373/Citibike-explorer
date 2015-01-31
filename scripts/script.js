@@ -1,9 +1,10 @@
 
 
 //intro text
+//github icon
 //loading thing
 //clean data file
-//desktop only
+//desktop only/dynamic sizing
 
 //post:
 //grunt uncss
@@ -285,6 +286,14 @@
 	        var z = checkedId.attr('cat');
 	        return checkFilters(z);
 	    	});
+
+	    	$(document).on('click','.scrolltest', function(event) {
+				    event.preventDefault();
+				    var target = "#interactive";
+				    $('html, body').animate({
+				        scrollTop: $(target).offset().top
+				    }, 300);
+				});
 			})()
 
 			return ;
