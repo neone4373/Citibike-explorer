@@ -1,31 +1,30 @@
-//intro text
-//loading thing
-//clean data file
-//write github text
 //heroku
+
+//intro text
+//write github text
 
 //post:
 //grunt uncss
 //grunt minify
-//bower
+
 // any other grunt tasks
 // host open sans locally
-//modernizr
+
 //jslint/hint
 
 
 //email folks!
 
 
-
-
 (function z(){
 	interactiveBuilder = {
 		data:'',
-		domHandlers: (function() {
-			console.log('test');
-		})(),
 		ready: function (error, data){
+
+			$("#preloader").remove();
+			$("#scroller").show();
+			$("#interactive").show();
+			$("#topTitle").show();
 
 			data.forEach(function(t, i){
 				t['minuteonbike'] = +t['timeminutes'];
@@ -152,7 +151,6 @@
 					.data(cCharts)
 					.each(function(chart){ chart.on("brush", renderAll).on("brushend", renderAll) });
 		  
-		  // Render the total.
 		  d3.selectAll("#total")
 		    .text(formatNumber(rides.size()));
 
@@ -202,12 +200,16 @@
 		  	}
 		  }
 
-			var startMap = (function () {
-		  renderAll();
-			})()
-		  // Renders the specified chart or list.
+		  $.ajax({
+			  url: "./../map.js",
+			  dataType: "script",
+			  success:startMap
+			});
+
+			function startMap() {
+			  renderAll();
+			}
 		  function render(method) {
-		  	
 		    d3.select(this).call(method);
 		  }
 
@@ -221,7 +223,6 @@
 		    d3.select("#minsSpent").text(durationAv(durationsAvg));
 		    d3.select("#yearsOld").text(ageAv(agesAvg));
 		    d3.select("#manTo").text(boroughRatio(boroughsAvg))
-
 
 		    layMap.drawMap(dimensionsAvg);
 		  }
