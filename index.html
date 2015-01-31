@@ -24,11 +24,14 @@
 </head>
 <body>
   <div id="topTitle" class="card">
-  	<span class="pagetitle">Citibike Dashboard</span><br>
-  	<div class="bodyText"><br>The Citibike dashboard is a general-purpose visualization dashboard setup to display rides on New York City's public bikeshare system. <br><br>The dashboard has three main parts, using data made freely available on the Citibike website.<br><br>First, outputs on top, representing .<br><br>Second,<br><br>Last, a map representing.<br><br>The dashboard is made in such a way that you could use all three</div>
-  	<div id="noteText">Note: data</div>
+  	<span class="pagetitle">Citibike Dashboard &nbsp;<img src="./intro/citi-bike.png" style="height:40px; width:auto; vertical-align:middle;"></span><br>
+  	<div class="bodyText">
+  		<br>The Citibike dashboard is a general-purpose visualization dashboard setup to display rides on New York City's public bikeshare system. The current data visualization shows the rides for July 17, 2014, the busiest day for rides of the system to date.<br><br>The dashboard has three main parts, using data made freely available on the Citibike website.<br><br>First, outputs on top, representing .<br><br>Second,<br><br>Last, a map representing.<br><br>The dashboard is made in such a way that you could use all three.<br>
+  		<br>While the dashboard is setup to display bike path data, it can be used for any spatial-path data where multiple factors contribute to direction.
+  	</div>
+  	<div id="noteText">Note on data source and analysis: The Citibike dataset is a heavily-tailed distribution. To create the interactive experience, only rides taken for less than 1 hour are included. The dataset also shows the (unlikeley) presence of several riders over 100 years old. Because these tail values are likely inaccurate, only riders under 80 years-old are included. A full repo, including IPython notebooks, is available on Github <a href="https://github.com/petulla/multimonthd3map"><img src="./intro/github_64_black.png" style="height:13px; width:auto;"></a>. Citibike dataset available from <a href="http://www.citibikenyc.com/system-data">Citibikenyc.</a></div>
   </div>
-  <div id="scroller"><span class="scrolltest"><i><a href="#test">Ready? Start exploring<br/><img src="./intro/bike.png" style="width:80px; height:auto; margin-top:8px;"><br/><img src="./intro/arrow.png" style="height:30px; width:auto;"></i></a></span>
+  <div id="scroller"><span class="scrolltest"><i><a href="#">Explore<br/><img src="./intro/arrow.png" style="height:30px; width:auto;"></i></a></span>
   </div>
   <div id="interactive">
   	<div id="interactiveTop">
@@ -74,23 +77,24 @@
 				  </div>
 	  	</div>
 
-  	<div id="map" class="card">
-  		<div id="mapSpace"></div>
-  	</div>
+	  	<div id="map" class="card">
+	  		<div id="mapSpace"></div>
+	  	</div>
 
-  	<div id="rightInfo" class="card">
-		  <div id="bottomCharts">
-				<div class="cChart display">
-					<div class="title">&nbspRide duration&nbsp&nbsp</div><div class="resettitle"></div>
+	  	<div id="rightInfo" class="card">
+			  <div id="bottomCharts">
+					<div class="cChart display">
+						<div class="title">&nbspRide duration&nbsp&nbsp</div><div class="resettitle"></div>
+					</div>
+					<div class="cChart display">
+						<div class="title">&nbspRide direction&nbsp&nbsp</div><div class="resettitle"></div>
+					</div>
+					<div class="cChart display">
+						<div class="title">&nbspRider age&nbsp&nbsp</div><div class="resettitle"></div>
+					</div>
 				</div>
-				<div class="cChart display">
-					<div class="title">&nbspRide direction&nbsp&nbsp</div><div class="resettitle"></div>
-				</div>
-				<div class="cChart display">
-					<div class="title">&nbspRider age&nbsp&nbsp</div><div class="resettitle"></div>
-				</div>
-			</div>
-  	</div>
+	  	</div>
+	  	</div>
 
   	<div id="interactiveBottom" class="card">
 			<div id="topCharts">
@@ -100,6 +104,7 @@
 		  </div>
   	</div>
   </div>
+  <div class="github"><br><a href="https://github.com/petulla/multimonthd3map"><img src="./intro/github_64_black.png" style="height:30px; width:auto;"></a></div>
 
 <script src="./scripts/donuts.js"></script>
 <script src="./scripts/reduceMethods.js"></script>
@@ -110,7 +115,24 @@
   <script>
 $(document).ready(function(){
 
-	interactiveBuilder.start() || {};
+	$(document).on('click','.scrolltest', function(event) {
+	    event.preventDefault();
+	    var target = "#interactive";
+	    $('html, body').animate({
+	        scrollTop: $(target).offset().top
+	    }, 300);
+	});
+
+	if ($(window).width() > 1023) {
+
+		interactiveBuilder.start() || {};
+
+	}
+	else{
+		$('#interactive').empty()
+		$('#interactive').append('<div class=\"smallViewport\">Becuase of the detail and interactivity in the Citibike data explorer, for now the experience is large-sized tablets and desktop resolutions above 1024px only. </div>')
+	}
+
 });
 </script>
 </body>

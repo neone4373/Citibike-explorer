@@ -1,16 +1,165 @@
-body{
+
+@media (max-width: 1050px) {
+
+	#interactiveBottom {
+		width: 95%;
+	}
+
+	#interactiveTop{
+		margin:auto;
+		width:calc(95% + 20px);
+	}
+
+	#info{
+		width: calc(96% - 296px);
+	}
+	#map{
+		width: calc(100% - 261px);
+	}
+
+}
+
+@media (min-width: 1051px) {
+
+	#map{
+		width:calc(95% - 240px);
+	}
+	#interactiveBottom {
+		width: 85.5%;
+	}
+
+	#interactiveTop{
+		padding-left:5%;
+		padding-right:5%;
+		width:90%;
+	}
+	#info{
+		width:calc(95% - 316px);
+	}
+
+}
+
+ @media (max-height: 749px) {
+
+	#info{
+		padding:1px;
+		height: 36px;
+	}
+	#infoTopR{
+		padding:1px;
+		height: 36px;
+	}
+	#rightInfo {
+		padding-top:1px;
+		padding-bottom:1px;
+		height: 506px;
+	}
+	#map{
+		height: 504px;
+	}
+	#interactiveBottom{
+		padding: 1px;
+	}
+	.checkbox{
+  	margin-bottom:2px;
+	}
+
+	.checkbox:before {
+	  width: .8rem;
+	  height: .8rem;
+  }
+	.checkbox:checked:before{
+		 height: .4rem;
+	}
+
+	.checkbox:after {
+	  width: .9rem;
+	  height: .9rem;
+	}
+
+	#boroughTo,#genderTo,#selectedTo,#minsSpent,#yearsOld{
+		margin-top:0px;
+	}
+
+
+}
+
+
+@media (max-height: 749px) and (max-width: 1050px) {
+	#info{
+		width: calc(96% - 270px);
+	}
+	#interactiveBottom{
+		width: calc(95% + 16px);
+	}
+
+}
+
+@media (max-height: 749px) and (min-width: 1051px) {
+	#info{
+		width: calc(96% - 296px);
+	}
+	#interactiveBottom{
+		width: calc(85.5% + 16px);
+	}
+
+}
+
+@media (min-height: 750px) {
+	.checkbox{
+  	margin-bottom:5px;
+	}
+	.checkbox:before {
+	  width: 1rem;
+	  height: 1rem;
+  }
+	.checkbox:checked:before{
+		 height: .5rem;
+	}
+
+	.checkbox:after {
+	  width: 1.1rem;
+	  height: 1.1rem;
+	}
+	#info{
+		padding:10px;
+		padding-top:13px;
+	}
+	#infoTopR{
+		padding:8px;
+		padding-top:11px;
+	}
+	#rightInfo {
+		padding-top:8px;
+		padding-bottom:8px;
+		height:538px;
+	}
+	#map{
+		height:550px;
+	}
+	#interactiveBottom{
+		padding: 10px;
+	}
+	#boroughTo,#genderTo,#selectedTo,#minsSpent,#yearsOld{
+		margin-top:3px;
+	}
+
+}
+
+
+    body{
 	background-color:#f3f3f3;
 	text-align:center;
 }
 .bodyText,#noteText{
-	width:80%;
+	width:75%;
 	margin:auto;
 	text-align:left;
 }
 #topTitle{
 	padding-top:30px;
 	height:auto;
-	width:1168px;
+	width:90%;
 	text-align:center;
 	margin:auto;
 	margin-bottom:50px;
@@ -22,21 +171,14 @@ body{
 }
 
 #info{
-	width:800px;
 	margin:auto;
 	margin-bottom:4px;
 	vertical-align:top;
-	height:45px;
 	display:inline-block;
-	padding:8px;
-	padding-top:13px;
 }
 
 #infoTopR{
 	width:300px;
-	height:48px;
-	padding:8px;
-	padding-top:10px;
 	display: inline-block;
 	margin-bottom:4px;
 }
@@ -87,7 +229,6 @@ a:visited{
   top: -0.375rem;
   margin-left:10px;
   margin-right:16px;
-  margin-bottom:5px;
   cursor: pointer;
 }
 .checkbox:before {
@@ -98,8 +239,6 @@ a:visited{
   position: absolute;
   left: 0;
   z-index: 1;
-  width: 1rem;
-  height: 1rem;
   border: 2px solid #f2f2f2;
 }
 .checkbox:checked:before {
@@ -107,7 +246,6 @@ a:visited{
   -ms-transform: rotate(-45deg);
       -o-transform: rotate(-45deg);
      transform: rotate(-45deg);
-  height: .5rem;
   border-color: #00BFA5;
   border-top-style: none;
   border-right-style: none;
@@ -117,18 +255,13 @@ a:visited{
   position: absolute;
   top: -0.125rem;
   left: 0;
-  width: 1.1rem;
-  height: 1.1rem;
   background: #fff;
   cursor: pointer;
 }
 
 #map{
-	width:870px;
-	height:550px;
 	display:inline-block;
 	padding: 2px !important;
-	margin-right:1px;
 }
 #mapSpace{
 	width:100%;
@@ -137,9 +270,9 @@ a:visited{
 }
 
 #rightInfo{
-	padding:8px;
+	padding-left: 9px;
+	padding-right:4px;
 	width:240px;
-	height:538px;
 	display:inline-block;
 	vertical-align:top;
 	text-align:center;
@@ -149,7 +282,12 @@ a:visited{
 #checkFilters{
 	display: inline-block;
 	line-height:20px;
-	font-size:13px;
+	font-size: 12px;
+}
+.github{
+	width:100%;
+	height:100%;
+	text-align:center;
 }
 
 
@@ -160,6 +298,7 @@ a:visited{
 	vertical-align:top;
 	display:inline-block;
 	width:19%;
+	font-weight:300;
 	font-size:10px;
 	color:#888;
 	font-weight:300;
@@ -171,6 +310,7 @@ a:visited{
 	display:inline-block;
 	text-align:center;
 	width:19%;
+	font-weight:300;
 	font-size:10px;
 		color:#888;
 		
@@ -181,6 +321,7 @@ a:visited{
 	display:inline-block;
 	text-align:center;
 	width:19%;
+	font-weight:300;
 	font-size:10px;
 		color:#888;
 		
@@ -194,24 +335,23 @@ a:visited{
 	font-weight:700;
 	font-size:18px;
 	display:inline-block;
-			color:#333;
-			font-family: 'Open Sans', sans-serif;
+	color:#333;
+	font-family: 'Open Sans', sans-serif;
 }
 
 #minsSpent,#yearsOld{
 	display:block;
 	font-weight:700;
 	font-size:18px;
-	margin-top:3px;
-			color:#333;
-			font-family: 'Open Sans', sans-serif;
+	color:#333;
+	font-family: 'Open Sans', sans-serif;
 }
 #boroughTo,#genderTo,#selectedTo{
-	margin-top:3px;
+
 	text-align:center;
 	display:block;
-			color:#333;
-			font-family: 'Open Sans', sans-serif;
+	color:#333;
+	font-family: 'Open Sans', sans-serif;
 
 }
 
@@ -225,6 +365,7 @@ a:visited{
 
 #interactive{
 	margin:auto;
+	width: 100%;
 }
 
 #interactiveBottom{
@@ -232,14 +373,11 @@ a:visited{
 	margin-top:3px;
 	display: inline-block;
 	vertical-align:top;
-	padding:8px;
-	width:1120px;
 }
 
 #hour-chart{
 	display:inline-block;
-	width:-webkit-calc(100% - 200px);
-	width:calc(100% - 200px);
+	margin:auto;
 	text-align:left;
 }
 
@@ -254,7 +392,7 @@ a:visited{
 }
 
 .pagetitle{
-	font-size:44px;
+	font-size:46px;
 	font-weight:300;
 	
 	font-family: 'Raleway', sans-serif;
@@ -395,5 +533,14 @@ stroke-linecap:butt;
 	stroke-width: 3.5px;
     fill: none;
     stroke: #AD1457;
-    opacity: .25;
+    opacity: .2;
+}
+
+.smallViewport{
+font-size:18px;
+font-family: 'Open Sans', sans-serif;
+height:400px;
+vertical-align:middle;
+padding:20%;
+	
 }

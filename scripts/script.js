@@ -1,10 +1,8 @@
-
-
 //intro text
-//github icon
 //loading thing
 //clean data file
-//desktop only/dynamic sizing
+//write github text
+//heroku
 
 //post:
 //grunt uncss
@@ -16,13 +14,17 @@
 //jslint/hint
 
 
+//email folks!
+
+
 
 
 (function z(){
 	interactiveBuilder = {
 		data:'',
-		domHandlers: function() {
-		},
+		domHandlers: (function() {
+			console.log('test');
+		})(),
 		ready: function (error, data){
 
 			data.forEach(function(t, i){
@@ -287,13 +289,7 @@
 	        return checkFilters(z);
 	    	});
 
-	    	$(document).on('click','.scrolltest', function(event) {
-				    event.preventDefault();
-				    var target = "#interactive";
-				    $('html, body').animate({
-				        scrollTop: $(target).offset().top
-				    }, 300);
-				});
+	    	
 			})()
 
 			return ;
