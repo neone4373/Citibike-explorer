@@ -123,16 +123,16 @@ $(document).ready(function(){
 	    }, 300);
 	});
 
+	var winHeight = $(window).height();
+	$("#scroller").css("margin-bottom", winHeight + "px");
+
 	if ($(window).width() > 1023) {
-
 		interactiveBuilder.start() || {};
-
 	}
 	else{
 		$('#interactive').empty()
 		$('#interactive').append('<div class=\"smallViewport\">Becuase of the detail and interactivity in the Citibike data explorer, for now the experience is large-sized tablets and desktop resolutions above 1024px only. </div>')
 	}
-
 });
 </script>
 </body>
