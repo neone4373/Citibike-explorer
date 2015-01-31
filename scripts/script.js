@@ -1,4 +1,3 @@
-//heroku
 
 //intro text
 //write github text

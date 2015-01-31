@@ -146,8 +146,7 @@
 
 }
 
-
-    body{
+body{
 	background-color:#f3f3f3;
 	text-align:center;
 }
@@ -157,17 +156,28 @@
 	text-align:left;
 }
 #topTitle{
-	padding-top:30px;
+	padding-top: 60px;
 	height:auto;
 	width:90%;
 	display:none;
 	text-align:center;
 	margin:auto;
 	margin-bottom:50px;
-	padding-bottom:50px;
+	padding-bottom: 60px;
+}
+figure{
+	width:intrinsic;
+	margin:0;
+	display:inline-block;
+	vertical-align: top;
+}
+.imgs{
+	
+	margin-left:50px;
+width:40%;
 }
 #noteText{
-	margin-top:10px;
+	margin-top: 60px;
 	font-size:10px;	
 }
 
