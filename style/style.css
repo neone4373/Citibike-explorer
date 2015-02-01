@@ -532,7 +532,7 @@ svg {
     }
 .lineConnect {
 stroke-linecap:butt;
-	stroke-width: 3.5px;
+	stroke-width: 3px;
     fill: none;
     /*stroke: #EC407A;*/
     opacity: .5;
