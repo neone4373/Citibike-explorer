@@ -1,6 +1,7 @@
 
-//intro text
+
 //write github text
+//add to website (and other examples/update)
 
 //post:
 //grunt uncss
