@@ -1,4 +1,4 @@
-
+//thanks to Jason Davis/Mike Bostock for the crossfilter.js library and examples at  square.github.io/crossfilter/
 		  function barChart() {
 		    if (!barChart.id) barChart.id = 0;
 		    var margin = {top: 5, right: 20, bottom: 20, left: 18},

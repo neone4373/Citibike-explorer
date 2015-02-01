@@ -1,5 +1,4 @@
 "use strict";
-
 var layMap = (function(){
     function p(name) {
         return function(d){ return d[name]; };
@@ -7,8 +6,7 @@ var layMap = (function(){
 
 var theMap = {
         viewLong:40.724,
-        viewLat:-73.988
-  };
+        viewLat:-73.988 };
 
 L.mapbox.accessToken = 'pk.eyJ1IjoicGV0dWxsYSIsImEiOiJwS2NQbHM0In0.H4_dRGQiQAyFKoxcbc9x1g';
 
@@ -22,8 +20,6 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
     var g = svg.append("g").attr("class", "leaflet-zoom-hide");
 
     function drawMap(coordVals){
-
-
         if (typeof coordVals === 'undefined'){
             var series = [[{lo: -73.99517, lat:40.7229 }, {lo: -73.99517, lat:40.7229}]];
         }
@@ -36,7 +32,6 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
                 }
             }
 
-           
             if(series.length === 0){
                 series = [[{lo: -73.99517, lat:40.7229 }, {lo: -73.99517, lat:40.7229}]];
             }
@@ -63,7 +58,7 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
             .data(series)
             .enter()
             .append("path")
-            .attr("class", "lineConnect");
+            .attr("class", "lineConnect").attr("stroke","#27dff6");
            
         map.on("viewreset", reset);
 
@@ -112,7 +107,7 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
 
         function transition() {
             d3.select(this).transition()
-                .duration(700).attrTween("stroke-dasharray", tweenDash).attr("stroke",function(d){ console.log(colorScale(this.getTotalLength())); return colorScale(this.getTotalLength()); });
+                .duration(700).attrTween("stroke-dasharray", tweenDash).attr("stroke",function(d){ return colorScale(this.getTotalLength()); });
         }
     
          function tweenDash() {
@@ -128,9 +123,7 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
             var point = map.latLngToLayerPoint(new L.LatLng(y, x));
             this.stream.point(point.x, point.y);
         }
-
     }
-
     function applyLatLngToLayer(d) {
     
         var y = d.lat;

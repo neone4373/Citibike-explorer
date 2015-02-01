@@ -7,7 +7,4 @@ Citibike dataset explorer
 ### Modules
 
 
-### Thanks to
 
-
-### 

@@ -1,3 +1,5 @@
+//thanks to github.com/1wheel for some of the ideas for this code.
+
 function p(name){
   return function(d){ return d[name]; }
 }
