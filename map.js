@@ -67,6 +67,10 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
            
         map.on("viewreset", reset);
 
+           var colorScale = d3.scale.linear();
+        colorScale.range(['#27dff6', '#4A148C'])
+            .domain([0,300]);
+
         reset(); 
         linePath.each(transition);
 
@@ -108,7 +112,7 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
 
         function transition() {
             d3.select(this).transition()
-                .duration(700).attrTween("stroke-dasharray", tweenDash);
+                .duration(700).attrTween("stroke-dasharray", tweenDash).attr("stroke",function(d){ console.log(colorScale(this.getTotalLength())); return colorScale(this.getTotalLength()); });
         }
     
          function tweenDash() {

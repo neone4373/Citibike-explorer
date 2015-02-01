@@ -90,7 +90,7 @@ function circleChart() {
 
         //only works for reseting...
         if (brush.empty()){
-          g.selectAll('.bar').style('fill', '#03A9F4');
+          g.selectAll('.bar').style('fill', '#FF80AB');
         }
       }
     });
@@ -123,7 +123,7 @@ function circleChart() {
     }
     var extentD = extent.map(toPositiveRadian).map(toDegree);
 
-    g.selectAll(".bar").style('fill', function(d, i){ return isBetween(i) ? '#03A9F4' : '#ccc'; });
+    g.selectAll(".bar").style('fill', function(d, i){ return isBetween(i) ? '#FF80AB' : '#ccc'; });
     dimension.filterFunction(isBetween)
 
   });

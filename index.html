@@ -50,14 +50,15 @@ var winHeight = $(window).height();
 $("#preloader").css("height", winHeight + "px");
 </script>
   <div id="topTitle" class="card">
-  	<span class="pagetitle">Citibike Dashboard &nbsp;<img src="./intro/citi-bike.png" style="height:40px; width:auto; vertical-align:middle;"></span><br>
+  	<span class="pagetitle">Citibike Dashboard &nbsp;<img src="./intro/citi-bike.png" style="height:40px; width:auto; vertical-align:middle;"></span><br><br>
   	<div class="bodyText">
-  		<br>The Citibike dashboard is a general-purpose visualization dashboard setup to display rides on New York City's public bikeshare system. The current data visualization shows the rides for July 17, 2014, the busiest day for rides of the system to date.<br><br><br><br>The dashboard has three main parts, using data made freely available on the Citibike website.<br><br><br>
-  		First, outputs on top, showing computed values.<br><br><figure><img src="./intro/d.png" class="imgs"></figure><br><br>
-  		Second, brushes and checks that allow you to filter out and drill down to understand different types of riders and riding behavior.<br><br><figure><img src="./intro/e.png" class="imgs"></figure><br><br>
-  		Last, a map representing the average riding path of each Citibike station in New York City. The paths redraw as filtering and selecting occurs.<br><br><figure><img src="./intro/m.png" class="imgs"></figure><br><br><br><br>
+  		<br>The Citibike explorer is a general-purpose visualization dashboard setup to display rides on New York City's public bikeshare system. The visualization shows the rides for July 17, 2014, the busiest day of use to date.<br><br><br><br>The dashboard is meant to be explored and has three main parts.<br><br><br>
+  		<b>1.</b> Brushes and checks that allow you to filter and understand different types of riders and riding behavior.<br><br><span class="imgC"><img src="./intro/e.png" class="imgs"></span><span class="imgC"><img src="./intro/f.png" class="imgs"></span><br><br>
+
+  		<b>2.</b> Outputs on top, showing computed values.<br><br><span class="imgC"><img src="./intro/d.png" class="imgs2"></span><br><br>
+  		<b>3.</b> A map representing the average riding path of each Citibike station in New York City. The paths redraw as filtering occurs.<br><br><span class="imgC"><img src="./intro/m.png" class="imgs"></span><br><br><br><br>
   		The dashboard is made in such a way that you use all three features to understand riding behavior. For example, to select only riders who took southward trips, were between the ages of 15 and 40 and rode for between 0 and 30 minutes, you would use the two radials below and the previously shown radial above. The map will show the average paths for these riders from each Citibike station.<br>
-  		<br><figure><img src="./intro/s.png" class="imgs"></figure><figure><img src="./intro/a.png" class="imgs" style="margin-left:0px"></figure><br><br>While in its current setup the dashboard displays bike path data, it could easily be used for any path or indicator data mapping where multiple factors contribute to direction, such as wind, traffic or economic or political change maps. Find the project <a href="https://github.com/petulla/multimonthd3map">on Github.</a>
+  		<br><span class="imgC"><img src="./intro/s.png" class="imgs"></span><span class="imgC"><img src="./intro/a.png" class="imgs" style="margin-left:0px"></span><br><br><br>While in its current setup the dashboard displays bike path data, it could easily be used for any path or indicator data mapping where multiple factors contribute to direction, such as wind, traffic or economic or political change maps. Find the project <a href="https://github.com/petulla/multimonthd3map">on Github.</a>
   	</div>
   	<div id="noteText">Note on data sourcing and analysis: The Citibike dataset is a heavily-tailed distribution. To create the interactive experience, only rides taken for less than 1 hour are included. The raw dataset also shows the (unlikeley) presence of several riders over 100 years old. Because these tail values are likely inaccurate, only riders under 80 years-old are included. A full repo, including IPython notebooks, is available <a href="https://github.com/petulla/multimonthd3map">on Github <img src="./intro/github_64_black.png" style="height:13px; width:auto;"></a>. Citibike dataset available from <a href="http://www.citibikenyc.com/system-data">Citibikenyc.</a></div>
   </div>
@@ -159,7 +160,12 @@ $(document).ready(function(){
 		interactiveBuilder.start() || {};
 	}
 	else{
-		$('#interactive').empty()
+
+		$("#preloader").remove();
+		$('#topTitle').remove();
+		$('#scroller').remove();
+		$('#interactive').show();
+		$('#interactive').empty();
 		$('#interactive').append('<div class=\"smallViewport\">Becuase of the detail and interactivity in the Citibike data explorer, for now the experience is large-sized tablets and desktop resolutions above 1024px only. </div>')
 	}
 });

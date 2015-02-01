@@ -165,16 +165,15 @@ body{
 	margin-bottom:50px;
 	padding-bottom: 60px;
 }
-figure{
-	width:intrinsic;
-	margin:0;
+.imgC{
+	margin-left:30px;
 	display:inline-block;
 	vertical-align: top;
 }
-.imgs{
-	
-	margin-left:50px;
-width:40%;
+.imgs{width:200px;
+}
+.imgs2{
+	width:500px;
 }
 #noteText{
 	margin-top: 60px;
@@ -448,21 +447,21 @@ svg {
   fill: #ccc;
 }
 .foreground.bar {
-  fill: #FDD835;
+  fill: #FFD740;
 }
 .foreground.bar.duration{
 	stroke:#fff;
   stroke-width:1.5;
-  fill: #03A9F4;
+  fill: #FF80AB;
 }
 .foreground.bar.age{
   stroke:#fff;
   stroke-width:1.5;
-  fill: #03A9F4;
+  fill: #FF80AB;
 }
 .foreground.bar.direction{
   stroke:#fff;
-  fill:#03A9F4;
+  fill:#FF80AB;
   stroke-width:1.5;
 }
 
@@ -535,8 +534,8 @@ svg {
 stroke-linecap:butt;
 	stroke-width: 3.5px;
     fill: none;
-    stroke: #EC407A;
-    opacity: .2;
+    /*stroke: #EC407A;*/
+    opacity: .5;
 }
 
 .smallViewport{
