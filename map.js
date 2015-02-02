@@ -63,8 +63,8 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
         map.on("viewreset", reset);
 
            var colorScale = d3.scale.linear();
-        colorScale.range(['#27dff6', '#4A148C'])
-            .domain([0,300]);
+        colorScale.range(['#27dff6', '#78006b'])
+            .domain([0,250]);
 
         reset(); 
         linePath.each(transition);

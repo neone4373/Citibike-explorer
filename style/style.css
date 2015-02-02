@@ -447,7 +447,7 @@ svg {
   fill: #ccc;
 }
 .foreground.bar {
-  fill: #FFD740;
+  fill: #FF80AB;
 }
 .foreground.bar.duration{
 	stroke:#fff;
@@ -532,7 +532,7 @@ svg {
     }
 .lineConnect {
 stroke-linecap:butt;
-	stroke-width: 1.8px;
+	stroke-width: 2.8px;
     fill: none;
     /*stroke: #EC407A;*/
     opacity: .6;
