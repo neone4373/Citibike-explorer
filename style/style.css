@@ -39,7 +39,7 @@
 
 }
 
- @media (max-height: 749px) {
+ @media (max-height: 779px) {
 
 	#info{
 		padding:1px;
@@ -85,7 +85,7 @@
 }
 
 
-@media (max-height: 749px) and (max-width: 1050px) {
+@media (max-height: 779px) and (max-width: 1050px) {
 	#info{
 		width: calc(96% - 270px);
 	}
@@ -95,7 +95,7 @@
 
 }
 
-@media (max-height: 749px) and (min-width: 1051px) {
+@media (max-height: 779px) and (min-width: 1051px) {
 	#info{
 		width: calc(96% - 296px);
 	}
@@ -105,7 +105,7 @@
 
 }
 
-@media (min-height: 750px) {
+@media (min-height: 780px) {
 	.checkbox{
   	margin-bottom:5px;
 	}

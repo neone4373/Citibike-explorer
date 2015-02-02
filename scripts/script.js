@@ -2,6 +2,7 @@
 
 //write github text
 //add to website (and other examples/update)
+//ipad sizing
 
 //post:
 //grunt uncss
