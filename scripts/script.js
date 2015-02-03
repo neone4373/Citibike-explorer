@@ -3,6 +3,10 @@
 //write github text
 //add to website (and other examples/update)
 //ipad sizing
+//dynamic height sizing
+//center text
+//up arrow
+//overlay it
 
 //post:
 //grunt uncss
@@ -72,7 +76,6 @@
 			  }
 			}
 
-
 			var rides = crossfilter(data),
 	      all = rides.groupAll(),
 	     
@@ -88,7 +91,6 @@
 				}),
 				dimensionsAvg = dimensionStartStationEndLat.group().reduce(reduceAddLat, reduceRemoveLat, reduceInitialLat).all(),
 
-				
 				degree = rides.dimension(function(d) { return d.degrees; }),
 				degrees = degree.group(),
 
