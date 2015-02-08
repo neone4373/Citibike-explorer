@@ -58,7 +58,7 @@
 		        }
 
 
-      				div.select(".reset").style("background-color", brush.empty() ? "#e2e2e2" : "#F2B50F");
+      				div.select(".reset").style("background-color", brush.empty() ? "#e2e2e2" : "#F48FB1");
 		          div.select(".title a").attr("href", brush.empty() ? null : "javascript:breset(" + id + ")")
 
 		        // Only redraw the brush if set externally.

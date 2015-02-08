@@ -252,7 +252,7 @@ transition: all 0.3s ease-in-out;
 .checkbox:checked:before {
   -webkit-transform: rotate(-45deg);
      transform: rotate(-45deg);
-  border-color: #00BFA5;
+  border-color: #23e7a4;
   border-top-style: none;
   border-right-style: none;
 }
@@ -447,21 +447,21 @@ svg {
   fill: #ccc;
 }
 .foreground.bar {
-  fill: #FF80AB;
+  fill: #FFF176;
 }
 .foreground.bar.duration{
 	stroke:#fff;
   stroke-width:1.5;
-  fill: #FF80AB;
+  fill: #FFC400;
 }
 .foreground.bar.age{
   stroke:#fff;
   stroke-width:1.5;
-  fill: #FF80AB;
+  fill: #FFC400;
 }
 .foreground.bar.direction{
   stroke:#fff;
-  fill:#FF80AB;
+  fill:#FFC400;
   stroke-width:1.5;
 }
 

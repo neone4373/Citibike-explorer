@@ -90,7 +90,6 @@
 					return +d['start station id'];
 				}),
 				dimensionsAvg = dimensionStartStationEndLat.group().reduce(reduceAddLat, reduceRemoveLat, reduceInitialLat).all(),
-
 				degree = rides.dimension(function(d) { return d.degrees; }),
 				degrees = degree.group(),
 

@@ -58,13 +58,13 @@ var map = L.mapbox.map('mapSpace').setView([theMap.viewLong, theMap.viewLat], 13
             .data(series)
             .enter()
             .append("path")
-            .attr("class", "lineConnect").attr("stroke","#27dff6");
+            .attr("class", "lineConnect").attr("stroke","#B3E5FC");
            
         map.on("viewreset", reset);
 
            var colorScale = d3.scale.linear();
-        colorScale.range(['#27dff6', '#78006b'])
-            .domain([0,250]);
+        colorScale.range(['#B3E5FC', '#5C6BC0','#78006b'])
+            .domain([0,200,250]);
 
         reset(); 
         linePath.each(transition);

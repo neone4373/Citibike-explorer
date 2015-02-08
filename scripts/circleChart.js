@@ -83,7 +83,7 @@ function circleChart() {
         .attr("d", arcGen)
             .attr("class", "foreground bar " + chartName + "");
 
-      div.select(".reset").style("background-color", brush.empty() ? "#e2e2e2" : "#FDD835");
+      div.select(".reset").style("background-color", brush.empty() ? "#e2e2e2" : "#F48FB1");
       div.select(".resettitle a").attr("href", brush.empty() ? null : "javascript:creset(" + id + ")")
 
       if (brushDirty){
@@ -92,7 +92,7 @@ function circleChart() {
 
         //only works for reseting...
         if (brush.empty()){
-          g.selectAll('.bar').style('fill', '#FF80AB');
+          g.selectAll('.bar').style('fill', '#FFC400');
         }
       }
     });
@@ -125,7 +125,7 @@ function circleChart() {
     }
     var extentD = extent.map(toPositiveRadian).map(toDegree);
 
-    g.selectAll(".bar").style('fill', function(d, i){ return isBetween(i) ? '#FF80AB' : '#ccc'; });
+    g.selectAll(".bar").style('fill', function(d, i){ return isBetween(i) ? '#FFC400' : '#ccc'; });
     dimension.filterFunction(isBetween)
 
   });
