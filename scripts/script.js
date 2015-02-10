@@ -1,18 +1,9 @@
-
-
 //write github text
 //add to website (and other examples/update)
 //dynamic height sizing
+//add python notebooks
 
-//post:
-//grunt uncss
-//grunt minify
-
-// any other grunt tasks
-// host open sans locally
-
-//jslint/hint
-
+//grunt uncss,grunt minify
 
 //email folks!
  
@@ -24,13 +15,8 @@
 			var pageH;
 
 			$("#preloader").remove();
-			//$("#scroller").show();
 
 			$("#interactive").show();
-
-		  	
-			//$("#topTitle").show();
-
 
 			data.forEach(function(t, i){
 				t['minuteonbike'] = +t['timeminutes'];
@@ -216,9 +202,6 @@
 				
 		  	renderAll();
 		  	pageH = $(document).height();
-				//console.log(($('#interactiveTop').height()))
-
-				//console.log(($('#hour-chart').height()))
 				$("#slidingNav").css("height",pageH);
 				$("#slidingNav").show();
 		  	introJs().start();
@@ -300,7 +283,6 @@
 	        return checkFilters(z);
 	    	});
 
-	    	
 			})()
 
 			return ;
