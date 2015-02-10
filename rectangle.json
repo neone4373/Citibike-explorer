@@ -1,9 +1,0 @@
-{
-"type": "FeatureCollection",
-	"features": [{ 
-
-	{ "type": "Feature", "properties": { "latitude": 40.722390, "longitude": -73.995170, "id": "route1" }, "geometry": { "type": "Point", "coordinates": [ -73.99517, 40.72239 ]}}, } },
-	{ "type": "Feature", "properties": { "latitude": 40.721580, "longitude": -73.995480, "id": "route1" }, "geometry": { "type": "Point", "coordinates": [ -73.99548, 40.72158 ]}}
-
-}]
-}
