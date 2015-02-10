@@ -2,11 +2,8 @@
 
 //write github text
 //add to website (and other examples/update)
-//ipad sizing
 //dynamic height sizing
-//center text
-//up arrow
-//overlay it
+//right text
 
 //post:
 //grunt uncss
@@ -220,9 +217,9 @@
 				
 		  	renderAll();
 		  	pageH = $(document).height();
-				console.log(($('#interactiveTop').height()))
+				//console.log(($('#interactiveTop').height()))
 
-				console.log(($('#hour-chart').height()))
+				//console.log(($('#hour-chart').height()))
 				$("#slidingNav").css("height",pageH);
 				$("#slidingNav").show();
 		  	introJs().start();

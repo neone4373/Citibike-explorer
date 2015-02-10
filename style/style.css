@@ -123,6 +123,7 @@
 	}
 	#info{
 		padding:10px;
+		padding-bottom:7px;
 		padding-top:13px;
 	}
 	#infoTopR{
@@ -308,6 +309,8 @@ transition: all 0.3s ease-in-out;
 	margin-right:-1000px;
 	display:none;
 	z-index:1001;
+	cursor:pointer;
+	cursor:hand;
 	text-align:left;
 	background-color:rgba(212, 212, 212, 0.5);
 }
@@ -355,8 +358,8 @@ transition: all 0.3s ease-in-out;
 /* values of the dashboard */
 
 #manTo,#menTo,#womenTo,#brookTo,#active,#total{
-	font-weight:700;
-	font-size:18px;
+	font-weight: 400;
+	font-size: 20px;
 	display:inline-block;
 	color:#333;
 	font-family: 'Open Sans', sans-serif;
@@ -364,8 +367,8 @@ transition: all 0.3s ease-in-out;
 
 #minsSpent,#yearsOld{
 	display:block;
-	font-weight:700;
-	font-size:18px;
+	font-weight: 400;
+	font-size: 21px;
 	color:#333;
 	font-family: 'Open Sans', sans-serif;
 }
@@ -550,7 +553,7 @@ svg {
     }
 .lineConnect {
 stroke-linecap:butt;
-	stroke-width: 2.8px;
+	stroke-width: 2.6px;
     fill: none;
     /*stroke: #EC407A;*/
     opacity: .6;
@@ -746,7 +749,6 @@ html, body {
 	display:none !important;	
 }
 .introjs-tooltiptext{
-	
 	font-family: 'Open Sans', sans-serif;
 	font-size:14px;
 }
