@@ -3,7 +3,6 @@
 //write github text
 //add to website (and other examples/update)
 //dynamic height sizing
-//right text
 
 //post:
 //grunt uncss

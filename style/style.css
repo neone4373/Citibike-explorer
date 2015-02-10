@@ -155,13 +155,13 @@ body{
 	text-align:center;
 }
 .bodyText{
-	width:85%;
+	width:95%;
 	margin:auto;
 	text-align:left;
 	font-size:14px;
 }
 #topTitle{
-	padding-top: 15px;
+	padding-top: 35px;
 	height:calc(100% - 180px);
 	width:calc(90%);
 	z-index:1001;
@@ -315,8 +315,30 @@ transition: all 0.3s ease-in-out;
 	background-color:rgba(212, 212, 212, 0.5);
 }
 
+.inlinefifty{
+	width:49%;
+	display:inline-block;
+}
+.inlinefiftyText{
+	width:calc(49% - 10px);
+	display:inline-block;
+	padding-right: 10px;
+}
+.inlinetwothird{
+	width:60%;
+	display:inline-block;
+}
+.inlinethird{
+	width:calc(32% - 40px);
+	display:inline-block;
+	padding-right:20px;
+	padding-left:20px;
+}
 
-
+.inlinethirdTitle{
+	width:39%;
+	display:inline-block;
+}
 
 /* top of the dashboard */
 #years,#mins{
@@ -468,21 +490,21 @@ svg {
   fill: #ccc;
 }
 .foreground.bar {
-  fill: #80DEEA;
+  fill: #ffcc4e;
 }
 .foreground.bar.duration{
 	stroke:#fff;
   stroke-width:1.5;
-  fill: #80DEEA;
+  fill: #ff6f65;
 }
 .foreground.bar.age{
   stroke:#fff;
   stroke-width:1.5;
-  fill: #80DEEA;
+  fill: #ff6f65;
 }
 .foreground.bar.direction{
   stroke:#fff;
-  fill:#80DEEA;
+  fill:#ff6f65;
   stroke-width:1.5;
 }
 
