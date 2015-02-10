@@ -39,7 +39,7 @@
 
 }
 
- @media (max-height: 779px) {
+ @media (max-height: 769px) {
 
 	#info{
 		padding:1px;
@@ -85,7 +85,7 @@
 }
 
 
-@media (max-height: 779px) and (max-width: 1050px) {
+@media (max-height: 769px) and (max-width: 1050px) {
 	#info{
 		width: calc(96% - 270px);
 	}
@@ -95,7 +95,7 @@
 
 }
 
-@media (max-height: 779px) and (min-width: 1051px) {
+@media (max-height: 769px) and (min-width: 1051px) {
 	#info{
 		width: calc(96% - 296px);
 	}
@@ -105,7 +105,7 @@
 
 }
 
-@media (min-height: 780px) {
+@media (min-height: 770px) {
 	.checkbox{
   	margin-bottom:5px;
 	}
@@ -133,9 +133,12 @@
 		padding-top:8px;
 		padding-bottom:8px;
 		height:538px;
+		/* use calc */
 	}
 	#map{
 		height:550px;
+		min-height:550px;
+		/* use calc */
 	}
 	#interactiveBottom{
 		padding: 10px;
@@ -150,20 +153,20 @@ body{
 	background-color:#f3f3f3;
 	text-align:center;
 }
-.bodyText,#noteText{
-	width:75%;
+.bodyText{
+	width:85%;
 	margin:auto;
 	text-align:left;
+	font-size:14px;
 }
 #topTitle{
-	padding-top: 60px;
-	height:auto;
-	width:85%;
-	display:none;
+	padding-top: 15px;
+	height:calc(100% - 180px);
+	width:calc(90%);
+	z-index:1001;
 	text-align:center;
 	margin:auto;
-	margin-bottom:50px;
-	padding-bottom: 60px;
+	padding-bottom: 30px;
 }
 .imgC{
 	margin-left:30px;
@@ -178,6 +181,8 @@ body{
 #noteText{
 	margin-top: 60px;
 	font-size:10px;	
+	margin:auto;
+	text-align:left;
 }
 
 #info{
@@ -295,6 +300,19 @@ transition: all 0.3s ease-in-out;
 	text-align:center;
 }
 
+#slidingNav{
+	width:1025px;
+	position:fixed;
+	top:0;
+	right:0;
+	margin-right:-1000px;
+	display:none;
+	z-index:1001;
+	text-align:left;
+	background-color:rgba(212, 212, 212, 0.5);
+}
+
+
 
 
 /* top of the dashboard */
@@ -398,7 +416,7 @@ transition: all 0.3s ease-in-out;
 }
 
 .pagetitle{
-	font-size:46px;
+	font-size:30px;
 	font-weight:300;
 	
 	font-family: 'Raleway', sans-serif;
@@ -447,21 +465,21 @@ svg {
   fill: #ccc;
 }
 .foreground.bar {
-  fill: #FFF176;
+  fill: #80DEEA;
 }
 .foreground.bar.duration{
 	stroke:#fff;
   stroke-width:1.5;
-  fill: #FFC400;
+  fill: #80DEEA;
 }
 .foreground.bar.age{
   stroke:#fff;
   stroke-width:1.5;
-  fill: #FFC400;
+  fill: #80DEEA;
 }
 .foreground.bar.direction{
   stroke:#fff;
-  fill:#FFC400;
+  fill:#80DEEA;
   stroke-width:1.5;
 }
 
@@ -552,6 +570,8 @@ stroke-linecap:butt;
 html, body {
   background: #f0f1f3;
 }
+
+/* loader */
 
 .loader {
   width: 200px;
@@ -717,3 +737,16 @@ html, body {
   }
 }
 
+/* intro js */
+
+.introjs-helperNumberLayer{
+	display:none !important;
+}
+.introjs-bullets{
+	display:none !important;	
+}
+.introjs-tooltiptext{
+	
+	font-family: 'Open Sans', sans-serif;
+	font-size:14px;
+}

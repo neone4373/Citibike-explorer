@@ -25,11 +25,16 @@
 	interactiveBuilder = {
 		data:'',
 		ready: function (error, data){
+			var pageH;
 
 			$("#preloader").remove();
-			$("#scroller").show();
+			//$("#scroller").show();
+
 			$("#interactive").show();
-			$("#topTitle").show();
+
+		  	
+			//$("#topTitle").show();
+
 
 			data.forEach(function(t, i){
 				t['minuteonbike'] = +t['timeminutes'];
@@ -201,20 +206,27 @@
 		  		return Number((avg + 7)*2).toFixed(1);
 		  	}
 		  }
-
 		  $.ajax({
 			  url: "./../map.js",
 			  dataType: "script",
-			  success:startMap
+			  success:begin
 			});
 
-			function startMap() {
-			  renderAll();
-			}
 		  function render(method) {
 		    d3.select(this).call(method);
 		  }
+		  function begin() {
 
+				
+		  	renderAll();
+		  	pageH = $(document).height();
+				console.log(($('#interactiveTop').height()))
+
+				console.log(($('#hour-chart').height()))
+				$("#slidingNav").css("height",pageH);
+				$("#slidingNav").show();
+		  	introJs().start();
+		  }
 		  function renderAll() {
 		  
 		    chartz.each(render);

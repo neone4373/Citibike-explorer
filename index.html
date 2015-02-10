@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" type="text/css" href="./style/style.css">
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'><link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="./style/intro.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:300italic' rel='stylesheet' type='text/css'>
@@ -15,6 +17,9 @@
 
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
 <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+
+
+<script src='./scripts/intro.min.js'></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.11/crossfilter.min.js"></script>
 <script src="./scripts/d3.3.3.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
@@ -49,21 +54,6 @@ $("body").prepend('<div id=\"preloader\"><div class="loader">' +
 var winHeight = $(window).height();
 $("#preloader").css("height", winHeight + "px");
 </script>
-  <div id="topTitle" class="card">
-  	<span class="pagetitle">Citibike Dashboard &nbsp;<img src="./intro/citi-bike.png" style="height:40px; width:auto; vertical-align:middle;"></span><br><br>
-  	<div class="bodyText">
-  		<br>The Citibike explorer is a general-purpose visualization dashboard setup to display rides on New York City's public bikeshare system. The visualization shows the rides for July 17, 2014, the busiest day of use to date.<br><br><br><br>The dashboard is meant to be explored and has three main parts.<br><br><br>
-  		<b>1. Brushes and checks that allow you to filter and understand different types of riders and riding behavior.</b><br><br><span class="imgC"><img src="./intro/e.png" class="imgs"></span><span class="imgC"><img src="./intro/f.png" class="imgs"></span><br><br>
-
-  		<b><br>2.Outputs on top, showing computed values.</b> <br><br><span class="imgC"><img src="./intro/d.png" class="imgs2"></span><br><br><br>
-  		<b>3. A map representing the average riding path of each Citibike station in New York City. The paths redraw as filtering occurs.<br><br><span class="imgC"><img src="./intro/m.png" class="imgs"></span><br><br><br></b> 
-  		The dashboard is made in such a way that you use all three features to understand riding behavior. For example, to select only riders who took southward trips, were between the ages of 15 and 40 and rode for between 0 and 30 minutes, you would use the two radials below and the previously shown radial above. The map will show the average paths for these riders from each Citibike station.<br>
-  		<br><span class="imgC"><img src="./intro/s.png" class="imgs"></span><span class="imgC"><img src="./intro/a.png" class="imgs" style="margin-left:0px"></span><br><br><br>While in its current setup the dashboard displays bike path data, it could easily be used for any path or indicator data mapping where multiple factors contribute to direction, such as wind, traffic or economic or political change maps. Find the project <a href="https://github.com/petulla/multimonthd3map">on Github.</a>
-  	</div>
-  	<div id="noteText">Note on data sourcing and analysis: The Citibike dataset is a heavily-tailed distribution. To create the interactive experience, only rides lasting under 1 hour are included. The raw dataset also shows the presence of several riders over 100 years old. Because these tail values are likely erroneous, only riders under 80 years-old are included. A full repo, including IPython notebooks, is available <a href="https://github.com/petulla/multimonthd3map">on Github <img src="./intro/github_64_black.png" style="height:13px; width:auto;"></a>. Citibike dataset available from <a href="http://www.citibikenyc.com/system-data">Citibikenyc.</a></div>
-  </div>
-  <div id="scroller"><span class="scrolltest"><i><a href="#">Explore<br/><img src="./intro/arrow.png" style="height:30px; width:auto;"></i></a></span>
-  </div>
   <div id="interactive">
   	<div id="interactiveTop">
 	  	<div id="info" class="card">
@@ -136,6 +126,26 @@ $("#preloader").css("height", winHeight + "px");
   	</div>
   </div>
   <div class="github"><br><a href="https://github.com/petulla/multimonthd3map"><img src="./intro/github_64_black.png" style="height:30px; width:auto;"></a></div>
+  <!--navigation tools-->
+  <div id="slidingNav" data-step="1" data-intro='Hover the info bar to learn how to use the explorer' data-position="left">
+  <img src="q.png" style="height:20px; width:20px; margin:2px;">
+   <div id="topTitle" class="card">
+  	<span class="pagetitle">Citibike Dashboard &nbsp;<img src="./intro/citi-bike.png" style="height:40px; width:auto; vertical-align:bottom;"></span><br><br>
+  	<div class="bodyText">
+  		<br>The Citibike explorer is a general-purpose visualization dashboard setup to display rides on New York City's public bikeshare system. The visualization shows the rides for July 17, 2014, the busiest day of use to date.
+  		<div id=""><div id="">Explore in three main ways.</div><div id=""></div></div>
+  		<div id=""><div id=""></div><div id="">2 miles</div></div>
+
+  		1. Brushes and checks that allow you to filter and understand different types of riders and riding behavior.</b><br><br><span class="imgC"><img src="./intro/e.png" class="imgs"></span><span class="imgC"><img src="./intro/f.png" class="imgs"></span><br><br>
+<!--
+  		<b><br>2.Outputs on top, showing computed values.</b> <br><br><span class="imgC"><img src="./intro/d.png" class="imgs2"></span><br><br><br>
+  		<b>3. A map representing the average riding path of each Citibike station in New York City. The paths redraw as filtering occurs.<br><br><span class="imgC"><img src="./intro/m.png" class="imgs"></span><br><br><br></b> 
+  		The dashboard is made in such a way that you use all three features to understand riding behavior. For example, to select only riders who took southward trips, were between the ages of 15 and 40 and rode for between 0 and 30 minutes, you would use the two radials below and the previously shown radial above. The map will show the average paths for these riders from each Citibike station.<br>
+  		<br><span class="imgC"><img src="./intro/s.png" class="imgs"></span><span class="imgC"><img src="./intro/a.png" class="imgs" style="margin-left:0px"></span><br><br><br>While in its current setup the dashboard displays bike path data, it could easily be used for any path or indicator data mapping where multiple factors contribute to direction, such as wind, traffic or economic or political change maps. Find the project <a href="https://github.com/petulla/multimonthd3map">on Github.</a>
+  	</div>-->
+  	<div id="noteText">Note on data sourcing/analysis: The Citibike dataset is a heavily-tailed distribution. To create the interactive experience, only rides lasting under 1 hour are included. The raw dataset also includes several riders over 100 years-old, which are excluded. A full repo, including IPython notebooks, is available <a href="https://github.com/petulla/multimonthd3map">on Github <img src="./intro/github_64_black.png" style="height:13px; width:auto;"></a>. Citibike dataset available from <a href="http://www.citibikenyc.com/system-data">Citibikenyc.</a></div>
+  </div>
+ </div>
 
 <script src="./scripts/donuts.js"></script>
 <script src="./scripts/reduceMethods.js"></script>
@@ -145,15 +155,21 @@ $("#preloader").css("height", winHeight + "px");
 <script src="./scripts/script.js"></script>
   <script>
 
-$("#scroller").css("margin-bottom", winHeight * 2 + "px");
 $(document).ready(function(){
 
-	$(document).on('click','.scrolltest', function(event) {
-    event.preventDefault();
-    var target = "#interactive";
-    $('html, body').animate({
-        scrollTop: $(target).offset().top
-    }, 300);
+
+	function toggleDivs() {
+	    var $inner = $("#slidingNav");
+	    if ($inner.css("margin-right") == "-1000px") {
+	        $inner.animate({'margin-right': '0'});
+	    }
+	    else {
+	        $inner.animate({'margin-right': "-1000px"}); 
+	    }
+	}
+	$("#slidingNav").bind("mouseenter mouseleave", function(){
+		console.log('test');
+	    toggleDivs();
 	});
 
 	if ($(window).width() > 1023) {
@@ -165,7 +181,7 @@ $(document).ready(function(){
 		$('#scroller').remove();
 		$('#interactive').show();
 		$('#interactive').empty();
-		$('#interactive').append('<div class=\"smallViewport\">Becuase of the detail and interactivity in the Citibike data explorer, for now the experience is limitedt o large-sized tablets and screen resolutions above 1024px. </div>')
+		$('#interactive').append('<div class=\"smallViewport\">Because of the detail and interactivity in the Citibike data explorer, for now the experience is limited to large-sized tablets and screen resolutions above 1024px. </div>')
 	}
 });
 </script>
