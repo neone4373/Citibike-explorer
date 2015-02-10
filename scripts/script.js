@@ -203,7 +203,7 @@
 		  	}
 		  }
 		  $.ajax({
-			  url: "./../map.js",
+			  url: "./../scripts/map.js",
 			  dataType: "script",
 			  success:begin
 			});
