@@ -6,3 +6,5 @@ data_raw
 multi.sublime-project
 multi.sublime-workspace
 node_modules/
+composer.json
+composer.lock
