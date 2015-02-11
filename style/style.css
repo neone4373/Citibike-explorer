@@ -140,6 +140,7 @@
 	#map{
 		height:550px;
 		min-height:550px;
+		height:66%;
 		/* use calc */
 	}
 	#interactiveBottom{
