@@ -1,6 +1,5 @@
 //write github text
 //add to website (and other examples/update)
-//dynamic height sizing
 //add python notebooks
 
 //grunt uncss,grunt minify
