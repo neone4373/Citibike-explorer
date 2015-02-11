@@ -180,10 +180,12 @@ $(document).ready(function(){
 	});
 
 	if ($(window).width() > 1023) {
-		
+				//scale window height prior to projection
 		  	var pageH = $(document).height();
 				if (pageH > 770) {
-				$("#map").css("height",pageH*.66 + "px") }
+					$("#map").css("height",pageH*.66 + "px"); 
+					$("#rightInfo").css("height",pageH*.66 + "px"); 
+				}
 		interactiveBuilder.start() || {};
 	}
 	else {

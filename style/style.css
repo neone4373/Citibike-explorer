@@ -134,12 +134,9 @@
 		padding-top:8px;
 		padding-bottom:8px;
 		min-height:538px;
-		height:66%;
-		/* use calc */
 	}
 	#map{
 		min-height:550px;
-		height:66%;
 		/* use calc */
 	}
 	#interactive{
