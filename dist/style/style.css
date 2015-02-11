@@ -178,6 +178,15 @@ a:visited {
   background-color: rgba(212, 212, 212, 0.5);
 }
 
+.question{
+  opacity:.5;
+  filter: alpha(opacity=50);
+}
+.question:hover{
+  opacity:1;
+  filter: alpha(opacity=100);
+}
+
 .inlinefifty {
   width: 49%;
   display: inline-block;
