@@ -65,4 +65,26 @@ https://source.opennews.org/en-US/articles/animating-maps-d3-and-topojson/
 
 
 ![Stroke](./intro/dynmaps_dasharray_style.png)
+Native Leaflet Lat/long conversion to x,y
+
+Useful function for building a bounding box from an array of coordinates that can be passed into `d3path.bounds()`
+```js
+function reformat(array) {
+                var data = [];
+                array.map(function (d, i) {
+                    var j = d.length;
+                  for (i=0;i<j;i++){
+                    data.push({
+                        id: i,
+                        type: "Feature",
+                        geometry: {
+                            coordinates: [+d[i].lo, +d[i].lat],
+                            type: "Point"
+                        }
+                    });
+                  }
+                });
+                return data;
+            }
+```
 
