@@ -138,10 +138,12 @@
 		/* use calc */
 	}
 	#map{
-		height:550px;
 		min-height:550px;
 		height:66%;
 		/* use calc */
+	}
+	#interactive{
+		height:100% !important;
 	}
 	#interactiveBottom{
 		padding: 10px;

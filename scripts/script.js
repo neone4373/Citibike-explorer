@@ -201,7 +201,7 @@
 
 				
 		  	renderAll();
-		  	pageH = $(document).height();
+		  	var pageH = $(document).height();
 				$("#slidingNav").css("height",pageH);
 				$("#slidingNav").show();
 		  	introJs().start();

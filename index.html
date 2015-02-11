@@ -180,6 +180,10 @@ $(document).ready(function(){
 	});
 
 	if ($(window).width() > 1023) {
+		
+		  	var pageH = $(document).height();
+				if (pageH > 770) {
+				$("#map").css("height",pageH*.66 + "px") }
 		interactiveBuilder.start() || {};
 	}
 	else {
