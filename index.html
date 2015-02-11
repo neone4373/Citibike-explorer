@@ -184,7 +184,7 @@ $(document).ready(function(){
 		  	var pageH = $(document).height();
 				if (pageH > 770) {
 					$("#map").css("height",pageH*.66 + "px"); 
-					$("#rightInfo").css("height",pageH*.66 + "px"); 
+					$("#rightInfo").css("height",(pageH*.66) - 12 + "px"); 
 				}
 		interactiveBuilder.start() || {};
 	}
