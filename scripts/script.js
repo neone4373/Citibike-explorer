@@ -1,7 +1,3 @@
-//add to website (and other examples/update)
-
-//email folks!
- 
 (function z(){
 	interactiveBuilder = {
 		data:'',

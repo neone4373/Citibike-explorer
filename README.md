@@ -78,7 +78,7 @@ cCharts = [
 
 The most fun part of making this visual was figuring out how to create the ride vectors from each station based on the filtered dimensions. Each path needs to be recalculated on the fly and animated.
 
-The hard work of the animation relies on the stroke: dash-array technique outlined in the following [Source article](https://source.opennews.org/en-US/articles/animating-maps-d3-and-topojson/).
+The hard work of the animation relies on the `stroke: dash-array` technique outlined in the following [Source article](https://source.opennews.org/en-US/articles/animating-maps-d3-and-topojson/).
 
 ![Stroke](./intro/dynmaps_dasharray_style.png)
 
