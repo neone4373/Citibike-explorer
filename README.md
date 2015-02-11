@@ -7,7 +7,7 @@ The Citibike explorer is part of a project to create general-purpose dashboards 
 
 The core libraries behind it are Crossfilter.js, D3.js, Mapbox and jQuery.
 
-Load the visual on [Heroku](http://citibike-explorer.herokouapp.com).
+Load the visual on [Heroku](http://citibike-explorer.herokuapp.com).
 
 ### Sourcing and data analysis
 
