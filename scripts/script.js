@@ -194,7 +194,40 @@
 		  	var pageH = $(document).height();
 				$("#slidingNav").css("height",pageH);
 				$("#slidingNav").show();
-		  	introJs().start();
+				var intro = introJs();
+      intro.setOptions({
+	        steps: [
+	          { 
+	            intro: "tk"
+	          },
+	          {
+	          	element: "#map",
+	          	intro: "INTRO",
+	          	position: "right"
+	          },
+	          {
+	          	element: "#interactiveBottom",
+	          	intro: "INTRO",
+	          	position: "top"
+	          },
+	          {
+	          	element: "#rightInfo",
+	          	intro: "INTRO",
+	          	position: "left"
+	          },
+	          {
+	          	element: "#infoTopR",
+	          	intro: "INTRO",
+	          	position: "bottom"
+	          },
+	          {
+	          	element: ".question",
+	          	intro: "INTRO",
+	          	position: "left"
+	          }
+	        ]
+	      });
+		  	intro.start();
 		  }
 		  function renderAll() {
 		  

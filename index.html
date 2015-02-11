@@ -127,8 +127,8 @@ $("#preloader").css("height", winHeight + "px");
   </div>
   <div class="github"><br><a href="https://github.com/petulla/multimonthd3map"><img src="./intro/github_64_black.png" style="height:30px; width:auto;"></a></div>
   <!--navigation tools-->
-  <div id="slidingNav" data-step="1" data-intro='Hover the info bar to learn how to use the explorer.' data-position="left">
-  <img src="q.png" style="height:20px; width:20px; margin:2px;">
+  <div id="slidingNav">
+  <img src="q.png" class="question" style="height:20px; width:20px; margin:2px;">
    <div id="topTitle" class="card">
   	<span class="pagetitle">Citibike Dashboard &nbsp;<img src="./intro/citi-bike.png" style="height:40px; width:auto; vertical-align:bottom;"></span><br><br>
   	<div class="bodyText">
@@ -174,7 +174,7 @@ $(document).ready(function(){
 	        $inner.animate({'margin-right': "-1000px"}); 
 	    }
 	}
-	$("#slidingNav").bind("mouseenter mouseleave", function(){
+	$(".question").bind("click", function(){
 		console.log('test');
 	    toggleDivs();
 	});
