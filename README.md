@@ -3,13 +3,27 @@
 Citibike dataset explorer
 ===============
 
-The Citibike explorer is part of a project to create general-purpose visualization dashboards that can be used for many services. It is setup to display rides on New York City's public bikeshare system on the day of July 17, 2014, the busiest day of use of the service to date.
+The Citibike explorer is part of a project to create general-purpose dashboards that can be used for many datasets and visualizations. It is setup to display rides on New York City's public bikeshare system on the day of July 17, 2014, the busiest day of use of the service to date.
 
 ### Sourcing and data analysis
 
-[django-boundaryservice](http://nbviewer.ipython.org/github/petulla/Citibike-explorer/blob/master/Notebooks/full%20parse.ipynb)
+New York City's public Citibike service releases monthly datasets on the ['system data' website](http://www.citibikenyc.com/system-data).
 
-[django-boundaryservice](http://nbviewer.ipython.org/github/petulla/Citibike-explorer/blob/master/Notebooks/preparation.ipynb)
+The raw data contains the following, which services as the basis for the visual:
+
+*Trip Duration (seconds)
+*Start Time and Date
+*Stop Time and Date
+*Start Station Name
+*End Station Name
+*Station ID
+*Station Lat/Long
+*Bike ID
+*User Type (Customer = 24-hour pass or 7-day pass user; Subscriber = Annual Member)
+*Gender (Zero=unknown; 1=male; 2=female)
+*Year of Birth
+
+IPython notebook templates to parse and format the data for the visual can be found [here](http://nbviewer.ipython.org/github/petulla/Citibike-explorer/blob/master/Notebooks/full%20parse.ipynb) and [here](http://nbviewer.ipython.org/github/petulla/Citibike-explorer/blob/master/Notebooks/preparation.ipynb)
 
 
 ### Use with other data sets
