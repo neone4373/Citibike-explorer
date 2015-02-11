@@ -198,31 +198,32 @@
       intro.setOptions({
 	        steps: [
 	          { 
-	            intro: "tk"
+	            intro: "<span class=\"pagetitle\">Citibike Dashboard &nbsp;<img src=\"./intro/citi-bike.png\" style=\"height:40px; width:auto; vertical-align:bottom;\"></span>" +
+	            "<div style=\"width:500px; margin:auto;\">The Citibike explorer is a general-purpose visualization dashboard setup to display rides on New York City's public bikeshare system. The visualization shows the rides for July 17, 2014, the busiest day of use to date.</div>"
 	          },
 	          {
 	          	element: "#map",
-	          	intro: "INTRO",
+	          	intro: "Every path represents the average ride taken from a Citibike station. The map updates as you filter the data.",
 	          	position: "right"
 	          },
 	          {
-	          	element: "#interactiveBottom",
-	          	intro: "INTRO",
-	          	position: "top"
-	          },
-	          {
-	          	element: "#rightInfo",
-	          	intro: "INTRO",
-	          	position: "left"
-	          },
-	          {
 	          	element: "#infoTopR",
-	          	intro: "INTRO",
+	          	intro: "Check a gender or borough to filter the data.",
 	          	position: "bottom"
 	          },
 	          {
+	          	element: "#rightInfo",
+	          	intro: "Brush by direction, time spent riding or rider age to filter the data.",
+	          	position: "left"
+	          },
+	          {
+	          	element: "#interactiveBottom",
+	          	intro: "Use the date range to select a specific timeframe.",
+	          	position: "top"
+	          },
+	          {
 	          	element: ".question",
-	          	intro: "INTRO",
+	          	intro: "Click the info icon to see an example.",
 	          	position: "left"
 	          }
 	        ]
