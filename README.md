@@ -3,9 +3,16 @@
 Citibike dataset explorer
 ===============
 
-The Citibike explorer is a general-purpose visualization dashboard setup to display rides on New York City's public bikeshare system. The visualization is set up to show the rides for July 17, 2014, the busiest day of use of the service to date.
+The Citibike explorer is part of a project to create general-purpose visualization dashboards that can be used for many services. It is setup to display rides on New York City's public bikeshare system on the day of July 17, 2014, the busiest day of use of the service to date.
 
 ### Sourcing and data analysis
+
+[django-boundaryservice](http://nbviewer.ipython.org/github/petulla/Citibike-explorer/blob/master/Notebooks/full%20parse.ipynb)
+
+[django-boundaryservice](http://nbviewer.ipython.org/github/petulla/Citibike-explorer/blob/master/Notebooks/preparation.ipynb)
+
+
+### Use with other data sets
 
 ```js
 var rides = crossfilter(data),
@@ -19,13 +26,6 @@ genderCheck = rides.dimension(function(d) { return d.gender; }),
 gendersAvg = gender.group().reduce(reduceAddGender, reduceRemoveGender, reduceInitialGender).all()
 
 ```
-
-[django-boundaryservice](https://github.com/newsapps/django-boundaryservice)
-
-### Other data sets
-
-
-[django-boundaryservice](https://github.com/newsapps/django-boundaryservice)
 
 ```js
 cCharts = [
@@ -70,21 +70,21 @@ Native Leaflet Lat/long conversion to x,y
 Useful function for building a bounding box from an array of coordinates that can be passed into `d3path.bounds()`
 ```js
 function reformat(array) {
-                var data = [];
-                array.map(function (d, i) {
-                    var j = d.length;
-                  for (i=0;i<j;i++){
-                    data.push({
-                        id: i,
-                        type: "Feature",
-                        geometry: {
-                            coordinates: [+d[i].lo, +d[i].lat],
-                            type: "Point"
-                        }
-                    });
-                  }
-                });
-                return data;
-            }
+  var data = [];
+  array.map(function (d, i) {
+      var j = d.length;
+    for (i=0;i<j;i++){
+      data.push({
+          id: i,
+          type: "Feature",
+          geometry: {
+              coordinates: [+d[i].lo, +d[i].lat],
+              type: "Point"
+          }
+      });
+    }
+  });
+  return data;
+}
 ```
 

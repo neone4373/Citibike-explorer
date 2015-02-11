@@ -1,0 +1,123 @@
+/*** uncss> filename: dist/style/style.css ***/
+
+body {
+  background-color: #f3f3f3;
+  text-align: center;
+}
+
+a:link {
+  color: #000;
+  text-decoration: none;
+}
+
+a:active {
+  color: #000;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #000;
+  text-decoration: none;
+}
+
+.github {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+#slidingNav {
+  width: 1025px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-right: -1000px;
+  display: none;
+  z-index: 1001;
+  cursor: pointer;
+  cursor: hand;
+  text-align: left;
+  background-color: rgba(212, 212, 212, 0.5);
+}
+
+#interactive {
+  margin: auto;
+  width: 100%;
+  display: none;
+}
+
+.smallViewport {
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  height: 400px;
+  vertical-align: middle;
+  padding: 20%;
+}
+
+html,
+body {
+  background: #f0f1f3;
+}
+
+/* intro js */
+
+/*** uncss> filename: dist/style/intro.css ***/
+
+/*
+ Buttons style by http://nicolasgallagher.com/lab/css3-github-buttons/
+ Changed by Afshin Mehrabani
+*/
+
+/* overrides extra padding on button elements in Firefox */
+
+.introjs-button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+/*** uncss> filename: http://fonts.googleapis.com/css?family=Open+Sans ***/
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(http://fonts.gstatic.com/s/opensans/v10/cJZKeOuBrn4kERxqtaUH3aCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
+}
+
+/*** uncss> filename: http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300 ***/
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Cond Light'), local('OpenSans-CondensedLight'), url(http://fonts.gstatic.com/s/opensanscondensed/v10/gk5FxslNkTTHtojXrkp-xD1GzwQ5qF9DNzkQQVRhJ4g.ttf) format('truetype');
+}
+
+/*** uncss> filename: http://fonts.googleapis.com/css?family=Raleway:300 ***/
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Raleway Light'), local('Raleway-Light'), url(http://fonts.gstatic.com/s/raleway/v9/-_Ctzj9b56b8RgXW8FAriS3USBnSvpkopQaUR-2r7iU.ttf) format('truetype');
+}
+
+/*** uncss> filename: http://fonts.googleapis.com/css?family=Open+Sans:300 ***/
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(http://fonts.gstatic.com/s/opensans/v10/DXI1ORHCpsQm3Vp6mXoaTYnF5uFdDttMLvmWuJdhhgs.ttf) format('truetype');
+}
+
+/*** uncss> filename: http://fonts.googleapis.com/css?family=Josefin+Sans:300italic ***/
+
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Josefin Sans Light Italic'), local('JosefinSans-LightItalic'), url(http://fonts.gstatic.com/s/josefinsans/v9/ppse0J9fKSaoxCIIJb33G33uxQAI1Bvm-GxtFNy4yl0.ttf) format('truetype');
+}
+
+/*** uncss> filename: https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css ***/

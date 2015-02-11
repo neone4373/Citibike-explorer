@@ -1,8 +1,4 @@
-//write github text
 //add to website (and other examples/update)
-//add python notebooks
-
-//grunt uncss,grunt minify
 
 //email folks!
  

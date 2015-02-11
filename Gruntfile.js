@@ -8,22 +8,34 @@ module.exports = function(grunt) {
 	            // 2. Configuration for concatinating files goes here.
 	        },
 
-	    
-
-
- imagemin: {
-    dynamic: {
-      files: [{
+   imagemin: {
+      dynamic: {
+        files: [{
+          expand: true,
+          src: ['intro/*.{png,jpg,gif}'],
+          dest: 'img/'
+        }]
+      }
+    },
+    combine_mq: {
+      default_options: {
         expand: true,
-        src: ['intro/*.{png,jpg,gif}'],
-        dest: 'img/'
-      }]
+        src: 'style/*.css',
+        dest: 'style/dist'
+      }
+    },
+    uncss: {
+      dist: {
+        files: {
+          'dist/css/tidy.css': ['index.html']
+        }
+      }
     }
-  }
   });
 
-
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
-	grunt.registerTask('default', ['imagemin']);
+  //grunt.loadNpmTasks('grunt-combine-mq');
+	//grunt.loadNpmTasks('grunt-contrib-imagemin');
+  //grunt.loadNpmTasks('grunt-uncss');
+	grunt.registerTask('default');
 
 };
