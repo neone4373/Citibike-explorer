@@ -133,7 +133,8 @@
 	#rightInfo {
 		padding-top:8px;
 		padding-bottom:8px;
-		height:538px;
+		min-height:538px;
+		height:66%;
 		/* use calc */
 	}
 	#map{
@@ -490,7 +491,7 @@ svg {
   fill: #ccc;
 }
 .foreground.bar {
-  fill: #ffcc4e;
+  fill: #ffdd4e;
 }
 .foreground.bar.duration{
 	stroke:#fff;
