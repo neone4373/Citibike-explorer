@@ -64,5 +64,5 @@ data.forEach(function(t, i){
 https://source.opennews.org/en-US/articles/animating-maps-d3-and-topojson/
 
 
-![Stroke](./intro/dynmaps_dasharray_style.svg)
+![Stroke](./intro/dynmaps_dasharray_style.png)
 
