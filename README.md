@@ -3,7 +3,11 @@
 Citibike dataset explorer
 ===============
 
-The Citibike explorer is part of a project to create general-purpose dashboards that can be used for many datasets and visualizations. It is setup to display rides on New York City's public bikeshare system on the day of July 17, 2014, the busiest day of use of the service to date.
+The Citibike explorer is part of a project to create general-purpose dashboards that can be used for many datasets and visualizations. It is setup to display rides on New York City's public bikeshare system on the day of July 17, 2014, the busiest day of use of the service to date. The dashboard shows the average ride paths for every station on the Citibike station.
+
+The core libraries behind it are Crossfilter.js, D3.js, Mapbox and jQuery.
+
+Load the visual on [Heroku](http://citibike-explorer.herokouapp.com).
 
 ### Sourcing and data analysis
 
@@ -28,6 +32,10 @@ IPython notebook templates to parse and format the data for the visual can be fo
 
 ### Use with other data sets
 
+There are lots of interesting observations to be made on the Citibike dataset, but it's really just a beginning for what this type of dashboard can do. Because the filtering charts are modular, other datasets can be used with some tweaking. This dashboard could be reconfigured for any city transit data or for weather, political or economic trends, or environmental data. 
+
+Crossfilter.js requires a crossfilter object, which serves as the basis for dimensions and groups. Dimensions are what allows the complex filtering and recalculation. Groups are what makes it possible to display discrete bar graphs from a large (3mb+ dataset) with 35,000 rows.
+
 ```js
 var rides = crossfilter(data),
 all = rides.groupAll(),
@@ -40,6 +48,8 @@ genderCheck = rides.dimension(function(d) { return d.gender; }),
 gendersAvg = gender.group().reduce(reduceAddGender, reduceRemoveGender, reduceInitialGender).all()
 
 ```
+
+Circular and bar chart objects are created and passed into a `renderAll()` function, which puts the charts on the page. The `barChart.js` and `circleChart.js` files in the `scripts` folder render the charts. This basic architecture comes from Jason Davies work on Crossfilter.js.
 
 ```js
 cCharts = [
@@ -64,24 +74,18 @@ cCharts = [
   .rangeRound([0, 288*3]))
 ```
 
-```js
-data.forEach(function(t, i){
-	t['minuteonbike'] = +t['timeminutes'];
-	t['timeonbike'] = +t['tripdurationintervals'];
-	t['ageonbike'] = +t['ageintervals'] - 7;
-	t['degrees'] = +t['degrees'];
-});
-```
+### Some nifty map work
 
-### Modules
+The most fun part of making this visual was figuring out how to create the ride vectors from each station based on the filtered dimensions. Each path needs to be recalculated on the fly and animated.
 
-https://source.opennews.org/en-US/articles/animating-maps-d3-and-topojson/
-
+The hard work of the animation relies on the stroke: dash-array technique outlined in the following [Source article](https://source.opennews.org/en-US/articles/animating-maps-d3-and-topojson/).
 
 ![Stroke](./intro/dynmaps_dasharray_style.png)
-Native Leaflet Lat/long conversion to x,y
 
-Useful function for building a bounding box from an array of coordinates that can be passed into `d3path.bounds()`
+Another useful technique is the conversion of the changes in longitude/latitude start and end averages to X and Y coordinates that can be projected onto a zoomable map. Native Leaflet conversion functions perform this work.
+
+Another useful function is the building of a bounding box from an array of coordinates that can be passed into `d3path.bounds()`, which sets the area where the paths will be projected. This is done with the below code.
+
 ```js
 function reformat(array) {
   var data = [];
@@ -102,3 +106,6 @@ function reformat(array) {
 }
 ```
 
+### Feedback (is welcome!)
+
+Find me on Twitter [@spetulla](http://www.twitter.com/spetulla)
