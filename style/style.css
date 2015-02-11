@@ -139,9 +139,7 @@
 		min-height:550px;
 		/* use calc */
 	}
-	#interactive{
-		height:100% !important;
-	}
+
 	#interactiveBottom{
 		padding: 10px;
 	}
@@ -149,6 +147,12 @@
 		margin-top:3px;
 	}
 
+}
+
+@media (min-height: 1000px) {
+	.cChart{
+	margin-top:40px;
+	}
 }
 
 body{
