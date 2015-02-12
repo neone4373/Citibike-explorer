@@ -203,23 +203,16 @@
 	          },
 	          {
 	          	element: "#map",
-	          	intro: "Every path represents the average ride taken from a Citibike station. The map updates as you filter the data.",
+	          	intro: "Every path represents the average ride taken from a Citibike station. The map updates as you filter the data. At the current zoom level, rides begin to turn red at ~2 miles.",
 	          	position: "right"
 	          },
 	          {
-	          	element: "#infoTopR",
-	          	intro: "Check a gender or borough to filter the data.",
-	          	position: "bottom"
-	          },
-	          {
 	          	element: "#rightInfo",
-	          	intro: "Brush by direction, time spent riding or rider age to filter the data.",
+	          	intro: "<div style=\"width:450px\">Use any or all of the filters to select specific data points<br><br>" +
+	          	"<div class=\"inlinefilter\" style=\"font-size:11px; vertical-align:top; text-align:center;\"><img src=\"./intro/brush.png\" style=\"height:90px; width:auto; margin:auto;\"><br>Use the circular <b>brushes</b> to filter down the dataset by rider age, time spent riding, and direction of ride.</div>" +
+			  			"<div class=\"inlinefilter\" style=\"font-size:11px; vertical-align:top; text-align:center;\"><img src=\"./intro/time.png\" style=\"height:90px; width:auto; margin:auto;\"><br><b>Select a time</b> to filter down the dataset by the time riding started.</div>" +
+			  			"<div class=\"inlinefilter\" style=\"font-size:11px; vertical-align:top; text-align:center;\"><img src=\"./intro/men.png\" style=\"height:40px; padding-top:50px; width:auto;\"><br><b>Check</b> for filtering by gender or borough.</div></div>",
 	          	position: "left"
-	          },
-	          {
-	          	element: "#interactiveBottom",
-	          	intro: "Use the date range to select a specific timeframe.",
-	          	position: "top"
 	          },
 	          {
 	          	element: ".question",

@@ -214,6 +214,11 @@ a:visited {
   width: 39%;
   display: inline-block;
 }
+.inlinefilter {
+  width: 135px;
+  padding-right:10px;
+  display: inline-block;
+}
 
 #years,
 #mins {
